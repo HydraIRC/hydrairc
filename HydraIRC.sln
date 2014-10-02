@@ -1,0 +1,72 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HydraIRC", "HydraIRC\HydraIRC.vcproj", "{935A6F55-1AF1-4AE0-BE27-C7D5D339A9A8}"
+	ProjectSection(ProjectDependencies) = postProject
+		{08BC321F-3476-43F9-9989-FD9B1DA2A079} = {08BC321F-3476-43F9-9989-FD9B1DA2A079}
+		{EE874E3B-5E71-444D-9EF1-44F32D53A1BA} = {EE874E3B-5E71-444D-9EF1-44F32D53A1BA}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libxml2", "HydraIRC\libs\libxml2\win32\dsp\libxml2.vcproj", "{08BC321F-3476-43F9-9989-FD9B1DA2A079}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Plugin_Default", "HydraIRC\Plugins\Default\Default.vcproj", "{5B0ADEA5-5DFC-4C65-A218-76B2BEF80E7E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EE874E3B-5E71-444D-9EF1-44F32D53A1BA} = {EE874E3B-5E71-444D-9EF1-44F32D53A1BA}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HydraIRCPlugin", "HydraIRC\libs\HydraIRCPlugin\HydraIRCPlugin.vcproj", "{EE874E3B-5E71-444D-9EF1-44F32D53A1BA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Plugin_WinAMP", "HydraIRC\Plugins\WinAMP\WinAMP.vcproj", "{D8F8E4E1-B5FD-40A5-8553-95F485C15871}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EE874E3B-5E71-444D-9EF1-44F32D53A1BA} = {EE874E3B-5E71-444D-9EF1-44F32D53A1BA}
+		{EE874E3B-5E71-444D-9EF1-44F32D53A1BA} = {EE874E3B-5E71-444D-9EF1-44F32D53A1BA}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Plugin_Alias", "HydraIRC\Plugins\Alias\Alias.vcproj", "{F930F515-CB4A-4253-8A9E-DE43A8F54206}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EE874E3B-5E71-444D-9EF1-44F32D53A1BA} = {EE874E3B-5E71-444D-9EF1-44F32D53A1BA}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Plugin_Uptime", "HydraIRC\Plugins\Uptime\Uptime.vcproj", "{27ED8614-E1A2-44FC-99E6-A1D7D4E59738}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EE874E3B-5E71-444D-9EF1-44F32D53A1BA} = {EE874E3B-5E71-444D-9EF1-44F32D53A1BA}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{935A6F55-1AF1-4AE0-BE27-C7D5D339A9A8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{935A6F55-1AF1-4AE0-BE27-C7D5D339A9A8}.Debug|Win32.Build.0 = Debug|Win32
+		{935A6F55-1AF1-4AE0-BE27-C7D5D339A9A8}.Release|Win32.ActiveCfg = Release|Win32
+		{935A6F55-1AF1-4AE0-BE27-C7D5D339A9A8}.Release|Win32.Build.0 = Release|Win32
+		{08BC321F-3476-43F9-9989-FD9B1DA2A079}.Debug|Win32.ActiveCfg = Debug|Win32
+		{08BC321F-3476-43F9-9989-FD9B1DA2A079}.Debug|Win32.Build.0 = Debug|Win32
+		{08BC321F-3476-43F9-9989-FD9B1DA2A079}.Release|Win32.ActiveCfg = Release|Win32
+		{08BC321F-3476-43F9-9989-FD9B1DA2A079}.Release|Win32.Build.0 = Release|Win32
+		{5B0ADEA5-5DFC-4C65-A218-76B2BEF80E7E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5B0ADEA5-5DFC-4C65-A218-76B2BEF80E7E}.Debug|Win32.Build.0 = Debug|Win32
+		{5B0ADEA5-5DFC-4C65-A218-76B2BEF80E7E}.Release|Win32.ActiveCfg = Release|Win32
+		{5B0ADEA5-5DFC-4C65-A218-76B2BEF80E7E}.Release|Win32.Build.0 = Release|Win32
+		{EE874E3B-5E71-444D-9EF1-44F32D53A1BA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EE874E3B-5E71-444D-9EF1-44F32D53A1BA}.Debug|Win32.Build.0 = Debug|Win32
+		{EE874E3B-5E71-444D-9EF1-44F32D53A1BA}.Release|Win32.ActiveCfg = Release|Win32
+		{EE874E3B-5E71-444D-9EF1-44F32D53A1BA}.Release|Win32.Build.0 = Release|Win32
+		{D8F8E4E1-B5FD-40A5-8553-95F485C15871}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D8F8E4E1-B5FD-40A5-8553-95F485C15871}.Debug|Win32.Build.0 = Debug|Win32
+		{D8F8E4E1-B5FD-40A5-8553-95F485C15871}.Release|Win32.ActiveCfg = Release|Win32
+		{D8F8E4E1-B5FD-40A5-8553-95F485C15871}.Release|Win32.Build.0 = Release|Win32
+		{F930F515-CB4A-4253-8A9E-DE43A8F54206}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F930F515-CB4A-4253-8A9E-DE43A8F54206}.Debug|Win32.Build.0 = Debug|Win32
+		{F930F515-CB4A-4253-8A9E-DE43A8F54206}.Release|Win32.ActiveCfg = Release|Win32
+		{F930F515-CB4A-4253-8A9E-DE43A8F54206}.Release|Win32.Build.0 = Release|Win32
+		{27ED8614-E1A2-44FC-99E6-A1D7D4E59738}.Debug|Win32.ActiveCfg = Debug|Win32
+		{27ED8614-E1A2-44FC-99E6-A1D7D4E59738}.Debug|Win32.Build.0 = Debug|Win32
+		{27ED8614-E1A2-44FC-99E6-A1D7D4E59738}.Release|Win32.ActiveCfg = Release|Win32
+		{27ED8614-E1A2-44FC-99E6-A1D7D4E59738}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

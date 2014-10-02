@@ -1,0 +1,479 @@
+<HTML>
+  <HEAD>
+    <TITLE></TITLE>
+    <META NAME="GENERATOR" Content="Microsoft FrontPage 5.0">
+    <STYLE TYPE="text/css"> BODY { FONT-FAMILY: Verdana } P { FONT-FAMILY: Verdana } </STYLE>
+  </HEAD>
+  <BODY>
+    <P><b><font size="4">HydraIRC</font></b></P>
+    <P>Written and designed by Dominic Clifton.</P>
+    <P>More complete docs to come, but here's a few things you might want to know...</P>
+    <p><b>Contents</b></p>
+    <ul>
+      <li>
+        <a href="#Auto Login">Auto Login</a>
+      <li>
+        <a href="#Nick Change Processing">Nick Change Processing</a>
+      <li>
+        <a href="#DCC sending when behind a router/firewall">DCC sending when behind a 
+          router/firewall</a>
+      <li>
+        <a href="#Colors and styles">Colors and styles</a>
+      <li>
+        <a href="#Theme Creation Notes">Theme Creation Notes</a>
+      <li>
+        <a href="#Troubleshooting">Troubleshooting</a><li>
+        <a href="#Acknowledgements">Acknowledgements</a>
+      <li>
+        <a href="#Troubleshooting">Thanks</a></li>
+    </ul>
+    <P><b><font size="4"><a name="Auto Login">Auto Login</a></font></b></P>
+    <P>Due to popular demand I've added a *temporary* solution to the autoconnect<br>
+      and autologin stuff that has been requested.<br>
+      <br>
+      Please read this bit carefully!<br>
+      <br>
+      HydraIRC will execute a command profile called "OnStartup" when it starts also, 
+      when HydraIRC connects to a server it tries to match up the server to a server 
+      in the server list, if it then finds a matching server name it then determines 
+      the network that the server belongs to. Once the network has been determined 
+      HydraIRC will then execute the command profile called 
+      "&lt;Network&gt;_OnLoggedIn" when you are logged in to the server, then it will 
+      execute one called "&lt;ServerName&gt;_OnLoggedIn". Additionally, HydraIRC will 
+      run command profiles called "&lt;Network&gt;_&lt;Channel&gt;_OnJoin" when you 
+      join a channel.<br>
+      <br>
+      Example command profile names and contents.<br>
+      <br>
+      OnStartup</P>
+    <PRE>/server irc.quakenet.org<br>/newserver irc.efnet.pl</PRE>
+    <P>QuakeNet_OnLoggedIn</P>
+    <PRE>/join #ctfpickup.euro,#quake3,#bygames<br>/qauth MyName MyPassword</PRE>
+    <P>irc.barrysworld.com_OnLoggedIn</P>
+    <PRE>/join #cs</PRE>
+    <P>EFNet_OnLoggedIn</P>
+    <PRE>/join #hydrairc<br>/msg #hydrairc I'm a noobie HydraIRC user!</PRE>
+    <P>EFNet_#HydraIRC_OnJoin</P>
+    <PRE>/msg Hydra I love your IRC Client!<br>Hello everyone<br>/mode -o Rovastar</PRE>
+    <P>
+      Note: this is a temporary solution, at a later date you will be able to<br>
+      assign command profiles to networks and select which networks to connect to<br>
+      when the application starts, but this will do for now.</P>
+    <P>Noobie note:&nbsp; your server name must appear somewhere in the&nbsp;connect 
+      dialog box's server and network list for &lt;Network&gt;_OnLoggedIn to work 
+      and&nbsp;the network names must match!<br>
+      &nbsp;</P>
+    <p><b><font size="4"><a name="Nick Change Processing">Nick Change Processing</a></font></b></p>
+    <P>HydraIRC lets you configure not 1, not 2 but as many alternate nicks as you 
+      like, to guarantee that you'll get connected to the server.</P>
+    <P>You can use the Tools/Options/Identities dialog to change your user 
+      identities,&nbsp; user identities must have a list of nicks associated with 
+      them.</P>
+    <P>When you first connect to a server HydraIRC will use the first nick in the 
+      chosen identity's list of nicks, if that is taken then it will try the next one 
+      in the list and so on.&nbsp; If it's still not found an unused nick then 
+      HydraIRC will add a numerical prefix to your preferred nick (in square 
+      brackets) and will keep incrementing the number until a free nick is 
+      found.&nbsp; If you get disconnected for any reason (ping timeout, etc..) then 
+      HydraIRC will then reconnect using the nick you were last using.&nbsp; If that 
+      is taken then HydraIRC will restart the process of nick selection again.&nbsp; 
+      It performs this procedure for every subsequent re-connect attempt.</P>
+    <P>Example:</P>
+    <P>You have 2 nicks, "MyName" and "My_Name".</P>
+    <P>Upon connection for the first time it will try and use "MyName", but that nick 
+      was in-use so HydraIRC tried "My_Name" instead and connects ok.&nbsp; For some 
+      reason you get disconnected, so HydraIRC reconnects and uses the last nick 
+      used, which in this example was "My_Name", but that nick is still taken because 
+      the server hasn't figured out that you've timed out yet.&nbsp; So HydraIRC 
+      tries "MyName" again, but that's still taken, so it then tries "My_Name" again 
+      (because it's second in the list), but this is still in use, so then HydraIRC 
+      tries to connect with "[1]MyName" and connects successfully.&nbsp; If you were 
+      to get disconnected again, then HydraIRC would try "[1]MyName" again (because 
+      that's what it was using last), then "MyName", "My_Name", "[1]MyName", 
+      "[2]MyName", "[3]MyName" and so on...</P>
+    <P>Now just how cool is that? :)</P>
+    <P>Note: in contrast most clients always re-connect with your first nick, then 
+      your alternate nick and then stop.&nbsp; This can be really annoying if you had 
+      queued up a file on an fserve that sends the file to the nick of the user that 
+      queued it.&nbsp; If you changed your nick and then queued a file, then your 
+      client reconnected using a different nick you would not be sent the file.&nbsp; 
+      In addition most clients don't allow you to specify nicks on a per 
+      server/network basis, and some even do, but then forget them and just use the 
+      last used nick when reconnecting to a server, even on on a different network! 
+      (Trillian for example..)</P>
+    <P>Again, as you can see HydraIRC kicks ass.</P>
+    <P>Note: future releases will also try and obtain your preferred nick (or last 
+      used nick) after a re-connect with a temporary alternate nick.</P>
+    <P><b><font size="4"> <a name="DCC sending when behind a router/firewall">DCC sending 
+            when behind a router/firewall</a></font></b></P>
+    <p>When connecting to an IRC server, HydraIRC will look at the welcome message 
+      and extract the DNS/Host information from the message (if present).
+    </p>
+    <p>Also, if you do a /whois on yourself and the server supports the 338 or 378 
+      numeric replies, the host information will be extracted from the reply.</p>
+    <p>The extracted string will then be used for DCC sending unless you set a value 
+      for "Router Address" in the prefs, thus giving you the option of being able to 
+      override the address that HydraIRC uses.</p>
+    <p>The extracted string or Router Address setting is passed to other users when 
+      you initialise a DCC SEND (not receive) so they know what IP/Port to connect 
+      to.</p>
+    <p>If you are behind a firewall and your machine is NOT the firewall AND you only 
+      connect to servers from which HydraIRC cannot determine your external address 
+      (e.g. a local server on your lan) AND you need to SEND files to people OUTSIDE 
+      your LAN then you should specify the EXTERNAL ip address of your router and 
+      configure it to forward the usual dcc ports to your machine's LAN 
+      address.&nbsp; ;)&nbsp; (Read that twice)</p>
+    <p>Basically, set the Router Address option in prefs if you have problems, leave 
+      it blank otherwise.</p>
+    <p></p>
+    <p>You still need to configure your router/firewall so that it forwards the ports 
+      to your machines correctly however.</p>
+    <p>e.g.</p>
+    <p>Router: 192.168.0.1, Internet Address: 62.1.23.45<br>
+      PC1: 192.168.0.2<br>
+      PC2: 192.168.0.3</p>
+    <p></p>
+    <p>On PC1, you would use dcc ports 3072-3171<br>
+      On PC2, you would use dcc ports 3172-3271
+    </p>
+    <p></p>
+    <p>On the router you configure port forwarding so that it forwards incoming tcp 
+      packets bound for ports 3072-3171 to 192.168.0.1 (PC1) and then configure it to 
+      forward incoming tcp packets bound for ports 3172-3271 to 192.168.0.2 (PC2)</p>
+    <p></p>
+    <p>Then any packets heading to 62.1.23.45:3072-3171 are forwarded to PC1 and any 
+      packets heading to 62.1.23.45:3172-3271 are forwarded to PC2.</p>
+    <p></p>
+    <p>In HydraIRC you would need to set the "Router Address" option to "62.1.23.45" 
+      (or you can use the FQDN of the Router's external interface if you like. e.g 
+      "host1343.location.isp.co.uk")</p>
+    <p></p>
+    <p>You can use the options "DCC Send First Port" and "DCC Send Last Port" in 
+      HydraIRC to configure the port ranges for the PC's</p>
+    <p></p>
+    <p>e.g.</p>
+    <p>on PC1 you would set "DCC Send First Port" to "3072" and "DCC Send Last Port" 
+      to "3171"<br>
+      on PC2 you would set "DCC Send First Port" to "3172" and "DCC Send Last Port" 
+      to "3271"</p>
+    <P><b><font size="4"><a name="Colors and styles">Colors and styles</a></font></b></P>
+    <P>"Ctrl+K&lt;fgcolor&gt;[,&lt;bgcolor&gt;]text" - sets foreground (text) color, 
+      and optionally sets background color</P>
+    <P>So, "Ctrl+K8,7yellow on orange" would be displayed&nbsp;as "<span style="BACKGROUND-COLOR: #ff6600"><font color="#ffff00">yellow 
+          on orange</font></span>"</P>
+    <P>"Ctrl+M&lt;fg-hi-color&gt;[&lt;bg-hi-color&gt;]text" - sets forground (text) 
+      color, and optionally sets background color, using hex 8bpp RGB color 
+      values.&nbsp; e.g. white = 0xFFFFFF, red = 0xFF0000, green = 
+      0x00ff00,&nbsp;blue = 0x0000FF.&nbsp; So yellow on orange would be: 
+      "Ctrl+MFFFF00,FF7F00yellow on orange".</P>
+    <P>Note: This method, of color changing is not supported by many clients and 
+      takes up (max) 14 characters to change the fg and bg colors, the IRC 
+      protocol&nbsp;has a limit of max 512 characters per line, channel line limits 
+      will be less. For this reason it is not advisable to change color using this 
+      method two many times on one line, if the data is being sent via the 
+      server,&nbsp; if it's just for a local echo, you've got no worries.&nbsp; 
+      Bersirc supports this mode, not sure about other clients yet.</P>
+    <P>The advantage is that the color will always be displayed the same on any 
+      client that supports it.&nbsp; User's can remap the normal 16 colors to be 
+      different colors.&nbsp; e.g. 8 = yellow, but it might not be displayed as 
+      yellow, or it might be a slightly different shade of yellow.</P>
+    <P>To work out these values, use a color picker in any decent paint program and 
+      convert the HTML color value to decimal using a calculator (calc.exe for 
+      instance).</P>
+    <P>Ctrl+R&nbsp; - Reverses background and forground colors.</P>
+    <P>Ctrl+U - Toggle underline</P>
+    <P>Ctrl+B - Toggle bold</P>
+    <P>Ctrl+N - Toggle Italic</P>
+    <P>Ctrl+O - Reset to normal background and foreground colors.&nbsp; So, if your 
+      normal background is black, and your normal text is white, then this sequence 
+      "normalCtrl+Knormal" would appear as "<span style="BACKGROUND-COLOR: #000000"><font color="#ffffff">normalnormal</font></span>".&nbsp; 
+      If however you have the much nicer looking defaults of black text on a white 
+      background, the sequence would appear as "normalnormal".</P>
+    <P>Some clients do not handle Ctrl+O correctly and reset the colors to white text 
+      on a black background, rather than using your normal colors.&nbsp; So, some 
+      clients would display the sequence above as "normal<span style="BACKGROUND-COLOR: #000000"><font color="#ffffff">normal</font></span>" 
+      which is incorrect.</P>
+    <P>mIRC does not handle italics.</P>
+    <P>The sequence "normalCtrl+BCtrl+UCtrl+Nbold italic underlineCtrl+Bitalic 
+      underlineCtrl+NCtrl+Bbold underlineCtrl+UCtrl+Nitalic 
+      boldCtrl+NboldCtrl+BCtrl+NitalicCtrl+NCtrl+UunderlineCtrl+Unormal" should 
+      appear as "normal<u><i><b>bold italic underline</b>italic underline</i><b>bold 
+          underline</b></u><b><i>italic bold</i>bold</b><i>italic</i><u>underline</u>normal"</P>
+    <P>"Ctrl+K8,7yellow on orangeCtrl+Rorange on yellow" = "<span style="BACKGROUND-COLOR: #ff6600"><font color="#ffff00">yellow 
+          on orange</font></span><span style="BACKGROUND-COLOR: #ffff00"><font color="#ff6600">orange 
+          on yellow</font></span>"</P>
+    <P>Note: mIRC does not handle ctrl+r correctly, the same text would appear as "<span style="BACKGROUND-COLOR: #ff6600"><font color="#ffff00">yellow 
+          on orange</font></span><span style="BACKGROUND-COLOR: #000000"><font color="#ffffff">orange 
+          on yellow</font></span>"&nbsp; Yes, it's offical, mirc sucks ass.</P>
+    <P>Note: Bersirc does not handle ctrl+r correctly either, this control string 
+      "normalCtrl+RreverseCtrl+K8yellow on black" appears like this: "normal<font color="#ffffff"><span style="BACKGROUND-COLOR: #000000">reverse</span><span style="BACKGROUND-COLOR: #ffff00">yellow 
+on black</span></font>",&nbsp; Yes, it's offical, Bersirc sucks too, but not as much 
+      is mIRC.</P>
+    <P>HydraIRC handles it correctly: "normal<font color="#ffffff"><span style="BACKGROUND-COLOR: #000000">reverse</span></font><span style="BACKGROUND-COLOR: #000000"><font color="#ffff00">yellow 
+          on black</font></span>" (if your normal text colors were black on white, or 
+      "<span style="BACKGROUND-COLOR: #000000"><font color="#ffffff">normal</font></span>reverse<font color="#ffff00">yellow 
+        on black</font>" if your normal colors were white on black, note that this 
+      shows up why you must set text and background colors.&nbsp; If you want white 
+      or black to appear as white or back on ALL clients, regardless of their default 
+      colors.&nbsp; you would use this: 
+      "Ctrl+K1,0normalCtrl+K0,1reverseCtrl+K8,1yellow on black"</P>
+    <P>The use of Ctrl+R should be avoided as it's interpretation is flawed on most 
+      clients.</P>
+    <P>There is also another issue with some clients because the idiot who though up 
+      the color code numbers didn't think about their parse routines.&nbsp; Most 
+      clients can't display "<font color="#ff0000">10</font>" and end up displaying 
+      "0" instead, what you say ?&nbsp; Yeah, I know, crap huh..&nbsp; "Why?" you 
+      ask.. Well, if you remember that "Ctrl+K410" is the correct sequence, most 
+      clients try and interpret "41" as the color number, which of course is not a 
+      valid color number, so they ignore the "Ctrl+K" and the bad number and then 
+      just display the "0". /me *Sighs*</P>
+    <P>If you want to display a number directly after a color change on all clients, 
+      tough luck, you'll have to add a space. e.g. "Ctrl+K4 10" which appears as " <font color="#ff0000">
+        10</font>".&nbsp;
+    </P>
+    <P>HydraIRC of course figures out that 41 isn't a valid color number, and then 
+      think, oh, but 4 is.. And then displays the correct output.&nbsp; HydraIRC also 
+      supports 2 digit color numbers that have a leading 0,&nbsp; e.g.&nbsp; 
+      "Ctrl+K04,0510" displays "<span style="BACKGROUND-COLOR: #800000"><font color="#ff0000">10</font></span>"</P>
+    <p>Here are the correct color definitions</p>
+    <p>0 - <font color="#ffffff">white(white)<br>
+      </font>1 - black<br>
+      2 - <font color="#000080">darkblue<br>
+      </font>3 - <font color="#008000">darkgreen<br>
+      </font>4 - <font color="#ff0000">red<br>
+      </font>5 - <font color="#800000">brown<br>
+      </font>6 - <font color="#800080">purple<br>
+      </font>7 - <font color="#ff6600">orange<br>
+      </font>8 - <font color="#ffff00">yellow<br>
+      </font>9 - <font color="#00ff00">green<br>
+      </font>10 - <font color="#0099cc">darkcyan<br>
+      </font>11 - <font color="#00ffff">cyan<br>
+      </font>12 - <font color="#0000ff">blue<br>
+      </font>13 - <font color="#ff00ff">pink<br>
+      </font>14 - <font color="#808080">gray<br>
+      </font>15 - <font color="#c0c0c0">lightgray</font></p>
+    <p>As you can see, HydraIRC is great when it comes to having a well-defined 
+      output.</p>
+    <P><b><font size="4"><a name="Theme Creation Notes">Theme Creation Notes</a></font></b></P>
+    <P>These are just some basic notes cut and pasted from various conversations with 
+      people, etc.&nbsp; The should prove useful to anyone who wants to make their 
+      own theme though.</P>
+    <p>Themes are stored in Theme Collection files and you can store more than one 
+      theme per file (XML is great!)
+    </p>
+    <p></p>
+    <p>See the included themes\default.xml for an example file.
+    </p>
+    <p></p>
+    <p>You can change themes for EACH AND ANY WINDOW whenever you like by using the 
+      /set command in the window like this:
+    </p>
+    <p></p>
+    <p>/set theme=&lt;nameoftheme&gt;
+    </p>
+    <p></p>
+    <p>where &lt;nameoftheme&gt; is the same as the name property of a theme node in 
+      any theme file in the themes directory.
+    </p>
+    <p></p>
+    <p>The themes\default.xml file currently contains two themes, these are called 
+      "Basic" and "Alternate".
+    </p>
+    <p></p>
+    <p>So, if you used the command:
+    </p>
+    <p></p>
+    <p>/set theme=alternate
+    </p>
+    <p></p>
+    <p>HydraIRC would scan all *.xml files in Themes\ and will load the theme if it 
+      finds it.
+    </p>
+    <p></p>
+    <p>HydraIRC has a built-in theme called "Default", HydraIRC will use the build-in 
+      theme if for any reason it cannot load the theme that was specified.
+    </p>
+    <p></p>
+    <p>HydraIRC 0.336 and before used the "Basic" theme, HydraIRC 0.337 used the 
+      "Alternate" theme by default.
+    </p>
+    <p>HydraIRC 0.338 now has a new preference that allow you to select the default 
+      theme for new windows. See "Misc/Default Theme". in prefs.
+    </p>
+    <p></p>
+    <p>This can also be set with the command:
+    </p>
+    <p></p>
+    <p>/set misc/default theme=&lt;nameoftheme&gt;
+    </p>
+    <p></p>
+    <p>Note that XML requires that &lt;'s &gt;'s and &amp;'s are escaped along with 
+      the color/reverse/bold/normal/italic change codes, otherwise the XML file 
+      cannot be parsed correctly - This is why you can see lots of \003's, \074's and 
+      \076's in the themes which are the escaped octal representations of the ASCII 
+      values.
+    </p>
+    <p>To get a '\' character you have to use '\\' or '\134'.
+    </p>
+    <p></p>
+    <p>For a list of ASCII characters and their octal values see here
+    </p>
+    <p><a href="http://www.asciitable.com/"> http://www.asciitable.com/</a></p>
+    <p></p>
+    <p>The supported style/codes are:
+    </p>
+    <p></p>
+    <p>'\002' bold
+      <br>
+      '\003' color change '\003&lt;2 digit decimal foreground&gt;[,&lt;2 digit 
+      decimal background&gt;]'
+      <br>
+      '\004' hi-color change '\004&lt;6 digit hex foreground&gt;[,&lt;6 digit hex 
+      background&gt;]'
+      <br>
+      '\037' underline
+      <br>
+      '\035' italics
+      <br>
+      '\026' reverse foreground and background colors.
+      <br>
+      '\017' set normal forground and background colors. (per line basis in HydraIRC)
+      <br>
+      '\006', '\022' and '\023' are stripped from the output
+    </p>
+    <p></p>
+    <p>it's probably not a good idea to use linefeeds and carriage returns (these 
+      will probably be stripped at a later date)</p>
+    <p></p>
+    <p><u>Important Notes for theme designers: </u>
+    </p>
+    <p>When a theme is loaded it is kept in memory and reused by all other windows 
+      that use the same theme.
+    </p>
+    <p>When HydraIRC is told to use a particular theme it first looks to see if it is 
+      loaded and if it is then HydraIRC does NOT reload it from disk. So if you want 
+      to see changes to a theme you must first make sure no windows are using the 
+      theme you're trying to load. This can be done by issuing a "/set theme=default" 
+      in each open window.
+    </p>
+    <p>An example theme line looks like this:</p>
+    <P>&lt;item appliesto="SCQD" itemid="10002" formatstring="-\074NICK\076- 
+      \074ALL\076"/&gt;</P>
+    <P>The unescaped string looks like this:</P>
+    <P>-&lt;NICK&gt;- &lt;ALL&gt;</P>
+    <P>The output might look like this:</P>
+    <P>-echbot- Game ready to start in #ctfpickup.euro</P>
+    <P>Search HydraIRCTypes.h for #define RPLS_NOTICE_CONNECT and look at irc.h for 
+      the itemid's<br>
+      applied to can be a combination of any of the following characters: SCQD which 
+      mean<br>
+      Server, Channel, Query and DCC Chat respectively.</P>
+    <P>In the example above, 10002 relates to RPLS_NOTICE, and "SCQD" means this if 
+      for ALL windows, &lt;NICK&gt; is replaced with the nick of the person sending 
+      the message, &lt;ALL&gt; is replaced with the notice message that was sent.</P>
+    <P>Hydra_; if you want to see which variables you can use for each itemid<br>
+      Hydra_; you can search server.cpp for the itemid<br>
+      `-Anders; allright<br>
+      Hydra_; and then look at the code just before OutputFormatterLines()<br>
+      Hydra_; OutputFormatter() lines..<br>
+      Hydra_; 1 sec, i'll give you an example<br>
+      `-Anders; mkay<br>
+      Hydra_; m_Variables[VID_NICK] = a;<br>
+      Hydra_; m_Variables[VID_USERNAME] = b;<br>
+      Hydra_; m_Variables[VID_HOST] = c;<br>
+      Hydra_; m_Variables[VID_NAME] = d;<br>
+      Hydra_; OutputFormatter(BIC_NOTICE,RPL_WHOISUSER);<br>
+      Hydra_; so you can see for the SERVER -&gt; RPL_WHOISUSER you can use NICK, 
+      USERNAME, HOST and NAME<br>
+      `-Anders; pretty straight forward<br>
+      Hydra_; also....<br>
+      Hydra_; if you look at this:<br>
+      Hydra_; void IRCServer::InitVariables( void )<br>
+      Hydra_; you'll see this:<br>
+      Hydra_; m_Variables[VID_MYNICK] = m_Nick;<br>
+      Hydra_; m_Variables[VID_MYHOST] = "localhost"; // TODO: change<br>
+      Hydra_; m_Variables[VID_SERVER] = m_pDetails-&gt;m_Name;<br>
+      Hydra_; m_Variables[VID_SERVERDESCRIPTION] = m_pDetails-&gt;m_Description;<br>
+      Hydra_; m_Variables[VID_RESPONSE] = m_CurrentResponse;<br>
+      Hydra_; which can be used in all strings<br>
+      Hydra_; but RESPONSE is a weird one<br>
+      Hydra_; as you can't ALWAYS use it...<br>
+      Hydra_; e.g. you channel text that YOU type in..<br>
+      Hydra_; e.g. for channel text that YOU type in..<br>
+      Hydra_; as HydraIRC sends it to the server and displays it itself<br>
+      Hydra_; and the IRC server doesn't send a response<br>
+      Hydra_; also, &lt;ALL&gt; doesn't actually mean &lt;ALL&gt; it just means, the 
+      rest of the text that wasn't already put into variables</P>
+    <P>you can embed timestamps into themes using &lt;TIMESTAMP=timestamp format&gt;, 
+      but turning off timestamps will not remove them from the theme (maybe later..)</P>
+    <P>Here's a useful link:</P>
+    <P>
+      <a href="http://www.opengroup.org/onlinepubs/7908799/xsh/strftime.html">http://www.opengroup.org/onlinepubs/7908799/xsh/strftime.html</a></P>
+    <P>An example timestamp usage might be "&lt;TIMESTAMP=[%Hh%Mm]&gt;" which would 
+      result in the following output string "[6h30m]" if it was 6:30pm.&nbsp; If you 
+      wanted different parts to be in different colors, then do it like this:</P>
+    <P>
+      "Ctrl+B[Ctrl+BCtrl+k5&lt;TIMESTAMP=%H&gt;Ctrl+k4hCtrl+k5&lt;TIMESTAMP=%M&gt;Ctrl+K4mCtrl+OCtrl+B]Ctrl+B"</P>
+    <P>which would look like this:</P>
+    <P>"<b>[</b><font color="#ff0000">6</font><font color="#800000">h</font><font color="#ff0000">30</font><font color="#800000">m</font><b>]</b>"</P>
+    <P><B><FONT size="4"><a name="Troubleshooting">Troubleshooting</a></FONT></B></P>
+    <P>Notes:</P>
+    <P>* Clean out your plugins/folder before running new versions.</P>
+    <P>* If HydraIRC crashes on startup then either log off and back on again, or 
+      restart your computer.</P>
+    <P>* Delete "HKEY_CURRENT_USER\Software\HydraProductions\HydraIRC\WindowStates" 
+      from the registry if HydraIRC crashes at startup.
+    </P>
+    <P><b><font size="4"><a name="Acknowledgements">Acknowledgements</a></font></b></P>
+    <P><EM>Sergey Klimov</EM> for his WTL Docking Windows<br>
+      &nbsp;&nbsp;&nbsp; Used for the awesome docking windows.</P>
+    <P><EM>Peter Krnjevic</EM> for his patches to Sergey's Docking windows code</P>
+    <P><EM>Daniel Bowen</EM> for his nice .net style tab controls<BR>
+      &nbsp;&nbsp;&nbsp; Used for the TabbedMDI and the tabbed docking windows.</P>
+    <P><EM>Bjarke Viksoe</EM> for his Dialog Container Control and Property&nbsp;View 
+      controls<br>
+      &nbsp;&nbsp;&nbsp; Used in the Tools/Options dialog</P>
+    <P><EM>ClipCode.com</EM> for their great WTL Developers guide<br>
+      &nbsp;&nbsp;&nbsp; (Even if it is a bit out of date since VS.NET and WTL 7.0 
+      came out)</P>
+    <P><EM>CodeProject.com</EM> and their contributors and readers<br>
+      &nbsp;&nbsp;&nbsp; I'd probably be stuck without some good example WTL source 
+      code, thanks!</P>
+    <P><EM>Anders Hovmöller</EM> author of BoxedIRC (GPL)<br>
+      &nbsp;&nbsp;&nbsp; Without BoxedIRC HydraIRC probably wouldn't exist, it gave 
+      me an incentive to write HydraIRC<br>
+      &nbsp;&nbsp;&nbsp; The output from early versions of HydraIRC was based on BoxedIRC's output.</P>
+    <P><EM>Damian Hodgkiss</EM> author of OpenIRC (GPL)<br>
+      &nbsp;&nbsp;&nbsp; The author of BoxedIRC used some source from OpenIRC, so I 
+      guess Damian deserves a mention here too.</P>
+    <P><EM>Jacek Sieka</EM> author of DirectConnect++ (DC++, GPL)<br>
+      &nbsp;&nbsp;&nbsp; Having the source to DC++ has helped at little when it came 
+      to doing some WTL windowing code in HydraIRC</P>
+    <P><i>Jason Whittington</i> for his ASyncMessageMap class.<br>
+      &nbsp;&nbsp;&nbsp; Used by some multithreading objects.</P>
+    <P><i>Rovastar</i> for creating the NSIS installer</P>
+    <P>All the other IRC clients out there for sucking so much!<br>
+      &nbsp;&nbsp;&nbsp; They know who they are... ;)</P>
+    <P>No licensed source code has been used in the creation of HydraIRC.&nbsp; The 
+      above mentioned GPL apps were only used as a reference.&nbsp; "e.g.&nbsp; Oh, 
+      that's how you do it..."</P>
+    <P><B><FONT size="4"><A name="Thanks">Thanks</A></FONT></B></P>
+    <P>Zann<br>
+      &nbsp;&nbsp;&nbsp; Oh Zanny zann zann!&nbsp; :)&nbsp; Your beta testing, 
+      comments suggestions and just general chat have been very helpful.&nbsp; a <b>big</b>
+      thanks to you!</P>
+    <P>srobot<br>
+      &nbsp;&nbsp;&nbsp; Special thanks for creating the amazing icons that are used in HydraIRC</P>
+    <P>Imajes<br>
+      &nbsp;&nbsp;&nbsp; Great beta testing, and thanks for the #HydraIRC bot and the 
+      webspace!</P>
+    <P>YoD, `-Anders, Kez, Frogworm, Indigo2, Rovastar and all the other beta testers<br>
+      &nbsp;&nbsp;&nbsp; Thanks, thanks and thanks!&nbsp; All your comments, bug 
+      reports and suggestions are a great inspiration to me and they makes me work 
+      harder the more I get!&nbsp; Keep 'em coming</P>
+    <P>ButtM0nkey<BR>
+      &nbsp;&nbsp;&nbsp; For a couple of minor patches, keep em coming.</P>
+    <p>(p.s. Shout if your name's not here and you think it should be)</p>
+    <p><b><font size="4">EOF</font></b></p>
+  </BODY>
+</HTML>

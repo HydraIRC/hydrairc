@@ -1,0 +1,190 @@
+<?xml version="1.0"?>
+<HydraIRCProfile name="Default">
+  <identities/>
+  <buddygroups>
+    <group name="Special People" id="100" network="10362">
+      <buddy name="Hydra"/>
+      <buddy name="Hydra_"/>
+      <buddy name="[Hydra]"/>
+      <buddy name="Zann"/>
+      <buddy name="Imajes"/>
+      <buddy name="Rovastar"/>
+      <buddy name="|-|ydra"/>
+    </group>
+    <group name="Bots" id="101" network="10309">
+      <buddy name="Leaf"/>
+      <buddy name="ChanServ"/>
+    </group>
+    <group name="Bots" id="103" network="10271">
+      <buddy name="Q"/>
+      <buddy name="L"/>
+      <buddy name="T"/>
+      <buddy name="O"/>
+      <buddy name="S"/>
+    </group>
+    <group name="Bots" id="105" network="10362">
+      <buddy name="PEAR"/>
+      <buddy name="Poster"/>
+      <buddy name="Spocky"/>
+      <buddy name="Spokky"/>
+      <buddy name="Spoccy"/>
+      <buddy name="CHANFIX"/>
+    </group>
+    <group name="Special People" id="106" network="10271">
+      <buddy name="[XPd]Hydra"/>
+      <buddy name="Hydra"/>
+      <buddy name="Hydra_"/>
+      <buddy name="|-|ydra"/>
+    </group>
+  </buddygroups>
+  <fonts>
+    <font description="Server Input" name="Verdana" size="9"/>
+    <font description="Server Output" name="Verdana" size="9"/>
+    <font description="Channel Input" name="Verdana" size="9"/>
+    <font description="Channel Output" name="Verdana" size="9"/>
+    <font description="Output Window" name="Verdana" size="9"/>
+    <font description="Channel Monitor" name="Verdana" size="9"/>
+    <font description="Server Monitor" name="Verdana" size="9"/>
+    <font description="DCCChat Input" name="Verdana" size="9"/>
+    <font description="DCCChat Output" name="Verdana" size="9"/>
+    <font description="Query Input" name="Verdana" size="9"/>
+    <font description="Query Output" name="Verdana" size="9"/>
+    <font description="Server List" name="Verdana" size="9"/>
+    <font description="Server List Dirty" name="Verdana" size="9" underline="true"/>
+    <font description="Server List Recent" name="Verdana" size="9" underline="true"/>
+    <font description="User List" name="Verdana" size="9"/>
+    <font description="Header" name="Verdana" size="9"/>
+    <font description="Info" name="Verdana" size="8"/>
+  </fonts>
+  <colors>
+    <item name="Color_white" color="#ffffff"/>
+    <item name="Color_black" color="#000000"/>
+    <item name="Color_darkblue" color="#000080"/>
+    <item name="Color_darkgreen" color="#009200"/>
+    <item name="Color_red" color="#ff0000"/>
+    <item name="Color_brown" color="#800000"/>
+    <item name="Color_purple" color="#9c009c"/>
+    <item name="Color_orange" color="#fc8000"/>
+    <item name="Color_yellow" color="#ffff00"/>
+    <item name="Color_green" color="#00fc00"/>
+    <item name="Color_darkcyan" color="#009292"/>
+    <item name="Color_cyan" color="#00ffff"/>
+    <item name="Color_blue" color="#0000fc"/>
+    <item name="Color_pink" color="#ff00ff"/>
+    <item name="Color_gray" color="#808080"/>
+    <item name="Color_lightgray" color="#aaaaaa"/>
+    <item name="Item_background" color="#ffffff"/>
+    <item name="Item_normal" color="#404040"/>
+    <item name="Item_notice" color="#800000"/>
+    <item name="Item_topic" color="#009200"/>
+    <item name="Item_join" color="#009200"/>
+    <item name="Item_kick" color="#c00000"/>
+    <item name="Item_mode" color="#009200"/>
+    <item name="Item_nick" color="#009200"/>
+    <item name="Item_part" color="#800000"/>
+    <item name="Item_action" color="#9c009c"/>
+    <item name="Item_ctcp" color="#c000c0"/>
+    <item name="Item_quit" color="#800000"/>
+    <item name="Item_connecting" color="#000080"/>
+    <item name="Item_querytext" color="#00c0c0"/>
+    <item name="Item_owntext" color="#000080"/>
+    <item name="Item_wallops" color="#c00000"/>
+    <item name="Item_info" color="#008000"/>
+    <item name="Item_warning" color="#808000"/>
+    <item name="Item_error" color="#800000"/>
+    <item name="Item_timestamp" color="#808080"/>
+    <item name="Item_userlistbackground" color="#ffffff"/>
+    <item name="Item_userlistnormaltext" color="#000000"/>
+    <item name="Item_userlistselectedbackground" color="-1"/>
+    <item name="Item_textinputbackground" color="#ffffff"/>
+    <item name="Item_textinputnormaltext" color="#000000"/>
+    <item name="Item_globaluserlistbackground" color="#ffffff"/>
+    <item name="Item_globaluserlistnormaltext" color="#000000"/>
+    <item name="Item_globaluserlistselectedbackground" color="-1"/>
+    <item name="Item_serverlistbackground" color="#ffffff"/>
+    <item name="Item_serverlistnormaltext" color="#000000"/>
+    <item name="Item_serverlistselectedbackground" color="-1"/>
+    <item name="Item_serverlistdisconnected" color="#800000"/>
+    <item name="Item_serverlistconnecting" color="#808000"/>
+    <item name="Item_serverlistconnected" color="#008000"/>
+    <item name="Item_serverlistserverdirtytext" color="#000080"/>
+    <item name="Item_serverlistserverdirtybackground" color="#ffffff"/>
+    <item name="Item_serverlistdccchatdirtytext" color="#000080"/>
+    <item name="Item_serverlistdccchatdirtybackground" color="#ffffff"/>
+    <item name="Item_serverlistchanneldirtytext" color="#000080"/>
+    <item name="Item_serverlistchanneldirtybackground" color="#ffffff"/>
+    <item name="Item_serverlistquerydirtytext" color="#000080"/>
+    <item name="Item_serverlistquerydirtybackground" color="#ffffff"/>
+    <item name="Item_serverlistserverrecenttext" color="#ff0000"/>
+    <item name="Item_serverlistserverrecentbackground" color="#ffffff"/>
+    <item name="Item_serverlistdccchatrecenttext" color="#ff0000"/>
+    <item name="Item_serverlistdccchatrecentbackground" color="#ffffff"/>
+    <item name="Item_serverlistchannelrecenttext" color="#ff0000"/>
+    <item name="Item_serverlistchannelrecentbackground" color="#ffffff"/>
+    <item name="Item_serverlistqueryrecenttext" color="#ff0000"/>
+    <item name="Item_serverlistqueryrecentbackground" color="#ffffff"/>
+    <item name="Item_transferlisterrortext" color="#930000"/>
+    <item name="Item_transferlistcompletetext" color="#009300"/>
+    <item name="Item_transferlistnormaltext" color="#000000"/>
+    <item name="Item_transferlistbackground" color="#ffffff"/>
+    <item name="Item_eventlogtext" color="#000000"/>
+    <item name="Item_eventlogbackground" color="#ffffff"/>
+    <item name="Item_urlcatchertext" color="#000000"/>
+    <item name="Item_urlcatcherurltext" color="#0000ff"/>
+    <item name="Item_urlcatchervisitedurltext" color="#800080"/>
+    <item name="Item_urlcatcherbackground" color="#ffffff"/>
+    <item name="Item_noticelogtext" color="#000000"/>
+    <item name="Item_noticelogbackground" color="#ffffff"/>
+    <item name="Item_querylogtext" color="#000000"/>
+    <item name="Item_querylogbackground" color="#ffffff"/>
+    <item name="Item_headertext" color="#000000"/>
+    <item name="Item_headerbackground" color="#f7f3e9"/>
+    <item name="Item_infotext" color="#000000"/>
+    <item name="Item_infobackground" color="#f7f3e9"/>
+  </colors>
+  <misc>
+    <pref name="Log File Viewer" string="notepad.exe"/>
+    <pref name="Channel Bookmark 1" string="#hydrairc"/>
+  </misc>
+  <notifications>
+    <general>
+      <group id="-2">
+        <event name="ChannelText" flags="10" soundid="0"/>
+        <event name="Action" flags="10" soundid="4"/>
+        <event name="Highlight" flags="64" matchstring="Hydra" foregroundcolor="#d8d800"/>
+      </group>
+      <group id="100">
+        <event name="Join" flags="68" soundfilename="C:\WINDOWS\Media\Windows XP Logon Sound.wav"/>
+        <event name="Kick" flags="68" soundfilename="C:\WINDOWS\Media\Windows XP Error.wav"/>
+        <event name="Part" flags="68" soundfilename="C:\WINDOWS\Media\Windows XP Default.wav"/>
+        <event name="Quit" flags="68" soundfilename="C:\WINDOWS\Media\Windows XP Print complete.wav"/>
+        <event name="Privmsg" flags="68" soundfilename="C:\WINDOWS\Media\Windows XP Notify.wav"/>
+        <event name="ChannelText" flags="68" soundfilename="C:\WINDOWS\Media\Windows XP Notify.wav"/>
+        <event name="Action" flags="68" soundfilename="C:\WINDOWS\Media\Windows XP Notify.wav"/>
+        <event name="Highlight" flags="64" matchstring="(.)*" highlightflags="4" foregroundcolor="#ff0000"/>
+      </group>
+    </general>
+  </notifications>
+  <commandprofiles>
+    <commandprofile name="SomeNetwork_OnLoggedIn" commands="/quietjoin channel1 key,channel2,channel3\015\012"/>
+    <commandprofile name="SomeNetwork_SomeChannel_OnJoin" commands="woohoo, I joined a channel\015\012op me!"/>
+  </commandprofiles>
+  <favorites>
+    <group name="Important People" id="24576">
+      <favorite data="Hydra" name="Hydra on EFnet" servername="irc.efnet.net" type="Q" networkid="10362" port="6667" id="24577"/>
+    </group>
+    <group name="HydraIRC Support" id="24578">
+      <favorite data="#HydraIRC" name="#HydraIRC on EFnet" servername="irc.efnet.net" type="C" networkid="10362" port="6667" id="24579"/>
+    </group>
+    <group name="Gaming" id="24580">
+      <favorite data="#ctfpickup.euro" name="#ctfpickup.euro on QuakeNet" servername="irc.quakenet.org" type="C" networkid="10271" port="6667" id="24581"/>
+      <favorite data="#breed-sucks" name="#breed-sucks on QuakeNet" servername="irc.quakenet.org" type="C" networkid="10271" port="6667" id="24582"/>
+      <favorite data="#nwochat" name="#nwochat on QuakeNet" servername="irc.quakenet.org" type="C" networkid="10271" port="6667" id="24583"/>
+    </group>
+    <group name="Magazines" id="24584">
+      <favorite data="#atomicmpc" name="#atomicmpc on AustNet" servername="irc.austnet.org" type="C" networkid="10023" port="6667" id="24585"/>
+    </group>
+  </favorites>
+  <ignores/>
+  <windowprefs/>
+</HydraIRCProfile>

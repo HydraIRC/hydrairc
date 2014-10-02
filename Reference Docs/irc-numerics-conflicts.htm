@@ -1,0 +1,373 @@
+<html><head><title>Numerics used in the IRC world</title></head>
+<body>
+
+This page is a unique reference for numerics used by the various
+IRC servers:
+<ul>
+<li><A HREF=#conflicts>Summary of conflicts</A>
+<li><A HREF=#old>Reference</A>
+<li><A HREF=#irc>IRC 2.9.5</A>
+<li><A HREF=#ircu>IRC u2.10.02</A>
+<li><A HREF=#CS>IRC CSr30.5</A>
+<li><A HREF=#hybrid>IRC Hybrid-5</A>
+<li><A HREF=#dal>IRC dal 4.6.3</A>
+</ul>
+
+<A NAME=conflicts>
+<H1>Conflicts</H1>
+<table border=2>
+<tr><th></th><th>2.8.21</th><th>2.9.5</th><th>CSr30.5</th><th>hybrid-5</th><th>u2.10.02</th><th>dal4.6.3</th><th></th></tr>
+<tr><th>5</th><th></th><th>RPL_BOUNCE</th><th></th><th></th><th>RPL_MAP</th><th>RPL_PROTOCTL</th><th>5</th></tr>
+<tr><th>217</th><th>RPL_STATSQLINE</th><th>RPL_STATSQLINE</th><th>RPL_STATSQLINE</th><th>RPL_STATSQLINE</th><th BGCOLOR=#FF6666>RPL_STATSPLINE</th><th>RPL_STATSQLINE</th><th>217</th></tr>
+<tr><th>222</th><th></th><th></th><th>RPL_STATSBLINE</th><th>RPL_STATSBLINE</th><th></th><th>RPL_SQLINE_NICK</th><th>222</th></tr>
+<tr><th>224</th><th></th><th></th><th>RPL_STATSDLINE</th><th>RPL_STATSFLINE</th><th></th><th></th><th>224</th></tr>
+<tr><th>225</th><th></th><th></th><th>RPL_STATSGLINE</th><th>RPL_STATSDLINE</th><th></th><th></th><th>225</th></tr>
+<tr><th>246</th><th></th><th>RPL_STATSPING</th><th></th><th></th><th>RPL_STATSTLINE</th><th></th><th>246</th></tr>
+<tr><th>247</th><th></th><th>RPL_STATSBLINE</th><th></th><th></th><th>RPL_STATSGLINE</th><th>RPL_STATSXLINE</th><th>247</th></tr>
+<tr><th>248</th><th></th><th>RPL_STATSDEFINE</th><th></th><th></th><th>RPL_STATSULINE</th><th>RPL_STATSULINE</th><th>248</th></tr>
+<tr><th>250</th><th></th><th>RPL_STATSDLINE</th><th></th><th></th><th>RPL_STATSCONN</th><th>RPL_STATSCONN</th><th>250</th></tr>
+<tr><th>262</th><th></th><th>RPL_TRACEEND</th><th>RPL_ENDOFTRACE</th><th>RPL_ENDOFTRACE</th><th>RPL_TRACEPING</th><th></th><th>262</th></tr>
+<tr><th>263</th><th></th><th>RPL_TRYAGAIN</th><th></th><th>RPL_LOAD2HI</th><th></th><th></th><th>263</th></tr>
+<tr><th>307</th><th></th><th></th><th></th><th></th><th>RPL_USERIP</th><th>RPL_WHOISREGNICK</th><th>307</th></tr>
+<tr><th>334</th><th></th><th></th><th></th><th></th><th>RPL_LISTUSAGE</th><th>RPL_LISTSYNTAX</th><th>334</th></tr>
+<tr><th>416</th><th></th><th>ERR_TOOMANYMATCHES</th><th></th><th></th><th>ERR_QUERYTOOLONG</th><th></th><th>416</th></tr>
+<tr><th>437</th><th></th><th>ERR_UNAVAILRESOURCE</th><th>ERR_TOOMANYNICKS</th><th></th><th>ERR_BANNICKCHANGE</th><th>ERR_BANNICKCHANGE</th><th>437</th></tr>
+<tr><th>438</th><th></th><th></th><th></th><th></th><th>ERR_NICKTOOFAST</th><th>ERR_NCHANGETOOFAST</th><th>438</th></tr>
+<tr><th>468</th><th></th><th></th><th></th><th></th><th>ERR_INVALIDUSERNAME</th><th>ERR_ONLYSERVERSCANCHANGE</th><th>468</th></tr>
+<tr><th>477</th><th></th><th>ERR_NOCHANMODES</th><th></th><th></th><th>ERR_MODELESS</th><th>ERR_NEEDREGGEDNICK</th><th>477</th></tr>
+<tr><th>484</th><th></th><th>ERR_RESTRICTED</th><th></th><th>ERR_DESYNC</th><th>ERR_ISCHANSERVICE</th><th></th><th>484</th></tr>
+</table>
+
+<p>
+<font color="orange">NOTE:</font> Numeric 263 used in 2.9.5 and CSr30.5 has a similar meaning
+in both versions, even though the name is different.
+
+<A NAME=old>
+<H1>IRC 2.8.21</H1>
+This can be used as a <A HREF=irc2.8.21.html>reference</A>, as other various
+are either the descendant, or originally based on it.
+
+<A NAME=irc>
+<H1>IRC 2.9.5</H1>
+The <A HREF=irc2.9.5.html>latest version of the IRC software</A>.  Here's
+a summary of the changes:
+<pre>
++004	RPL_MYINFO          	%s %s oirw abiklmnopqstv
+-004	RPL_MYINFO          	%s %s oiws biklmnopstv
++005	RPL_BOUNCE          	:Try server %s, port %d
++200	RPL_TRACELINK       	Link %s%s %s %s V%X%s %d %d %d
+-200	RPL_TRACELINK       	Link %s%s %s %s
++206	RPL_TRACESERVER     	Serv %d %dS %dC %s %s!%s@%s V%X%s
+-206	RPL_TRACESERVER     	Serv %d %dS %dC %s %s!%s@%s
++207	RPL_TRACESERVICE    	Service %d %s %d %d
+-207	RPL_TRACESERVICE    	Service %d %s
++210	RPL_TRACERECONNECT  	Retry. %d %s
++212	RPL_STATSCOMMANDS   	%s %u %u %u
+-212	RPL_STATSCOMMANDS   	%s %u %u
++213	RPL_STATSCLINE      	%c %s %s %s %d %d
+-213	RPL_STATSCLINE      	%c %s * %s %d %d
++214	RPL_STATSNLINE      	%c %s %s %s %d %d
+-214	RPL_STATSNLINE      	%c %s * %s %d %d
++215	RPL_STATSILINE      	%c %s %s %s %d %d
+-215	RPL_STATSILINE      	%c %s * %s %d %d
++217	RPL_STATSQLINE      	%c %s %s %s %d %d
+-217	RPL_STATSQLINE      	%c %s * %s %d %d
++218	RPL_STATSYLINE      	%c %d %d %d %d %ld %d.%d %d.%d
+-218	RPL_STATSYLINE      	%c %d %d %d %d %ld
++234	RPL_SERVLIST        	%s %s %s 0x%X %d :%s
+-234	RPL_SERVLIST        	
++235	RPL_SERVLISTEND     	%s %d :End of service listing
+-235	RPL_SERVLISTEND     	
++240	RPL_STATSVLINE      	%c %s %s %s %d %d
++241	RPL_STATSLLINE      	%c %s %s %s %d %d
+-241	RPL_STATSLLINE      	%c %s * %s %d %d
++243	RPL_STATSOLINE      	%c %s %s %s %d %d
+-243	RPL_STATSOLINE      	%c %s * %s %d %d
++244	RPL_STATSHLINE      	%c %s %s %s %d %d
+-244	RPL_STATSHLINE      	%c %s * %s %d %d
++245	RPL_STATSSLINE      	%c %s %s %s 0x%X %d
+-245	RPL_STATSSLINE      	%c %s * %s %d %d
++246	RPL_STATSPING       	%s %d %d %d %d
++247	RPL_STATSBLINE      	%c %s %s %s %d %d
++248	RPL_STATSDEFINE     	
++250	RPL_STATSDLINE      	%c %s %s %s %d %d
++251	RPL_LUSERCLIENT     	:There are %d users and %d services on %d servers
+-251	RPL_LUSERCLIENT     	:There are %d users and %d invisible on %d servers
++252	RPL_LUSEROP         	%d :operators online
+-252	RPL_LUSEROP         	%d :operator(s) online
++253	RPL_LUSERUNKNOWN    	%d :unknown connections
+-253	RPL_LUSERUNKNOWN    	%d :unknown connection(s)
++255	RPL_LUSERME         	:I have %d clients, %d services and %d servers
+-255	RPL_LUSERME         	:I have %d clients and %d servers
++262	RPL_TRACEEND        	%s %s.%s :End of TRACE
++263	RPL_TRYAGAIN        	%s :Please wait a while and try again.
++383	RPL_YOURESERVICE    	:You are service %s
+-383	RPL_YOURESERVICE    	
++407	ERR_TOOMANYTARGETS  	%s :%s recipients. No message delivered
+-407	ERR_TOOMANYTARGETS  	%s :Duplicate recipients. No message delivered
++408	ERR_NOSUCHSERVICE   	%s :No such service
+-408	ERR_NOSUCHSERVICE   	
++415	ERR_BADMASK         	%s :Bad Server/host mask
++416	ERR_TOOMANYMATCHES  	%s %s :Output too long (try locally)
++432	ERR_ERRONEUSNICKNAME	%s :Erroneous Nickname
+-432	ERR_ERRONEUSNICKNAME	%s :Erroneus Nickname
++436	ERR_NICKCOLLISION   	%s :Nickname collision KILL from %s@%s
+-436	ERR_NICKCOLLISION   	%s :Nickname collision KILL
++437	ERR_UNAVAILRESOURCE 	%s :Nick/channel is temporarily unavailable
++462	ERR_ALREADYREGISTRED	:Unauthorized command (already registered)
+-462	ERR_ALREADYREGISTRED	:You may not reregister
++477	ERR_NOCHANMODES     	%s :Channel doesn't support modes
++483	ERR_CANTKILLSERVER  	%s :You cant kill a server!
+-483	ERR_CANTKILLSERVER  	:You cant kill a server!
++484	ERR_RESTRICTED      	:Your connection is restricted!
+
+</pre>
+
+<A NAME=ircu>
+<H1>IRCU 2.10.02</H1>
+The <A HREF=ircu2.10.02.html>Undernet version</A> is actually based on 2.8.10,
+but from 2.8.10 to 2.8.21, the only numeric added was RPL_STATSDEBUG (249).
+Here's the summary of changes:
+<pre>
++1	RPL_WELCOME         	:Welcome to the Internet Relay Network %s
+-001	RPL_WELCOME         	:Welcome to the Internet Relay Network %s
++2	RPL_YOURHOST        	:Your host is %s, running version %s
+-002	RPL_YOURHOST        	:Your host is %s, running version %s
++3	RPL_CREATED         	:This server was created %s
+-003	RPL_CREATED         	:This server was created %s
++4	RPL_MYINFO          	%s %s dioswk biklmnopstv
+-004	RPL_MYINFO          	%s %s oiws biklmnopstv
++5	RPL_MAP             	:%s%s
++6	RPL_MAPMORE         	:%s%s --> *more*
++7	RPL_MAPEND          	:End of /MAP
++8	RPL_SNOMASK         	%d :: Server notice mask (%#x)
++9	RPL_STATMEMTOT      	%u %u :Bytes Blocks
++10	RPL_STATMEM         	%u %u %s
++200	RPL_TRACELINK       	Link %s%s %s %s %lu
+-200	RPL_TRACELINK       	Link %s%s %s %s
++204	RPL_TRACEOPERATOR   	Oper %d %s %ld
+-204	RPL_TRACEOPERATOR   	Oper %d %s
++205	RPL_TRACEUSER       	User %d %s %ld
+-205	RPL_TRACEUSER       	User %d %s
++206	RPL_TRACESERVER     	Serv %d %dS %dC %s %s!%s@%s %ld %ld
+-206	RPL_TRACESERVER     	Serv %d %dS %dC %s %s!%s@%s
+-207	RPL_TRACESERVICE    	Service %d %s
++217	RPL_STATSPLINE      	%c %d %d %#x
+-217	RPL_STATSQLINE      	%c %s * %s %d %d
+-245	RPL_STATSSLINE      	%c %s * %s %d %d
++246	RPL_STATSTLINE      	%c %s %s
++247	RPL_STATSGLINE      	%c %s@%s %lu :%s
++248	RPL_STATSULINE      	%c %s * %s %d %d
++250	RPL_STATSCONN       	:Highest connection count: %d (%d clients)
++262	RPL_TRACEPING       	Ping %s %s
++271	RPL_SILELIST        	%s %s
++272	RPL_ENDOFSILELIST   	:End of Silence List
++275	RPL_STATSDLINE      	%c %s %s
++280	RPL_GLIST           	%s@%s %lu %s%s
++281	RPL_ENDOFGLIST      	:End of G-line List
++307	RPL_USERIP          	:
+-316	RPL_WHOISCHANOP     	
++317	RPL_WHOISIDLE       	%s %ld %ld :seconds idle, signon time
+-317	RPL_WHOISIDLE       	%s %ld :seconds idle
++329	RPL_CREATIONTIME    	%s %lu
++333	RPL_TOPICWHOTIME    	%s %s %lu
++334	RPL_LISTUSAGE       	:%s
+-342	RPL_SUMMONING       	%s :User summoned to irc
++352	RPL_WHOREPLY        	%s
+-352	RPL_WHOREPLY        	%s %s %s %s %s %s :%d %s
++354	RPL_WHOSPCRPL       	%s
++364	RPL_LINKS           	%s %s :%d P%u %lu (%c) %s
+-364	RPL_LINKS           	%s %s :%d %s
++367	RPL_BANLIST         	%s %s %s %lu
+-367	RPL_BANLIST         	%s %s
+-383	RPL_YOURESERVICE    	
++391	RPL_TIME            	%s %lu %ld :%s
+-391	RPL_TIME            	%s :%s
+-392	RPL_USERSSTART      	:UserID   Terminal  Host
+-393	RPL_USERS           	:%-8s %-9s %-8s
+-394	RPL_ENDOFUSERS      	:End of Users
+-395	RPL_NOUSERS         	:Nobody logged in.
++401	ERR_NOSUCHNICK      	%s :No such nick
+-401	ERR_NOSUCHNICK      	%s :No such nick/channel
+-408	ERR_NOSUCHSERVICE   	
++416	ERR_QUERYTOOLONG    	%s :Too many lines in the output, restrict your query
+-424	ERR_FILEERROR       	:File error doing %s on %s
+-434	ERR_SERVICENAMEINUSE	
+-435	ERR_SERVICECONFUSED 	
++437	ERR_BANNICKCHANGE   	%s :Cannot change nickname while banned on channel
++438	ERR_NICKTOOFAST     	%s :Nick change too fast. Please wait %d seconds.
++439	ERR_TARGETTOOFAST   	%s :Target change too fast. Please wait %d seconds.
+-444	ERR_NOLOGIN         	%s :User not logged in
+-445	ERR_SUMMONDISABLED  	:SUMMON has been disabled
+-446	ERR_USERSDISABLED   	:USERS has been disabled
++468	ERR_INVALIDUSERNAME 	
++477	ERR_MODELESS        	%s :Channel doesn't support modes
++478	ERR_BANLISTFULL     	%s %s :Channel ban/ignore list is full
++484	ERR_ISCHANSERVICE   	%s %s :Cannot kill, kick or deop channel service
+-492	ERR_NOSERVICEHOST   	
++511	ERR_SILELISTFULL    	%s :Your silence list is full
++512	ERR_NOSUCHGLINE     	%s@%s :No such gline
++513	ERR_BADPING         	
+
+</pre>
+
+<A NAME=CS>
+<H1>IRC CSr30.5</H1>
+The version maintain by <A HREF=CSr30.5.html>Chris Behrens</A>, used on EFnet.
+Here's the summary of changes:
+<pre>
++004	RPL_MYINFO          	%s %s oiwsucbdl biklmnopstv
+-004	RPL_MYINFO          	%s %s oiws biklmnopstv
++205	RPL_TRACEUSER       	User %d %s %d %d
+-205	RPL_TRACEUSER       	User %d %s
++215	RPL_STATSILINE      	%c %s%s * %s %d %d
+-215	RPL_STATSILINE      	%c %s * %s %d %d
++222	RPL_STATSBLINE      	%c %s * %s %d %d
++223	RPL_STATSELINE      	%c %s * %s %d %d
++224	RPL_STATSDLINE      	%c %s * %s %d %d
++225	RPL_STATSGLINE      	%c %s %s %s %d %d
++262	RPL_ENDOFTRACE      	%s :End of /TRACE list.
++329	RPL_CREATIONTIME    	%s %lu
++437	ERR_TOOMANYNICKS    	:Sorry, too many nick changes
++465	ERR_YOUREBANNEDCREEP	:You are banned from this server: %s
+-465	ERR_YOUREBANNEDCREEP	:You are banned from this server
++503	ERR_GHOSTEDCLIENT   	:Message could not be delivered to %s
+
+</pre>
+ 
+<A NAME=hybrid>
+<H1>IRC Hybrid 5</H1>
+Another <A HREF=hybrid-5.html>version</A> used on EFnet.
+Here's the summary of changes:
+<pre>
++004	RPL_MYINFO          	%s %s oiwszcrkfydn biklmnopstv
+-004	RPL_MYINFO          	%s %s oiws biklmnopstv
++203	RPL_TRACEUNKNOWN    	???? %d %s %d
+-203	RPL_TRACEUNKNOWN    	???? %d %s
+-207	RPL_TRACESERVICE    	Service %d %s
++222	RPL_STATSBLINE      	%c %s * %s %d %d
++223	RPL_STATSELINE      	%c %s * %s %d %d
++224	RPL_STATSFLINE      	%c %s * %s %d %d
++225	RPL_STATSDLINE      	%c %s %s
+-231	RPL_SERVICEINFO     	
+-232	RPL_ENDOFSERVICES   	
+-233	RPL_SERVICE         	
++252	RPL_LUSEROP         	%d :IRC Operators online
+-252	RPL_LUSEROP         	%d :operator(s) online
++262	RPL_ENDOFTRACE      	End of TRACE
++263	RPL_LOAD2HI         	:Server load is temporarily too heavy. Please wait a while and try again.
++265	RPL_LOCALUSERS      	:Current local  users: %d  Max: %d
++266	RPL_GLOBALUSERS     	:Current global users: %d  Max: %d
++329	RPL_CREATIONTIME    	%s %lu
++377	RPL_FORCE_MOTD      	:%s
++381	RPL_YOUREOPER       	:You have entered... the Twilight Zone!.
+-381	RPL_YOUREOPER       	:You are now an IRC Operator
+-383	RPL_YOURESERVICE    	
+-408	ERR_NOSUCHSERVICE   	
+-434	ERR_SERVICENAMEINUSE	
+-435	ERR_SERVICECONFUSED 	
++445	ERR_SUMMONDISABLED  	:SUMMON has been removed
+-445	ERR_SUMMONDISABLED  	:SUMMON has been disabled
++446	ERR_USERSDISABLED   	:USERS has been removed
+-446	ERR_USERSDISABLED   	:USERS has been disabled
++465	ERR_YOUREBANNEDCREEP	:You are banned from this server- %s
+-465	ERR_YOUREBANNEDCREEP	:You are banned from this server
++484	ERR_DESYNC          	
++491	ERR_NOOPERHOST      	:Only few of mere mortals may try to enter the twilight zone
+-491	ERR_NOOPERHOST      	:No O-lines for your host
+-492	ERR_NOSERVICEHOST   	
++503	ERR_GHOSTEDCLIENT   	:Message could not be delivered to %s
++504	ERR_LAST_ERR_MSG    	:Last Error Message
+
+</pre>
+
+<hr>
+<p>
+<A NAME=dal>
+<H1>IRC dal 4.6.3</H1>
+This <A HREF=dal4.6.3.html>version</A> is used on dalnet,
+it's a spinoff from ircu.
+Here's the summary of changes:
+<pre>
++001	RPL_WELCOME         	:Welcome to the DALnet IRC Network %s!%s@%s
+-001	RPL_WELCOME         	:Welcome to the Internet Relay Network %s
++004	RPL_MYINFO          	%s %s oiwsghOkcfrRaAb biklmnopstvR
+-004	RPL_MYINFO          	%s %s oiws biklmnopstv
++005	RPL_PROTOCTL        	%s :are available on this server
++201	RPL_TRACECONNECTING 	Attempt %d %s
+-201	RPL_TRACECONNECTING 	Try. %d %s
++202	RPL_TRACEHANDSHAKE  	Handshaking %d %s
+-202	RPL_TRACEHANDSHAKE  	H.S. %d %s
++204	RPL_TRACEOPERATOR   	Operator %d %s %ld
+-204	RPL_TRACEOPERATOR   	Oper %d %s
++205	RPL_TRACEUSER       	User %d %s %ld
+-205	RPL_TRACEUSER       	User %d %s
++206	RPL_TRACESERVER     	Server %d %dS %dC %s %s!%s@%s %ld
+-206	RPL_TRACESERVER     	Serv %d %dS %dC %s %s!%s@%s
++217	RPL_STATSQLINE      	%c %s %s %s %d %d
+-217	RPL_STATSQLINE      	%c %s * %s %d %d
++220	RPL_STATSBLINE      	%c %s %s %s %d %d
++222	RPL_SQLINE_NICK     	%s :%s
++243	RPL_STATSOLINE      	%c %s * %s %u %d
+-243	RPL_STATSOLINE      	%c %s * %s %d %d
++247	RPL_STATSXLINE      	X %s %d
++248	RPL_STATSULINE      	%c %s * %s %d %d
++250	RPL_STATSCONN       	:Highest connection count: %d (%d clients)
++265	RPL_LOCALUSERS      	:Current local users: %d  Max: %d
++266	RPL_GLOBALUSERS     	:Current global users: %d  Max: %d
++271	RPL_SILELIST        	%s %s
++272	RPL_ENDOFSILELIST   	:End of Silence List
++275	RPL_STATSDLINE      	%c %s %s
++290	RPL_HELPHDR         	
++291	RPL_HELPOP          	
++292	RPL_HELPTLR         	
++293	RPL_HELPHLP         	
++294	RPL_HELPFWD         	:Your help-request has been forwarded to Help Operators
++295	RPL_HELPIGN         	:Your address has been ignored from forwarding
++307	RPL_WHOISREGNICK    	%s :is a registered nick
++308	RPL_WHOISADMIN      	%s :is an IRC Server Administrator
++309	RPL_WHOISSADMIN     	%s :is a Services Administrator
++310	RPL_WHOISHELPOP     	%s :looks very helpful.
++313	RPL_WHOISOPERATOR   	%s :is %s
+-313	RPL_WHOISOPERATOR   	%s :is an IRC Operator
++317	RPL_WHOISIDLE       	%s %ld %ld :seconds idle, signon time
+-317	RPL_WHOISIDLE       	%s %ld :seconds idle
++329	RPL_CREATIONTIME    	%s %lu
++333	RPL_TOPICWHOTIME    	%s %s %lu
++334	RPL_LISTSYNTAX      	:%s
++367	RPL_BANLIST         	%s %s %s %lu
+-367	RPL_BANLIST         	%s %s
++432	ERR_ERRONEUSNICKNAME	%s :Erroneus Nickname: %s
+-432	ERR_ERRONEUSNICKNAME	%s :Erroneus Nickname
++437	ERR_BANNICKCHANGE   	%s :Cannot change nickname while banned on channel
++438	ERR_NCHANGETOOFAST  	%s :Nick change too fast. Please wait %d seconds
++439	ERR_TARGETTOOFAST   	%s :Message target change too fast. Please wait %d seconds
++440	ERR_SERVICESDOWN    	%s :Services is currently down. Please wait a few moments, and then try again.
++455	ERR_HOSTILENAME     	:Your username %s contained the invalid 
++465	ERR_YOUREBANNEDCREEP	:You are banned from this server.  Mail " KLINE_ADDRESS " for more information
+-465	ERR_YOUREBANNEDCREEP	:You are banned from this server
++468	ERR_ONLYSERVERSCANCHANGE	%s :Only servers can change that mode
++477	ERR_NEEDREGGEDNICK  	%s :You need a registered nick to join that channel.
++478	ERR_BANLISTFULL     	%s %s :Channel ban/ignore list is full
++481	ERR_NOPRIVILEGES    	:Permission Denied- You do not have the correct IRC operator privileges
+-481	ERR_NOPRIVILEGES    	:Permission Denied- You're not an IRC operator
++511	ERR_SILELISTFULL    	%s :Your silence list is full
++512	ERR_TOOMANYWATCH    	%s :Maximum size for WATCH-list is 128 entries
++513	ERR_NEEDPONG        	:To connect, type /QUOTE PONG %lX
++521	ERR_LISTSYNTAX      	Bad list syntax, type /quote list ? or /raw list ?
++600	RPL_LOGON           	%s %s %s %d :logged online
++601	RPL_LOGOFF          	%s %s %s %d :logged offline
++602	RPL_WATCHOFF        	%s %s %s %d :stopped watching
++603	RPL_WATCHSTAT       	:You have %d and are on %d WATCH entries
++604	RPL_NOWON           	%s %s %s %d :is online
++605	RPL_NOWOFF          	%s %s %s %d :is offline
++606	RPL_WATCHLIST       	:%s
++607	RPL_ENDOFWATCHLIST  	:End of WATCH %c
+
+</pre>
+
+<hr>
+<p>
+<em>Christophe Kalt</em> &lt;<A HREF="MAILTO:kalt@stealth.net">kalt@stealth.net</A>&gt;
+
+</body></html>

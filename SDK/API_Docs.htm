@@ -1,0 +1,176 @@
+<HTML>
+  <HEAD>
+    <TITLE></TITLE>
+    <META NAME="GENERATOR" Content="Microsoft FrontPage 5.0">
+  </HEAD>
+  <BODY>
+    <P><B><FONT face="Verdana" size="4">HydraIRC - API Docs</FONT></B></P>
+    <P><FONT face="Verdana">Written and designed by Dominic Clifton.</FONT></P>
+    <P><b><font face="Verdana" size="4">APIs</font></b></P>
+    <P><STRONG><FONT face="Verdana" size="4">
+          <TABLE id="Table2" cellSpacing="1" cellPadding="1" width="100%" border="0">
+            <TR>
+              <TD width="20%" colSpan="" rowSpan="">Name</TD>
+              <TD width="30%" colSpan="" rowSpan="">Define</TD>
+              <TD width="50%" colSpan="" rowSpan="">Description</TD>
+            </TR>
+            <TR>
+              <TD><a href="#PLUGIN_API_CMDPROC">Input Processor</a></TD>
+              <TD>PLUGIN_API_CMDPROC</TD>
+              <TD><FONT face="Verdana">Process user input that is typed in. </FONT>
+              </TD>
+            </TR>
+          </TABLE>
+        </FONT></STRONG>
+    </P>
+    <P><B><FONT face="Verdana" size="4">General API Notes</FONT></B></P>
+    <P><b><font face="Verdana">Server and Channel ID's</font></b></P>
+    <P><font face="Verdana">Most calls to plugins will include Server and Channel ID's 
+        in their parameters,&nbsp; these are used by plugins to make sure their output 
+        goes back to the right server and channel.&nbsp; Sometimes an API function will 
+        be called where a server or channel ID wouldn't be appropriate.&nbsp; In this 
+        case the ID is set to 0, thus 0 means INVALID ID.&nbsp; Invalid ID's should not 
+        be used further.</font></P>
+    <P><font face="Verdana">An example case would be a call to PLUGIN_API_CMDPROC's 
+        PFN_PROCESSINPUT function, this function is called when a user enters text in a 
+        server window as well as when a user enters text in a channel window.&nbsp; In 
+        the case of the server window, ChannelID value would be 0 because a server 
+        doesn't have a channel ID, but a channel window has both ServerID's and 
+        ChannelID's (You can't have a channel without a server!)</font></P>
+    <P><B><FONT face="Verdana" size="4"><A name="PLUGIN_API_CMDPROC">Input Processor</A></FONT></B></P>
+    <P><FONT face="Verdana">Function Overview:</FONT></P>
+    <P>
+      <TABLE id="Table1" cellSpacing="1" cellPadding="1" width="100%" border="0">
+        <TR>
+          <TD width="30%" colSpan="1" rowSpan="1"><STRONG><FONT face="Verdana">Function</FONT></STRONG></TD>
+          <TD width="10%" colSpan="1" rowSpan="1"><STRONG><FONT face="Verdana">Required ?</FONT></STRONG></TD>
+          <TD width="60%" colSpan="" rowSpan=""><STRONG><FONT face="Verdana">Description</FONT></STRONG></TD>
+        </TR>
+        <TR>
+          <TD><FONT face="Verdana">PFN_PROCESSINPUT</FONT></TD>
+          <TD><FONT face="Verdana">NO</FONT></TD>
+          <TD><FONT face="Verdana">Allows a plugin&nbsp;to handle or change user input</FONT></TD>
+        </TR>
+        <TR>
+          <TD><FONT face="Verdana">PFN_PROCESSCOMMAND</FONT></TD>
+          <TD><FONT face="Verdana">NO</FONT></TD>
+          <TD><FONT face="Verdana">Allows a plugin to handle commands</FONT></TD>
+        </TR>
+        <TR>
+          <TD><FONT face="Verdana">PFN_PROCESSCHANNELCOMMAND</FONT></TD>
+          <TD><FONT face="Verdana">NO</FONT></TD>
+          <TD><FONT face="Verdana">Allows a plugin to handle channel commands</FONT></TD>
+        </TR>
+        <TR>
+          <TD><FONT face="Verdana">PFN_PROCESSSERVERCOMMAND</FONT></TD>
+          <TD><FONT face="Verdana">NO</FONT></TD>
+          <TD><FONT face="Verdana">Allows a plugin to handle server commands</FONT></TD>
+        </TR>
+      </TABLE>
+    </P>
+    <P><FONT face="Verdana">API Define:&nbsp;PLUGIN_API_CMDPROC </FONT>
+    <P><FONT face="Verdana">Purpose: </FONT>
+    <P><FONT face="Verdana">Process user input that is typed in. </FONT>
+    <P><FONT face="Verdana">Example: </FONT>
+    <P><FONT face="Verdana">A user types in "Hi there hydra, how are you ?", or 
+        "/kickban iannoyu" </FONT>
+    <P><FONT face="Verdana">Possible uses: </FONT>
+    <P><FONT face="Verdana">* Implement new commands<BR>
+        * fix spelling errors</FONT></P>
+    <P><font face="Verdana">Examples API Usage:</font></P>
+    <P><font face="Verdana">If you wanted to add a new command, that was only valid for 
+        channel windows, then your plugin would provide and process 
+        PFN_PROCESSCHANNELCOMMAND calls.</font></P>
+    <P><font face="Verdana">If you wanted to add new commands that can be used 
+        anywhere, your plugin would provide and process PFN_PROCESSCOMMAND calls.</font></P>
+    <P><font face="Verdana">If you wanted to fix spelling errors, or provide global 
+        command aliases, then your plugin would provide and process PFN_PROCESSINPUT 
+        calls.</font></P>
+    <P><FONT face="Verdana"><STRONG>PFN_PROCESSINPUT:</STRONG></FONT></P>
+    <P><EM><FONT face="Verdana">BOOL (* PFN_PROCESSINPUT) (int ServerID, int ChannelID, 
+          char **Command);</FONT></EM></P>
+    <P><EM><FONT face="Verdana">BOOL Plugin_ProcessInput(int ServerID, int ChannelID, 
+          char **Command)</FONT></EM></P>
+    <P><FONT face="Verdana">Inputs:</FONT></P>
+    <P><FONT face="Verdana"><EM>ServerID,ChannelID </EM>- See server and channel ID's, 
+        above.</FONT></P>
+    <P><FONT face="Verdana"><EM>Command </EM>- contains a pointer to a pointer that 
+        points to the text that the user typed in, as-is.&nbsp; You can replace the 
+        pointer with a pointer to a new string if desired.&nbsp; The new string must be 
+        allocated using the HydraIRC memory allocation routines.</FONT></P>
+    <P><FONT face="Verdana">Return:</FONT></P>
+    <P><FONT face="Verdana"><EM>TRUE</EM> - Marks the command as processed, no further 
+        command processing is done. Note:return this if you plugin is handling the 
+        input.<BR>
+        <EM>FALSE</EM> - Command processing is continued. Note: Use this if your plugin 
+        is correcting/modifying the input</FONT></P>
+    <P><font face="Verdana">Example Inputs: (1,5,"/msg Hydra hello there!")</font></P>
+    <P><FONT face="Verdana"><STRONG>PFN_PROCESSCHANNELCOMMAND:</STRONG></FONT></P>
+    <P><EM><FONT face="Verdana">BOOL (* PFN_PROCESSCHANNELCOMMAND) (int ServerID, int 
+          ChannelID, char **Command, char **Args);</FONT></EM></P>
+    <P><EM><FONT face="Verdana">BOOL Plugin_ProcessChannelCommand(int ServerID, int 
+          ChannelID, char **Command, Char **Args)</FONT></EM></P>
+    <P><FONT face="Verdana">Inputs:</FONT></P>
+    <P><FONT face="Verdana"><EM>ServerID,ChannelID </EM>- See server and channel ID's, 
+        above.</FONT></P>
+    <P><FONT face="Verdana"><EM>Command </EM>- contains a pointer to a pointer that 
+        points to the text that the user typed in, after being processed by <STRONG>PFN_PROCESSINPUT</STRONG>.&nbsp; 
+        You can replace the pointer with a pointer to a new string if desired.&nbsp; 
+        The new string must be allocated using the HydraIRC memory allocation routines.</FONT></P>
+    <P><FONT face="Verdana">Return:</FONT></P>
+    <P><FONT face="Verdana"><EM>TRUE</EM> - Marks the command as processed, no further 
+        command processing is done. Note:return this if you plugin is handling the 
+        input.<BR>
+        <EM>FALSE</EM> - Command processing is continued. Note: Use this if your plugin 
+        is correcting/modifying the input</FONT></P>
+    <P><font face="Verdana">Example Inputs: (1,5,"msg","Hydra hello there!")</font></P>
+    <P><FONT face="Verdana"><STRONG>PFN_PROCESSSERVERCOMMAND:</STRONG></FONT></P>
+    <P><EM><FONT face="Verdana">BOOL (* PFN_PROCESSSERVERCOMMAND) (int ServerID, char 
+          **Command, char **Args);</FONT></EM></P>
+    <P><EM><FONT face="Verdana">BOOL Plugin_ProcessServerCommand(int ServerID, char 
+          **Command, Char **Args)</FONT></EM></P>
+    <P><FONT face="Verdana">Inputs:</FONT></P>
+    <P><FONT face="Verdana"><EM>ServerID </EM>- See server and channel ID's, 
+        above.&nbsp; Note that unlike the other API functions, you don't get a channel 
+        ID because this function will only get called if the window the user typed into 
+        was a channel window.</FONT></P>
+    <P><FONT face="Verdana"><EM>Command </EM>- contains a pointer to a pointer that 
+        points to the command part of the text that the user typed in, after being 
+        processed by <STRONG>PFN_PROCESSINPUT</STRONG>.&nbsp; You can replace the 
+        pointer with a pointer to a new string if desired.&nbsp; The new string must be 
+        allocated using the HydraIRC memory allocation routines.</FONT></P>
+    <P><font face="Verdana">Args - contains a pointer to a pointer that points to the 
+        argument part of the text that the user typed in, after being processed by <STRONG>
+          PFN_PROCESSINPUT</STRONG>.&nbsp; You can replace the pointer with a pointer 
+        to a new string if desired.&nbsp; The new string must be allocated using the 
+        HydraIRC memory allocation routines.</font></P>
+    <P><FONT face="Verdana">Return:</FONT></P>
+    <P><FONT face="Verdana"><EM>TRUE</EM> - Marks the command as processed, no further 
+        command processing is done. Note:return this if you plugin is handling the 
+        input.<BR>
+        <EM>FALSE</EM> - Command processing is continued. Note: Use this if your plugin 
+        is correcting/modifying the input</FONT></P>
+    <P><font face="Verdana">Example Inputs: (1,"msg","nickserv identify mypassword!")</font></P>
+    <P><FONT face="Verdana"><STRONG>PFN_PROCESSCOMMAND:</STRONG></FONT></P>
+    <P><EM><FONT face="Verdana">BOOL (* PFN_PROCESSCOMMAND) (int ServerID, int ChannelID, 
+          char **Command, char **Args);</FONT></EM></P>
+    <P><EM><FONT face="Verdana">BOOL Plugin_ProcessCommand(int ServerID, int ChannelID, 
+          char **Command, Char **Args)</FONT></EM></P>
+    <P><FONT face="Verdana">Inputs:</FONT></P>
+    <P><FONT face="Verdana"><EM>ServerID,ChannelID </EM>- See server and channel ID's, 
+        above.</FONT></P>
+    <P><FONT face="Verdana"><EM>Command </EM>- contains a pointer to a pointer that 
+        points to the text that the user typed in, after being processed by <STRONG>PFN_PROCESSINPUT 
+          and PFN_PROCESSCHANNELCOMMAND or PFN_PROCESSSERVERCOMMAND</STRONG>.&nbsp; You 
+        can replace the pointer with a pointer to a new string if desired.&nbsp; The 
+        new string must be allocated using the HydraIRC memory allocation routines.</FONT></P>
+    <P><FONT face="Verdana">Return:</FONT></P>
+    <P><FONT face="Verdana"><EM>TRUE</EM> - Marks the command as processed, no further 
+        command processing is done. Note:return this if you plugin is handling the 
+        input.<BR>
+        <EM>FALSE</EM> - Command processing is continued. Note: Use this if your 
+      plugin is correcting/modifying the input</P>
+    </FONT>
+    <P><font face="Verdana">Example Inputs: (1,5,"msg","Hydra hello there!")</font></P>
+  </BODY>
+</HTML>

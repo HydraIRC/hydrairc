@@ -1,0 +1,22 @@
+License & Distribution Rights
+=============================
+
+HydraIRC is currently free to use.  It will remain free for private use
+but there will most likely be a charge to use it for commercial use after
+v1.0 is released.
+
+Commercial users are NOT licensed to use versions prior to v1.0 when v1.0
+is released.
+
+Anyone who is a politician or who works for any form of government body
+is expressly forbidden to use any version of HydraIRC.
+
+Fileplanet.com and any other site requiring membership of any kind before
+users are allowed to download HydraIRC are expressly forbidden from
+hosting any HydraIRC files on their site.
+
+If you want to re-distribute HydraIRC then I (Dominic Clifton / Hydra) must
+be contacted first.  Drop an e-mail to hydra at hydrairc dot com if you
+require permission.
+
+I'm not liable for anything at all.

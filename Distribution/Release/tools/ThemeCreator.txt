@@ -1,0 +1,42 @@
+ThemeCreator
+============
+
+This is just a simple little program to help with theme creation, you can
+type into either edit box and see the converted output in the other box as you type.
+
+The escaped string is what you can copy and paste into your theme files.
+
+Try pasting these example strings:
+
+Unescaped string:
+<TIMESTAMP=[%Hh %Mm]> <<NICK>> <ALL>
+
+Escaped string:
+\074TIMESTAMP=[%Hh %Mm]\076 \074\074NICK\076\076 \074ALL\076
+
+
+Future
+======
+
+This program will either be scrapped entirely if theme creation is done in
+the HydraIRC prefs, or it will be expanded to provide total theme creation
+facilities.
+
+Known Issues
+============
+
+* You can still type & < > or other non printable characters into the Escaped
+  string box ideally they should be filtered.
+
+History
+=======
+
+08/2/2003
+ Hydra
+ * Fixed a bug where multiple onchange messages were queued before they
+   were handled (happened if you typed really quickly...)
+ 
+24/1/2003
+ Hydra
+ * Initial version
+ 

@@ -1,0 +1,87 @@
+The color codes in mIRC are inserted by hitting the ctrl-K key
+combination. The actual control character inserted in the text 
+is a ctrl-C seen as ^C or inverse C on most UNIX clients.
+
+Besides mIRC also PIRCH and the Linux client 'cIRCus' use the ^C 
+color attribute stuff. We hope Virc and other clients follow soon.
+Only if all clients accept the same syntax it will be simple and 
+usefull for non-color IRC users to strip away the color codes.
+(See aditional info at end of file)
+
+The syntax of the color attribute in text has the format  ^CN[,M]  
+to start colored text. A plain ^C can be used to 
+close the effect, much like the normal Bold/Inverse/Underline
+attributes. The introduction of numbers after a control character
+couldnt really be prevented... still we think that clients that
+dont support color can easily filter the ^C and eventual numbers 
+away with help of the information in this file.
+
+N and M can be any number out of a range {0,1,..,15} thus pointing 
+to a range of sixteen colors. N will be the text (foreground) color, 
+M a background color. A background color (M) is not always included.
+If no background color is set the recieving client uses his default 
+background color (white).
+
+! Technically mIRC accepts the full number range 0,1,2,... 99 (and
+  even 00,01,02,03,...99) as valid color numbers. Thus N and M can 
+  maximally be two digits long. Color 16 is the same as color 0,
+  color 17 is the same as color 1, etc. etc. 
+
+You can expect to see combinations like:
+ blabla ^C5,12to be colored text and background^C blabla
+ blabla ^C5to be colored text^C blabla
+ blabla ^C3to be colored text ^C5,2other colored text and also background^C blabla
+ blabla ^C3,5to be colored text and background ^C8other colored text but SAME background^C blabla
+ blabla ^C3,5to be colored text and background ^C8,7other colored text and other background^C blabla
+
+As you see the background color keeps valid till it is changed or till 
+the entire color is switched off with a ^C. Of course lines can start 
+with colored text from the beginning and a closing ^C is not always given.
+To specify a background color ALSO a foreground color has to be given.
+(So a ^C,8 attribute is NOT valid and thus ignored)
+
+! Note that if you want to give color to NUMBERS this syntax could mess up
+  if used improperly :-)  Still this syntax is chosen for the sake of 
+  symplicity. If you use color numbers 01,02,03,...09 instead of 1,2,3,...9 
+  all possible problems with giving color to numbers are prevented! This 
+  just takes a little dicipline from the users. Thus use ^C0,01123^C to 
+  display the text 123 in white on a black background and not ^C0,1123^C 
+  which would result in the text 23 in white on lightcyan.
+  In all your text handling aliases/scripts the use of double digit color 
+  codes is suggested!
+
+Color code list
+ 0 white
+ 1 black
+ 2 blue     (navy)
+ 3 green
+ 4 red
+ 5 brown    (maroon)
+ 6 purple
+ 7 orange   (olive)
+ 8 yellow
+ 9 lt.green (lime)
+ 10 teal    (a kinda green/blue cyan)
+ 11 lt.cyan (cyan ?) (aqua)
+ 12 lt.blue (royal)
+ 13 pink    (light purple) (fuchsia)
+ 14 grey
+ 15 lt.grey (silver)
+
+This list matches best to already existing 'standards' on Mac and 
+other Windows' clients. 
+
+Unix IRCii users might want to have some filter script to get rid of 
+all color coding. Look here for some examples:
+	http://www.mirc.co.uk/cstrip.irc
+	http://www.best.com/~linux/ircII/nocolor?n
+
+I hope this information is of use to you?  If you need any more 
+info, please ask me? :-))  I'm always willing to dig up more info 
+for you :-) 
+
+Tjerk Vonck. 
+t.r.vonck@student.utwente.nl 
+January, 1998. 
+-- 
+

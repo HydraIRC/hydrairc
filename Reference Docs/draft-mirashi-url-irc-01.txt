@@ -1,0 +1,465 @@
+Internet-Draft                                            Mandar Mirashi
+draft-mirashi-url-irc-01.txt                         mandar@wildstar.net
+Expires: February 28, 1997                               August 29, 1996
+
+
+                             "irc: URL scheme"
+
+
+Status of This Memo
+
+     This document is an Internet-Draft.  Internet-Drafts are working
+     documents of the Internet Engineering Task Force (IETF), its
+     areas, and its working groups.  Note that other groups may also
+     distribute working documents as Internet-Drafts.
+
+     Internet-Drafts are draft documents valid for a maximum of six
+     months and may be updated, replaced, or obsoleted by other
+     documents at any time.  It is inappropriate to use Internet-
+     Drafts as reference material or to cite them other than as
+     ``work in progress.''
+
+     To learn the current status of any Internet-Draft, please check
+     the ``1id-abstracts.txt'' listing contained in the Internet-
+     Drafts Shadow Directories on ftp.is.co.za (Africa),
+     nic.nordu.net (Europe), munnari.oz.au (Pacific Rim),
+     ds.internic.net (US East Coast), or ftp.isi.edu (US West Coast).
+
+
+Abstract
+
+     A new URL scheme "irc:" is defined. The irc URL scheme is used to
+     refer to either IRC (Internet Relay Chat) servers or individual 
+     entities (channels or people) on IRC servers.
+
+
+Description
+
+    With the advent of "plugins", and realtime support via CGI and Java,
+    web developers have come up with different means to integrate IRC
+    support into their products. This document attempts to define a URL
+    scheme ("irc:") which would make this process easier.
+
+    An irc URL takes the form:
+
+       irc:[ //[ <host>[:<port>] ]/[<target>] [,needpass] ]
+
+    where,
+	
+    <host>
+      The IRC server host to connect to. See RFC 1034 [Sec 3.5] and 
+      RFC 1123 [Sec 2.1] for details on allowed Internet hostname 
+      formats. If omitted, the client must connect to a prespecified 
+      default IRC server. irc: URL scheme implementors are recommended 
+
+
+Expires February 28th, 1997                                    [Page 1]
+
+
+Internet Draft             irc: URL scheme              August 29, 1996
+
+
+      to provide a preconfigured list of IRC servers/networks to choose 
+      from, and must have the ability to let the user designate a 
+      default IRC server host.
+
+    <port> 
+      The port number to connect to. If  :<port> is omitted,  the 
+      default IANA assigned IRC port 194 is used. Clients may use port 
+      6667 as an alternate port in case connection to the default 
+      port fails. Clients should also maintain a default port number,
+      as well as associations of port numbers with specific hosts. 
+
+    <target> 
+      If a target is referred to, it takes the form:
+
+          <target>       ::= <chtarget> | <nickstring>
+          <chtarget>     ::= <chstring> | <keychstring>
+          <keychstring>  ::= <chstring> ',needkey' 
+
+      The target can be either an IRC channel or a person on IRC 
+      (identified by his/her nickname and other associated information)
+      RFC 1459 (sec 2.3) defines an IRC channel as:
+
+           <channel>    ::= ('#' | '&' | '+') <chstring>
+           <chstring>   ::= <any 8bit code except SPACE, BELL, NUL,
+                                               CR, LF and comma (',')>
+     
+      In the irc: URL scheme, "unsafe" characters (RFC 1738, Sec 2.2) in 
+      <chstring> or <nickstring> must be encoded  by a character triplet
+      consisting of the character "%" followed by the two hexadecimal 
+      digits (from "0123456789ABCDEF") which form the hexadecimal value
+      of the octet. (The characters "abcdef" may also be used in 
+      hexadecimal encodings.) 
+
+      Since most IRC channels begin with the '#' character which is 
+      unsafe in a URL, it must be encoded. To avoid the cumbersome
+      % encoding for most references, this draft omits the specific 
+      mention of a channel prefix in a <target> of type <chstring>. 
+      irc: URL scheme implementors must maintain a prefix variable (by 
+      default, '#', with '&' and '+' as other allowable values) to form
+      channel names in accordance with RFC 1459. Further, the characters
+      '!', ',', ':' and '@' are reserved in the irc: URL scheme and must
+      also be encoded.
+     
+      [,needkey]
+      IRC channels can require a keyword (RFC 1459, Sec 4.2.1) before
+      entrance to the channel is granted. This parameter indicates to
+      the irc: URL scheme implementor that the user should be prompted
+      for the channel key, before an attempt to dereference the URL
+      is made. This parameter should be ignored for modeless + channels.
+
+
+ 
+Expires February 28th, 1997                                    [Page 2]
+
+
+Internet Draft             irc: URL scheme              August 29, 1996
+
+
+      <nickstring> is described by (also see RFC1459, Sec 2.3):
+
+         <nickstring> ::= <nicktypes> ',isnick'
+         <nicktypes>  ::= <nick> | <nickinfo> | <userinfo>
+         <nickinfo>   ::= <nick> '!' <user> '@' <hostmask>
+         <userinfo>   ::= <user> '@' <servername>
+         <nick>       ::= <letter> { <letter> | <number> | <special> }
+         <user>       ::= <nonwhite> { <nonwhite> }
+         <letter>     ::= 'a' ... 'z' | 'A' ... 'Z'
+         <number>     ::= '0' ... '9'
+         <special>    ::= '-' | '[' | ']' | '\' | '`' | '^' | '{' | '}'
+         <nonwhite>   ::= <any 8bit code except SPACE (0x20), NUL (0x0), 
+                                  CR (0xd), and LF (0xa)>
+         <servername> ::= <host>
+         <hostmask>   ::= <chstring>
+
+      Characters deemed unsafe (RFC 1738, Sec. 2.2) in <nickstring> (and
+      thus in <special>) must be encoded as usual. The irc: URL scheme
+      implementor may choose to initiate a DCC (direct client to client)
+      chat connection to the user when <nickstring> is specified. Many
+      IRC clients currently support DCC functionality and a rough draft
+      appears at ftp://ftp.undernet.org/irc/docs/technical/DCC.doc. 
+      Alternatively, they may choose to stick to exchanging messages 
+      via IRC, or offer the user a choice between the two.
+
+     [,needpass]
+      IRC servers can require a password (RFC 1459, Sec 7) before a
+      connection to the server is granted. This parameter indicates to
+      the irc: URL scheme implementor that the user should be prompted
+      for the server password, before an attempt to dereference the URL
+      is made.
+
+
+Client issues
+
+      irc: URL scheme implementors must have the following user 
+      configurable fields or variables in their clients (also see RFC
+      1459):
+
+      * Default IRC server host to connect to (alternate servers if 
+        the connection to the default server fails, may also be listed).
+        A list of IRC servers/networks to choose from is also suggested
+        for inclusion.
+
+      * Default port to connect on (alternate ports if the connection
+        to the default port fails may also be listed)
+
+      * Default channelname prefix (usually '#', but can also take the
+        values '&' and '+')
+
+
+
+Expires February 28th, 1997                                    [Page 3]
+
+
+Internet Draft             irc: URL scheme              August 29, 1996
+
+
+      * Default nickname to connect under (alternate nicknames should be
+        specified since the specified nickname may already be in use)
+
+      * Real name (also known as the IRCNAME variable) of the person.
+
+      The USER command passed to an IRC server requires a <username> 
+      parameter. Since it is easy for a client to lie about its username
+      by relying solely on the USER message, the availability of this
+      as a user configurable field should be avoided. This field may
+      be automatically obtained on Unix systems via the getpwuid() (or
+      a similar) system call. On other systems, the identity section of
+      mail programs on the system frequently contains a "reply-to" or
+      an "e-mail" field, often in a user@host format. The user portion
+      of this may be used for the <username> parameter. Only if these 
+      methods fail, should the user be prompted for a <username>.
+
+      As discussed earlier, the client must be able to prompt the user
+      for a channel key or server password, based on the irc: URL 
+      specified. It may also offer the user a choice of a DCC chat
+      connection when a nickname is dereferenced.
+
+
+Examples
+
+    The URL's:
+
+       irc:    irc://      irc:///
+
+    reference the default/local IRC server. The URL:
+
+      irc:///,needpass
+ 
+    references the default IRC server and prompts the user for a 
+    password, before connecting to it.
+
+    The URL
+          
+      irc:///help
+  
+    references IRC channel help  (this could be #help, &help or +help, 
+    depending on the channel prefix set) on the default IRC server.
+
+    The URL 
+
+      irc:///Mmmm!mandar@*uoknor.edu,isnick
+
+    references a person with nickname Mmmm, and user@host matching
+    mandar@*uoknor.edu on the default IRC server.
+
+    The URL,
+
+
+Expires February 28th, 1997                                    [Page 4]
+
+
+Internet Draft             irc: URL scheme              August 29, 1996
+
+
+      irc://foobar.org/Mmmm,isnick,needpass
+
+    references a person with nickname Mmmm on server foobar.org.  The 
+    connection to foobar.org takes place over the default port, and the 
+    user is prompted for a server password.
+
+    The URL
+  
+      irc://foobar.org:6665/secret,needkey
+
+    references the IRC channel secret on server foobar.org. The
+    connection takes place over port 6665, and the user is prompted
+    for a channel key in order to reference the channel.  
+
+    
+Current Implementations
+
+    Despite the lack of a common URL scheme, many integration efforts
+    between IRC and the world  wide web have been successful. These
+    can be roughly categorised into:
+
+    IRC plugins:
+      These are IRC clients distributed separately and designed to work
+      in close conjunction with the browser. Current plugins include:
+		http://home.netscape.com/comprod/chat.html
+			(Netscape Chat - Netscape Corp)
+		http://www.globalchat.com
+			(Global Chat - Quarterdeck Corp)
+		http://www.ichat.com/client.htm	
+			(iChat - iChat Inc)
+      They often include proprietary protocol implementations, in 
+      addition to IRC support.
+
+    Java gateways:
+      These take the form of a Java capable Web browser that interacts
+      with an IRC server and  updates "live content" web pages. The
+      foll. URL's which illustrate these, were functional at the time of
+      writing:
+                http://polaris.ibm.com/~gong/irc_room.html
+                http://www.blackdown.org/~kbs/irctst/demo.html
+                http://irc.webmaster.com
+                http://virtual.itribe.net/jirc/
+                http://www.dimensionx.com/products/cafe/index.html
+                http://www.hdmdigital.com/~cknight/dotcom/zirc/
+      These gateways take up resources on the machine hosting the web
+      server, and are also slower than IRC clients which open a direct
+      connection to the IRC server. A variation of the Java gateway is a
+      CGI gateway, which is based on CGI scripts instead of Java, but
+      quickly fading from existence due to CGI's limited realtime
+      functionality.
+
+
+Expires February 28th, 1997                                    [Page 5]
+
+
+Internet Draft             irc: URL scheme              August 29, 1996
+
+
+    IRC client - Web browser communication:
+      Recent IRC clients often communicate with the Web browser via
+      mechanisms such as API calls or DDE, and pass back a URL to be
+      opened via the browser.  Some of these can also be set up as
+      "plugins" or "helper applications". Clients that implement this 
+      include:
+               http://apollo3.com/~acable/virc.html   (Visual IRC)
+               http://www.mirc.co.uk/  (mIRC)
+               http://www.bcpl.lib.md.us/~frappa/pirch.html  (Pirch)
+               http://www.vapor.com/support/amirc/ (AmIRC)
+               http://catless.ncl.ac.uk/Programs/Zircon/ (Zircon)
+               http://xirc.bitgate.com/ (XIRC)
+
+    It is anticipated that the irc: URL scheme would allow Web
+    browsers to open a local dynamic "live content" page as
+    demonstrated by the gateways  (thus eliminating the need to go via a
+    gateway).  They  may also choose to open a plugin IRC client. The
+    choice is left to the individual irc: URL scheme implementor.
+
+
+History
+
+    IRC as a protocol first appeared in 1988 and thus predates the world
+    wide web by several years. A formal specification of the protocol
+    was drawn up in 1993 (RFC 1459). Today, there are thousands of
+    simultaneous users on various IRC networks. Integration efforts with
+    the World Wide Web continue (as outlined above). The irc: URL
+    scheme first appeared in the Rating Services and Rating Systems
+    document published by the PICS (Platform for Internet Content
+    Selection) technical subcommitee of the World Wide Web
+    Consortium:
+              http://www.w3.org/pub/WWW/PICS/services.html
+    However, the original definition lacked RFC 1459 conformance. This
+    draft attempts to add RFC 1459 conformance to the scheme, besides
+    other features previously lacking.
+
+
+Security Considerations
+
+    Security issues  are tackled in RFC 1738 and RFC 1459. Character
+    encoding rules must be followed for unsafe and reserved characters.
+    Clients should take care that attempts to connect to ports other
+    than 194 in the well known port range 1-1024, are disregarded. IRC
+    servers often use the non-registered port 6667 (or ports in the 
+    range 6000-7000) for clients to connect to. Since the URL 
+    dereference would always result in client to server messages 
+    prefixed by NICK, or USER, or JOIN or MSG, chances of a dangerous 
+    URL resolution are minimized. 
+
+    Nicknames on IRC are not constant - different people may use the
+
+
+Expires February 28th, 1997                                    [Page 6]
+
+
+Internet Draft             irc: URL scheme              August 29, 1996
+
+
+    same nickname at different times (although not simultaneously on
+    the same IRC server or network). This feature/anomaly is inherent
+    to the definition of the current IRC protocol (RFC 1459). It is
+    highly recommended that irc: URL scheme implementors warn the
+    user when dereferencing a <nick> instead of <nickinfo>. A WHOIS
+    IRC lookup is also suggested.
+
+
+Scheme summary
+
+    The irc: URL scheme is unique in its own way. It does borrow 
+    concepts from other URL schemes (RFC 1738) however. Like the nntp:
+    URL scheme, it allows the specification of a <host> for a unique
+    resource location. However, many IRC servers often limit 
+    connections from outside domains. Thus, like the news: and mailto:
+    URL schemes, it allows for the resolution of this information at
+    the client level, and like the file: URL scheme, allows <host>
+    to be an empty string. Like the telnet: URL scheme, it does not
+    designate a data object, but rather an interactive service.
+ 
+    The draft defines the irc: URL scheme and "must be configured" 
+    fields. This scheme is extremely useful given the shortcomings of
+    current implementations. There's only one operation defined on this 
+    UR*, and it is not very GET like (the IRC protocol is outlined in 
+    RFC 1459).  It can be proxied into HTTP/HTML, but this does have
+    severe limitations as mentioned earlier. Security considerations 
+    have been outlined. It does not follow the relative URL (RFC 1808)
+    model. 
+  
+ 
+References
+
+    [RFC1738]     RFC 1738. Uniform Resource Locators (URL).
+                  T. Berners-Lee, L. Masinter & M. McCahill.
+                  December 1994.
+	
+    [RFC 1459] 	  RFC 1459. Internet Relay Chat (IRC) Protocol
+                  J. Oikarinen, D. Reed. May 1993.
+
+
+Acknowledgements
+
+    A sincere thanks to various IRC server and client coders, HTML/WWW
+    developers, the PICS technical subcommittee, W3 members, and former 
+    URI working group members, who offered help, advice and suggestions
+    at all stages of the draft. People who offered help/advice/reviews/
+    new suggestions (in no particular order):
+      Dan Connolly, Harald T. Alvestran, Larry Masinter, Darren Reed,
+      Matthew Green, Bjorn Borud, Carl von Loesch, Dennis Holmes, Niels 
+      Bakker, James Egelhof, Arthur Liu, Robert Ullman, Klaus Wissmann.
+
+
+Expires February 28th, 1997                                    [Page 7]
+
+
+Internet Draft             irc: URL scheme              August 29, 1996
+    
+
+    Those of you whom I inadvertently missed, you know who you are.
+
+
+Author's contact information:
+
+    Name:     Mandar  Mirashi
+    Address:  35B, Hudson Harbour Drive,
+              Poughkeepsie, NY 12601.
+    Phone#:   914-485-6264
+    Email:    mandar@wildstar.net,
+              Mmmm@alias.undernet.org
+    IRC Nick: Mmmm
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Expires February 28th, 1997                                    [Page 8]
+
+
+

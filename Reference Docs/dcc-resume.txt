@@ -1,0 +1,84 @@
+DCC Resume.
+
+The DCC Resume protocol is an extention to the standard DCC protocol as 
+described in http://www2.undernet.org:8080/~cs93jtl/irc_dcc.txt
+It is ment to overcome the bad experiences people on slow modem connections 
+have with DCC File transfers. Since more and more people access IRC by 
+Slip and PPP modem connections, more and more people are affected by stopped 
+transfers, sometimes after a looong period of downloading and hoping for a
+long transfer to complete correctly. The DCC Resume offers you the option to 
+simply restart a transfer at the point it was broken off and to proceed without 
+loss of expensive (?) connection time. 
+
+The DCC Resume allows you to resume DCC transfers that failed to complete. 
+This will only work with mIRC and compatible clients. If a user tries to send 
+you a file that already (eventually partly) exists in your get directory then 
+you will be shown a DCC Get dialog warning that the file exists. The dialog 
+gives you the option to either overwrite the older file, resume a transfer, or 
+rename the incoming file . If you select overwrite then the whole file will be 
+downloaded from the beginning and any existing file of the same name will be 
+erased. If you select resume then mIRC will attempt to negotiate a transfer 
+resume to get the remaining part of the file. It will append this to the portion 
+of the file you already have.
+
+The negotiation method is specific to mIRC and to other clients supporting the 
+protocol. It is not standard and will not work with other DCC implementations 
+that do not have resume capability. The negotiation is automatic, and once the 
+receiving user clicks the resume button, the transfer will commence as normal.
+If the other party does not support the DCC Resume protocol the transfer will 
+simply not start. In those cases you have to start a complete new transfer from 
+the very beginning.
+
+The DCC Resume standard is set by mIRC and several other IRC clients support 
+DCC Resume already :
+
+mIRC			http://www.mirc.co.uk/index.html
+PIRCH			http://www.bcpl.lib.md.us/~frappa/pirch.html
+Visual IRC (ViRC)	http://apollo3.com/~acable/virc.html
+IaIRC (InterAp IRC)	http://merlin.datlin.ee/HamGroup/yury/iairc.htm
+
+----
+
+Here is a description of the mIRC DCC Resume Protocol.
+
+User1 is sending the file.
+User2 is receiving the file.
+
+To initiate a DCC Send, User1 sends:
+
+PRIVMSG User2 :DCC SEND filename ipaddress port filesize
+
+Normally, if User2 accepts the DCC Send request, User2 connects to the address 
+and port number given by User1 and the file transfer begins.
+
+If User2 chooses to resume a file transfer of an existing file, the following 
+negotiation takes place:
+
+User2 sends:
+
+PRIVMSG User1 :DCC RESUME filename port position
+
+filename = the filename sent by User1.
+port = the port number sent by User1.
+position = the current size of the file that User2 has.
+
+User1 then responds:
+
+PRIVMSG User2 :DCC ACCEPT filename port position
+
+This is simply replying with the same information that User2 sent as 
+acknowledgement.
+
+At this point User2 connects to User1 address and port and the transfer begins 
+from the specified position.
+
+NOTE: the newer versions of mIRC actually ignore the filename as it is 
+redundant since the port uniquely identifies the connection. However, to remain 
+compatible mIRC still sends a filename as "file.ext" in both RESUME and ACCEPT.
+
+----
+
+Tjerk Vonck
+mirc@dds.nl
+
+

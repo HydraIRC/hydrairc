@@ -1,0 +1,222 @@
+HydraIRC Developer Notes
+========================
+
+     IMPORTANT *** Read LICENSE.TXT first! *** IMPORTANT
+
+
+HydraIRC is written using Visual Studio .NET 2003.
+The code has been ported to Visual Studio .NET 2005 and support for Visual Studio .NET 2003
+has been dropped.
+
+Visual Studio.NET 2005 including Service Pack 1 is REQUIRED to build HydraIRC.
+(due to changes in atlrx.h, failure to compile with SP1 will result access violations
+occuring in the regular expression matcher)
+
+If you want to start helping out, check out the TODO.TXT and try and fix some bugs,
+then start with some of the simpler things until you're used to the codebase.
+
+SVN Access
+==========
+
+DO NOT COMMIT CHANGES TO THE SVN TREE.
+
+Currently there is registered developer read and write access, but this write
+access will be removed in the near future.
+
+To get your changes included, see "Submitting Patches" below.
+
+Compiling
+=========
+
+Make sure you have a copy of the SVN tree, as well as the following files:
+
+HydraIRC-libxml2-20021126.zip
+WTL 8 - http://sourceforge.net/project/showfiles.php?group_id=109071
+
+HydraIRC is written and developed using Visual Studio .NET 2003 and this is the
+only supported build environment.  If you're using something else then you're on
+your own.
+
+If you are using Visual Studio .NET 2003/2002/2005 you will also need to do the following:
+
+ - Unzip HydraIRC-libxml2-20021126.zip to HydraIRC/libs/libxml2
+ - extract it anywhere you like. e.g. "D:\My Documents\Source\Libs\wtl\8.0"
+ - Install the WTL application wizard (from the wtl folder)
+  - If you are using VS.NET 2005 then run AppWiz\setup80.js
+  - If you are using VS.NET 2003 then run AppWiz\setup71.js
+  - If you are using VS.NET 2002 then run AppWiz\setup70.js
+ - Start up VC.net and adjust your VC project include directories
+ - so that the directory you unzipped wtl75_4196.zip to appears first.
+ - From the VS 2005 menus, select: tools/options, then expand projects & solutions/VC++ Directories
+   then select "Include Files" from the "Show directories for" dropdown
+ - From the VS 2003/2002 menus, select: tools/options/projects/VC++ Directories/Show directories for "Include Files" 
+ - Add the wtl 8 "include" folder to the top of list
+   e.g. "D:\My Documents\Source\Libs\wtl\8.0\include"   
+ - next add the folder "HydraIRC\include\altered_wtl_includes\8.0" to the top of the list (before the new wtl entry)
+ - next add the folder "HydraIRC\include\altered_ms_includes" to the top of the list (before the new altered_wtl_includes entry)
+
+
+If you are using Visual Studio .NET 2002 you will also need to do the following:
+[note, this section was not written by Hydra and has not been verified or updated for 0.3.138 or higher]
+[If you have any problems with the VS.NET 2002 instructions please ask johnp for help in #hydrairc]
+
+ - Open up HydraIRC/HydraIRC.vcproj with a text editor and change the 4th line of the file
+   from Version="7.10" to Version="7.0"
+ - Open up HydraIRC/libs/libxml2/win32/dsp/libxml2.vcproj and change the version to Version="7.0" again.
+ - Open up HydraIRC/HydraIRCPlugin/HydraIRCPlugin.vcproj and do the same yet again.
+ - Start Visual Studio and open HydraIRC.vcproj
+ - Add the libxml2.vcproj file as an existing project to the HydraIRC solution and build it.
+ - Add the HydraIRCPlugin.vcproj file as an existing project to the HydraIRC solution and build it.
+ - In the solution explorer, right-click on the HydraIRC project and click 'Project Dependencies...'
+ - Make sure that HydraIRC depends on libxml2 and HydraIRCPlugin and that HydraIRCPlugin depends on libxml2
+ - Click the Project Build Order tab and make sure the build order is:
+ 	libxml2
+ 	HydraIRCPlugin
+ 	HydraIRC
+ - All done.  You can now happily build the solution from scratch.
+ 
+Submitting Patches
+==================
+
+I will only accept source code updates in the form of patches. 
+
+You can use TortoiseSVN or a win32 port of the unix "diff" tool (it's also part
+of cygwin).
+
+I *ONLY* accept patches created by TortoiseSVN or patches in the "UNIFIED DIFF" 
+format (the -u option of diff)
+
+To create a patch with TortoiseSVN right-click on a file or folder somewhere
+in your SVN checkout and select "TortoiseSVN / Create patch ..." from the
+context menu.  Make sure you select ALL the files that have been modified that make
+your patch work.
+
+When creating patches using diff, use a command similar to this:
+
+"diff -bua oldfile newfile >../patches/mypatch.diff"
+or 
+
+"diff -buar olddirectory newdirectory >../patches/mypatch.diff"
+
+add -N if you've added new source code files.   
+
+Please make sure the patch applies before sending it.
+(i.e. Get a fresh copy of the CVS tree and apply your patch to it)
+
+Here's how you might apply the patch..
+
+"patch -p 1 < ../patches/mypatch.diff"
+
+once you've created a diff, e-mail it to "diffs AT hydrairc DOT com" 
+
+Please tell me your IRC nick when submitting patches in the e-mail and also
+let me know what the patch does too!
+
+You can also dcc it to me on EFNet too. 
+
+Working on the source
+=====================
+
+NOTE: this section is very out of date, you're probably best just working out
+of your fresh checkout and creating patches from there.  Familiarise yourself
+with the following SVN commands: update, status, revert and diff
+TortoiseSVN is very good at letting you compare revisions of code and
+creating/merging code.  Look for a guide and read it!
+
+
+1) check out svn tree on 1/1/2004, save entire tree in folder SVN-2004-01-01 and zip up the folder as SVN-2004-01-01.zip
+2) copy that folder and save as SVN-2004-01-01-WorkingCopy
+3) make yor changes to SVN-2004-01-01-WorkingCopy
+4) run "diff -buarN SVN-2004-01-01 SVN-2004-01-01-WorkingCopy > patch.diff" to create a patch.
+5) checkout current SVN, on 12/2/2004, save into folder SVN-2004-02-12 and zip up the folder as SVN-2004-02-12.zip
+6) in SVN-2004-02-12, run the command patch -p 1 --dry-run < patch.diff
+6a) if it can't find the files experiment with the the -p option,eg. patch -p 1 --dry-run < patch.diff
+6b) if there are no errors, run the patch again, but without the --dry-run option.
+6c) if you have sections that don't apply, try the -l option, or manually patch in the un-applied patches from the "<sourcefile>.reject" files that patch creates.
+7) When all you modifications have been patched into the current source tree, make sure your changes still work and then create a NEW patch as follows.
+8) rename SVN-2004-02-12 to SVN-2004-02-12-WorkingCopy
+9) unzip SVN-2004-02-12.zip so you have SVN-2004-02-12 and SVN-2004-02-12-WorkingCopy
+10) create a diff between SVN-2004-02-12 and SVN-2004-02-12-WorkingCopy
+11) send latest patch to the mailing list with notes on what it does.
+
+Note:  it's helpful to CLEAN your working copies before making diffs, also, exclude the following files from your diff:
+
+.svn
+*.vcproj
+*.sln
+*.suo
+BuildLog.htm
+*.obj
+*.pch
+*.lib
+*.ncb
+*.map
+*.pdb
+*.idb
+*.orig
+*.rej
+Debug
+Release
+
+You save that list as a text file, then use this with diff's -X option.  e.g. "diff -buarN -X excludelist.txt SVN-2004-01-01 SVN-2004-01-01-WorkingCopy > patch.diff"
+
+Coding Style
+============
+
+Follow my coding style:
+
+variable names "AreLikeThis"
+global variables "g_AreLikeThis"
+member variables "m_AreLikeThis"
+struct's "AreLikeThis_s"
+typedef's to struct's "AreLikeThis_t"
+#defines ARE_LIKE_THIS
+class names sould be "CLikeThis" but not all of them are, all new classes should be C-prefixed.
+I use "i" for general loops and "pass" for some loops that have nested general loops.
+
+{'s and }'s generally go on seperate lines
+if there's only one line of code after an if statement, you
+can decide wether to use {}'s yourself, but the rule is:
+Make It Readable.
+
+Some things I don't do for readability's sake, e.g.
+
+void *MyPtr;
+if (MyPtr = MyFunction())
+  ...
+  
+would be written as:
+
+void *MyPtr;
+Myptr = MyFunction();
+if (MyPtr)
+  ...
+
+You will probably see other examples where code could be slightly
+optimized (in terms of cpu instructions) but isn't, for the sake of
+readability and future maintenance.
+
+Note: some code needs to be updated to conform to my current style.
+
+Doxygen
+=======
+
+There are doxygen docs on the website
+
+http://hydrairc.sourceforge.net/doxygen/
+
+In the Doxygen folder you'll find a project file which you can use to
+generate your own doxygen docs on your machine, but you'll need to
+install doxygen and adjust the absolute paths.
+
+Tabs
+====
+
+Set your editor to replace tabs with spaces, set the tab-size
+to 2 characters.
+
+Other Notes
+===========
+
+More notes as and when I think of anything useful to tell you.
+

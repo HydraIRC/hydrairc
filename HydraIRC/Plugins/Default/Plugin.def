@@ -1,0 +1,7 @@
+; fgd.def : Declares the module parameters for the DLL.
+
+LIBRARY      "Default"
+
+EXPORTS
+    ; Explicit exports can go here
+	HydraIRCPlugin_Init @1

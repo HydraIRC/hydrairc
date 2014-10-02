@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<HydraIRCThemeCollection name="MiAU Theme" author="MiAU" version="1.0" date="24/Nov/2005">
+  <theme name="miaulite" author="MiAU" version="1.0" date="03/Feb/2006">
+    <item appliesto="S" itemid="10000" formatstring="\002\035\0030,15 CONNECT \002\035\017  \00315\074SERVER\076 - \074ALL\076"/>
+    <item appliesto="S" itemid="10001" formatstring="\002\035\0030,15 SERVER \002\035\017  \00315\074SERVERNOTICE\076 - \074ALL\076"/>
+    <item appliesto="S" itemid="10021" formatstring="\002\035\0030,15 PING \002\035\017 \074SERVER\076 \074ALL\076"/>
+    <item appliesto="S" itemid="10022" formatstring="\002\035\0030,15 PONG \002\035\017 \074SERVER\076 \074ALL\076"/>
+    <item appliesto="S" itemid="10023" formatstring="-\076 \002\035\0030,15 PING \002\035\017 \074SERVER\076 \074ALL\076"/>
+    <item appliesto="S" itemid="10024" formatstring="-\076 \002\035\0030,15 PONG \002\035\017 \074SERVER\076 \074ALL\076"/>
+    <item appliesto="SCQD" itemid="10002" formatstring="\002\035\0030,15 NOTICE \002\035\017  \002\00314\074NICK\076\002  \00315\074ALL\076"/>
+    <item appliesto="SCQD" itemid="10025" formatstring="\002\035\0030,15 WALLOPS \002\035\017 *\074PARAM1\076* \074PARAM2\076"/>
+    <item appliesto="S" itemid="10013" formatstring="\002\035\0030,15 CTCP \002\035\017  \002\00314\074CTCP\076\002 reply from \002\074NICK\076\002 - \074ALL\076"/>
+    <item appliesto="S" itemid="10014" formatstring="\002\035\0030,15 CTCP \002\035\017  \002\00314\074NICK\076\002  -  \074ALL\076"/>
+    <item appliesto="S" itemid="10027" formatstring="-\076 \002\035\0030,15 NOTICE \002\035\017  [\074NICK\076] \074ALL\076"/>
+    <item appliesto="S" itemid="10015" formatstring="\002\035\0030,15 CTCP \002\035\017  \002\00314\074CTCP\076\002 request from \002\074NICK\076\002 - \074ALL\076"/>
+    <item appliesto="S" itemid="10020" formatstring="\002\035\0030,15 CTCP \002\035\017  \002\00314\074NICK\076\002  -  \074ALL\076"/>
+    <item appliesto="SQ" itemid="10003" formatstring="\002\035\0030,15 NICK \002\035\017  \002\00314\074OTHERNICK\076\002  \00315--\076  \002\00314\074NICK\076"/>
+    <item appliesto="SCQD" itemid="10026" formatstring="\002\035\0030,15 NICK \002\035\017  \00315Attempting to use nick &quot;\002\00314\074NICK\076\002\00315&quot;"/>
+    <item appliesto="S" itemid="10004" formatstring="\002\035\0030,15 MODE \002\035\017  \002\00314\074NICK\076\002 \00315sets \002\00314\074ALL\076"/>
+    <item appliesto="C" itemid="10004" formatstring="\002\035\0030,15 MODE \002\035\017  \002\00314\074NICK\076\002 \00315sets \002\00314\074CHANNEL\076  \074ALL\076"/>
+    <item appliesto="C" itemid="331" formatstring="\002\035\0030,15 TOPIC \002\035\017  \002\00314\074CHANNEL\076\002\017  \00315--\076  \00314\074ALL\076"/>
+    <item appliesto="C" itemid="332" formatstring="\002\035\0030,15 TOPIC \002\035\017  \002\00314\074CHANNEL\076\002\017  \00315--\076  \00314\074ALL\076"/>
+    <item appliesto="C" itemid="333" formatstring="\002\035\0030,15 TOPIC \002\035\017  \002\00314\074CHANNEL\076\002 \00315set by \002\00314\074NICK\076\002 \00315on \074PARAM3\076"/>
+    <item appliesto="C" itemid="329" formatstring="\00315created at \074PARAM2\076"/>
+    <item appliesto="C" itemid="10005" formatstring="\002\035\0030,15 TOPIC \002\035\017  \002\00314\074CHANNEL\076\002\017  \002\00314\074NICK\076\002  \00315changed to:  \00314\074ALL\076"/>
+    <item appliesto="CQ" itemid="10007" formatstring="\002\035\0030,14  JOIN  \002\035\017  \002\00314\074CHANNEL\076"/>
+    <item appliesto="CQ" itemid="10006" formatstring="\002\035\0030,15 JOIN \002\035\017  \002\00314\074NICK\076\002\017  \00315(\074HOST\076)"/>
+    <item appliesto="C" itemid="10008" formatstring="\002\035\0030,15 PART \002\035\017  \002\00314\074NICK\076\002\017  \00315(\074HOST\076)  \074ALL\076"/>
+    <item appliesto="CQ" itemid="10010" formatstring="\002\035\0030,15 QUIT \002\035\017  \002\00314\074NICK\076\002\017  \00315(\074ALL\076)"/>
+    <item appliesto="SC" itemid="10011" formatstring="\002\035\0030,14 KICK \002\035\017  \00315you were kicked from  \002\00314\074CHANNEL\076\002  \00315by  \002\00314\074NICK\076\002\017  \00315(\074ALL\076)"/>
+    <item appliesto="C" itemid="10012" formatstring="\002\035\0030,14 KICK \002\035\017  \002\00314\074OTHERNICK\076\002  \00315was kicked from  \002\00314\074CHANNEL\076\002  \00315by  \002\00314\074NICK\076\002  \00315(\074ALL\076)"/>
+    <item appliesto="SCQD" itemid="10003" formatstring="\002\035\0030,15 NICK \002\035\017  \002\00314\074OTHERNICK\076\002  \00315--\076  \002\00314\074NICK\076"/>
+    <item appliesto="SCQD" itemid="10016" formatstring="\002\035\074NICK\076\002\035 \035\074ALL\076"/>
+    <item appliesto="SCQD" itemid="10017" formatstring="\002\074NICK\076\002 \00314-\002\076\002\017  \074ALL\076"/>
+    <item appliesto="SCQD" itemid="10018" formatstring="\002\0043A6EA5*\074NICK\076*\002 -\002\076\002  \074ALL\076"/>
+    <item appliesto="SCQD" itemid="10019" formatstring="\00314--\002\076 \074NICK\076\002 \074ALL\076"/>
+    <item appliesto="SCQD" itemid="311" formatstring="\002\00315Whois:\002 \00314\074NICK\076\00315 is \00314\074USERNAME\076@\074HOST\076 \074NAME\076"/>
+    <item appliesto="SCQD" itemid="301" formatstring="\002\00315Away:\002 \00314\074NICK\076\00315 is away, reason: \074ALL\076"/>
+    <item appliesto="SCQD" itemid="378" formatstring="\002\00315From:\002 \00314\074NICK\076\00315 is connecting from \002\074HOST\076"/>
+    <item appliesto="SCQD" itemid="312" formatstring="\002\00315Server:\002 \00314\074NICK\076\00315 using \00314\074REMOTESERVER\076 \074REMOTESERVERDESCRIPTION\076"/>
+    <item appliesto="SCQD" itemid="317" formatstring="\002\00315Idle:\002 \00314\074NICK\076\00315 idle \074IDLESECS\076sec, signed on \074SIGNONTIME\076"/>
+    <item appliesto="SCQD" itemid="319" formatstring="\002\00315Channel:\002 \00314\074NICK\076\00315 on \00314\074ALL\076"/>
+    <item appliesto="SCQD" itemid="318" formatstring="\002\00315Stop:\002 \00314\074NICK\076\00315 End of /WHOIS list."/>
+    <item appliesto="S" itemid="353" formatstring="\002\035\0030,15 NAMES \002\035\017 \002\00314\074CHANNEL\076\002 - \074ALL\076"/>
+    <item appliesto="S" itemid="366" formatstring="\002\035\0030,15 NAMES \002\035\017  \00315End of /NAMES list."/>
+    <item appliesto="S" itemid="321" formatstring="\002\035\0030,15 LIST \002\035\017  \00315Channel  -  Users  -  Topic"/>
+    <item appliesto="S" itemid="322" formatstring="\002\035\0030,15 LIST \002\035\017 \002\00314\074CHANNEL\076\002\017 \00314- Users: \002\074PARAM2\076\002 - Topic: \074ALL\076"/>
+    <item appliesto="S" itemid="323" formatstring="\002\035\0030,15 LIST \002\035\017  \00315\074ALL\076"/>
+    <item appliesto="SC" itemid="324" formatstring="\002\035\0030,15 MODE \002\035\017  \00314\002\074CHANNEL\076  \00314\074CHANNELMODE\076"/>
+    <item appliesto="S" itemid="437" formatstring="\002\00314\074CHANNEL\076\002\017 \00315- \074ALL\076"/>
+    <item appliesto="S" itemid="405" formatstring="\002\00314\074CHANNEL\076\002\017 \00315- \074ALL\076"/>
+    <item appliesto="S" itemid="471" formatstring="\002\00314\074CHANNEL\076\002\017 \00315- \074ALL\076"/>
+    <item appliesto="S" itemid="473" formatstring="\002\00314\074CHANNEL\076\002\017 \00315- \074ALL\076"/>
+    <item appliesto="S" itemid="475" formatstring="\002\00314\074CHANNEL\076\002\017 \00315- \074ALL\076"/>
+    <item appliesto="S" itemid="474" formatstring="\002\00314\074CHANNEL\076\002\017 \00315- \074ALL\076"/>
+    <item appliesto="S" itemid="482" formatstring="\002\00314\074CHANNEL\076\002\017 \00315- \074ALL\076"/>
+    <item appliesto="S" itemid="401" formatstring="\002\035\0030,14 ERROR \002\035\017  \002\00314\074NICK\076\002  \00315--\076  no such nickname"/>
+    <item appliesto="S" itemid="402" formatstring="\002\035\0030,14 ERROR \002\035\017  \002\00314\074SERVER\076\002  \00315--\076  no such server"/>
+    <item appliesto="S" itemid="403" formatstring="\002\035\0030,14 ERROR \002\035\017  \002\00314\074CHANNEL\076\002  \00315--\076  no such nick/channel"/>
+    <item appliesto="S" itemid="432" formatstring="\002\035\0030,14 ERROR \002\035\017  \002\00314\074NICK\076\002  \00315--\076  erroneous nickname"/>
+    <item appliesto="S" itemid="433" formatstring="\002\035\0030,14 ERROR \002\035\017  \002\00314\074NICK\076\002  \00315--\076  \074ALL\076"/>
+    <item appliesto="S" itemid="1" formatstring="\002\035\0030,15 WELCOME \002\035\017  \00315\074ALL\076"/>
+    <item appliesto="S" itemid="2" formatstring="\002\035\0030,15 SERVER \002\035\017  \00315\074ALL\076"/>
+    <item appliesto="S" itemid="3" formatstring="\002\035\0030,15 SERVER \002\035\017  \00315\074ALL\076"/>
+    <item appliesto="S" itemid="4" formatstring="\002\035\0030,15 SERVER \002\035\017  \00315\074ALL\076"/>
+    <item appliesto="S" itemid="5" formatstring="\002\035\0030,15 SERVER \002\035\017  \00315\074ALL\076"/>
+    <item appliesto="S" itemid="250" formatstring="\002\035\0030,15 SERVER \002\035\017  \00315\074ALL\076"/>
+    <item appliesto="S" itemid="251" formatstring="\002\035\0030,15 SERVER \002\035\017  \00315\074ALL\076"/>
+    <item appliesto="S" itemid="252" formatstring="\002\035\0030,15 SERVER \002\035\017  \00315\074ALL\076"/>
+    <item appliesto="S" itemid="253" formatstring="\002\035\0030,15 SERVER \002\035\017  \00315\074ALL\076"/>
+    <item appliesto="S" itemid="254" formatstring="\002\035\0030,15 SERVER \002\035\017  \00315\074ALL\076"/>
+    <item appliesto="S" itemid="255" formatstring="\002\035\0030,15 SERVER \002\035\017  \00315\074ALL\076"/>
+    <item appliesto="S" itemid="265" formatstring="\002\035\0030,15 SERVER \002\035\017  \00315\074ALL\076"/>
+    <item appliesto="S" itemid="266" formatstring="\002\035\0030,15 SERVER \002\035\017  \00315\074ALL\076"/>
+    <item appliesto="S" itemid="375" formatstring="\002\035\0030,15 MOTD \002\035\017 \00315\074ALL\076"/>
+    <item appliesto="S" itemid="372" formatstring="\002\035\0030,15 MOTD \002\035\017 \00315\074ALL\076"/>
+    <item appliesto="S" itemid="376" formatstring="\002\035\0030,15 MOTD \002\035\017 \00315- \074ALL\076"/>
+    <item appliesto="SCQD" itemid="20001" formatstring="\002\035\0030,15 CONNECT \002\035\017  \00315\074ALL\076"/>
+    <item appliesto="SCQD" itemid="20000" formatstring="\002\035\0030,14 ERROR \002\035\017  \00315\074ALL\076"/>
+    <item appliesto="SCQD" itemid="-1" formatstring="\002\00315Notice:\002  \00315\074ALL\076"/>
+    <item appliesto="C" itemid="-1" formatstring="\002\035\0030,15 CHANNEL \002\035\017  \00315\074ALL\076"/>
+    <item appliesto="SCQD" itemid="-1" formatstring="\002\035\0030,15 DEFAULT \002\035\017  \00315\074ALL\076"/>
+  </theme>
+</HydraIRCThemeCollection>

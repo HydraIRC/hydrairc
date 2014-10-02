@@ -1,0 +1,1061 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "atlres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""atlres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST ""res\\\\HydraIRC.exe.manifest""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS 
+BEGIN
+    "Q",            ID_APP_EXIT,            VIRTKEY, CONTROL, NOINVERT
+    "S",            ID_CHANNEL_SHOWSERVER,  VIRTKEY, SHIFT, CONTROL, NOINVERT
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "C",            ID_EDIT_COPYBUFFER,     VIRTKEY, SHIFT, CONTROL, NOINVERT
+    VK_DELETE,      ID_EDIT_CUT,            VIRTKEY, SHIFT, NOINVERT
+    "X",            ID_EDIT_CUT,            VIRTKEY, CONTROL, NOINVERT
+    "V",            ID_EDIT_PASTE,          VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_PASTE,          VIRTKEY, SHIFT, NOINVERT
+    "W",            ID_FILE_CLOSE,          VIRTKEY, SHIFT, CONTROL, NOINVERT
+    "S",            ID_FILE_CONNECT,        VIRTKEY, CONTROL, NOINVERT
+    "D",            ID_FILE_DISCONNECT,     VIRTKEY, CONTROL, NOINVERT
+    "N",            ID_FILE_NEW,            VIRTKEY, CONTROL, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+    "C",            ID_VIEW_CHANNELMONITOR, VIRTKEY, SHIFT, ALT, NOINVERT
+    "E",            ID_VIEW_EVENTLOG,       VIRTKEY, SHIFT, ALT, NOINVERT
+    "G",            ID_VIEW_GLOBALUSERLIST, VIRTKEY, SHIFT, ALT, NOINVERT
+    "L",            ID_VIEW_IRCSERVERLIST,  VIRTKEY, SHIFT, ALT, NOINVERT
+    "N",            ID_VIEW_NOTICEQUEUE,    VIRTKEY, SHIFT, ALT, NOINVERT
+    "O",            ID_VIEW_OUTPUT,         VIRTKEY, SHIFT, ALT, NOINVERT
+    "P",            ID_VIEW_PRIVMSGQUEUE,   VIRTKEY, SHIFT, ALT, NOINVERT
+    "S",            ID_VIEW_SERVERMONITOR,  VIRTKEY, SHIFT, ALT, NOINVERT
+    "T",            ID_VIEW_TRANSFERS,      VIRTKEY, SHIFT, ALT, NOINVERT
+    "U",            ID_VIEW_URLCATCHER,     VIRTKEY, SHIFT, ALT, NOINVERT
+    "H",            ID_WINDOW_MINIMIZEACTIVEWINDOW, VIRTKEY, SHIFT, CONTROL, NOINVERT
+    "H",            ID_WINDOW_MINIMIZEALLWINDOWS, VIRTKEY, CONTROL, NOINVERT
+    "T",            ID_WINDOW_TILE_HORZ,    VIRTKEY, SHIFT, CONTROL, NOINVERT
+    "T",            ID_WINDOW_TILE_VERT,    VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 0,3,165,0
+ PRODUCTVERSION 0,3,165,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "http://www.HydraIRC.com"
+            VALUE "CompanyName", "Hydra Productions"
+            VALUE "FileDescription", "HydraIRC"
+            VALUE "FileVersion", "0, 3, 165, 0"
+            VALUE "InternalName", "HydraIRC"
+            VALUE "LegalCopyright", "Dominic Clifton - Copyright 2002-2004"
+            VALUE "OriginalFilename", "HydraIRC.exe"
+            VALUE "ProductName", "HydraIRC"
+            VALUE "ProductVersion", "0, 3, 165, 0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&New Server\tCtrl+N",         ID_FILE_NEW
+        MENUITEM "C&lose Window\tCtrl-Shift+W", ID_FILE_CLOSE
+        MENUITEM SEPARATOR
+        MENUITEM "&Connect\tCtrl+S",            ID_FILE_CONNECT
+        MENUITEM "&Disconnect\tCtrl+D",         ID_FILE_DISCONNECT
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit\tCtrl+Q",               ID_APP_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "Cu&t\tCtrl+X",                ID_EDIT_CUT
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM "&Paste\tCtrl+V",              ID_EDIT_PASTE
+        MENUITEM SEPARATOR
+        MENUITEM "Copy &Buffer\tCtrl+Shift+C",  ID_EDIT_COPYBUFFER
+        MENUITEM "C&lear Buffer",               ID_EDIT_CLEARBUFFER
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Event Log\tAlt+Shift+E",     ID_VIEW_EVENTLOG
+        MENUITEM "T&ransfers\tAlt+Shift+T",     ID_VIEW_TRANSFERS
+        MENUITEM "&Notice Queue\tAlt+Shift+N",  ID_VIEW_NOTICEQUEUE
+        MENUITEM "&PrivMsg Queue\tAlt+Shift+P", ID_VIEW_PRIVMSGQUEUE
+        MENUITEM "&URL Catcher\tAlt+Shift+U",   ID_VIEW_URLCATCHER
+        MENUITEM "&Channel Monitor\tAlt+Shift+C", ID_VIEW_CHANNELMONITOR
+        MENUITEM "&Server Monitor\tAlt+Shift+S", ID_VIEW_SERVERMONITOR
+        MENUITEM "&Output\tAlt+Shift+O",        ID_VIEW_OUTPUT
+        MENUITEM "&Global User List\tAlt+Shift+G", ID_VIEW_GLOBALUSERLIST
+        MENUITEM "IRC Server &List\tAlt+Shift+L", ID_VIEW_IRCSERVERLIST
+        MENUITEM SEPARATOR
+        MENUITEM "Status &Bar",                 ID_VIEW_STATUS_BAR
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM SEPARATOR
+        POPUP "GUI &Layout"
+        BEGIN
+            MENUITEM "&Hide all dockers",           ID_GUILAYOUT_HIDEALLDOCKERS
+            MENUITEM "Layout &1 (Default)",         ID_GUILAYOUT_LAYOUT1
+            MENUITEM "Layout &2",                   ID_GUILAYOUT_LAYOUT2
+            MENUITEM "Layout &3",                   ID_GUILAYOUT_LAYOUT3
+            MENUITEM "Layout &4",                   ID_GUILAYOUT_LAYOUT4
+            MENUITEM "Layout &5",                   ID_GUILAYOUT_LAYOUT5
+        END
+    END
+    POPUP "&Channel"
+    BEGIN
+        MENUITEM "&Monitor",                    ID_CHANNEL_MONITOR
+        MENUITEM "&Show Server\tCtrl+Shift+S",  ID_CHANNEL_SHOWSERVER
+        MENUITEM "&Properties",                 ID_CHANNEL_PROPERTIES
+        MENUITEM SEPARATOR
+        MENUITEM "Channel List",                ID_CHANNEL_CHANNELLIST
+    END
+    POPUP "F&avorites"
+    BEGIN
+        MENUITEM "&Add to favorites...",        ID_FAVORITES_ADDTOFAVORITES
+        MENUITEM "&Organize Favorites...",      ID_FAVORITES_ORGANIZEFAVORITES
+    END
+    POPUP "&Options"
+    BEGIN
+        MENUITEM "&Prefs...",                   ID_OPTIONS_PREFS
+        MENUITEM SEPARATOR
+        MENUITEM "Toggle &Logging",             ID_OPTIONS_LOGGING
+        MENUITEM "Toggle &Timestamps",          ID_OPTIONS_TIMESTAMPS
+        MENUITEM "Toggle &User List",           ID_OPTIONS_TOGGLEUSERLIST
+        MENUITEM "Toggle &Info",                ID_OPTIONS_TOGGLEINFO
+        MENUITEM "Toggle &Header",              ID_OPTIONS_TOGGLEHEADER
+        MENUITEM SEPARATOR
+        MENUITEM "Toggle &Audio Mute",          ID_OPTIONS_AUDIOMUTE
+    END
+    POPUP "&Window"
+    BEGIN
+        MENUITEM "&Cascade",                    ID_WINDOW_CASCADE
+        MENUITEM "&Tile Horizontally\tCtrl+Shift+T", ID_WINDOW_TILE_HORZ
+        MENUITEM "Tile &Vertically\tCtrl+T",    ID_WINDOW_TILE_VERT
+        MENUITEM SEPARATOR
+        MENUITEM "Minimize/&Hide All Windows\tCtrl+H", ID_WINDOW_MINIMIZEALLWINDOWS
+        MENUITEM "Minimize/Hide &Active Window\tCtrl+Shift+H", ID_WINDOW_MINIMIZEACTIVEWINDOW
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "Documentation (Docs.htm)",    ID_HELP_DOCUMENTATION
+        MENUITEM "Recent Changes (Changes.txt)", ID_HELP_RECENTCHANGES
+        MENUITEM SEPARATOR
+        MENUITEM "&Online Documentation (Wiki)", ID_HELP_ONLINEDOCUMENTATION
+        MENUITEM "&HydraIRC on the web",        ID_HELP_HYDRAIRCONTHEWEB
+        MENUITEM "&Report A Bug",               ID_HELP_REPORTABUG
+        MENUITEM "&Forums",                     ID_HELP_FORUMS
+        MENUITEM SEPARATOR
+        MENUITEM "&Donate",                     ID_HELP_DONATE
+        MENUITEM "&About HydraIRC...",          ID_APP_ABOUT
+    END
+END
+
+IDR_TASKBAR MENU 
+BEGIN
+    POPUP "Taskbar"
+    BEGIN
+        MENUITEM "&Restore",                    ID_TASKBARMENU_RESTORE
+    END
+END
+
+IDR_CONNECT_SERVERCONTEXT MENU 
+BEGIN
+    POPUP "Server"
+    BEGIN
+        MENUITEM "&Connect",                    ID_CONNECT_SC_CONNECT
+        MENUITEM "Add",                         ID_CONNECT_SC_ADD
+        MENUITEM "&Edit",                       ID_CONNECT_SC_EDIT
+        MENUITEM "&Delete",                     ID_CONNECT_SC_DELETE
+    END
+    POPUP "Network"
+    BEGIN
+        MENUITEM "&Add Network",                ID_CONNECT_NC_ADD
+        MENUITEM "Add &Server",                 ID_CONNECT_NC_ADDSERVER
+        MENUITEM "&Edit",                       ID_CONNECT_NC_EDIT
+        MENUITEM "&Delete",                     ID_CONNECT_NC_DELETE
+    END
+END
+
+IDR_OUTPUT_CONTEXT MENU 
+BEGIN
+    POPUP "Context"
+    BEGIN
+        MENUITEM "&Copy Buffer",                IDC_OUTPUT_COPYBUFFER
+        MENUITEM "Clear &Buffer",               IDC_OUTPUT_CLEARBUFFER
+    END
+END
+
+IDR_CHANNELMONITOR_CONTEXT MENU 
+BEGIN
+    POPUP "Context"
+    BEGIN
+        MENUITEM "Clear &Buffer",               IDC_CHANNELMONITOR_CLEARBUFFER
+        MENUITEM "&Copy Buffer",                IDC_CHANNELMONITOR_COPYBUFFER
+        MENUITEM "&Stop All Monitoring",        IDC_CHANNELMONITOR_STOPALLMONITORING
+    END
+END
+
+IDR_SERVERMONITOR_CONTEXT MENU 
+BEGIN
+    POPUP "Context"
+    BEGIN
+        MENUITEM "Clear &Buffer",               IDC_SERVERMONITOR_CLEARBUFFER
+        MENUITEM "&Copy Buffer",                IDC_SERVERMONITOR_COPYBUFFER
+        MENUITEM "&Stop All Monitoring",        IDC_SERVERMONITOR_STOPALLMONITORING
+    END
+END
+
+IDR_CHANNEL_CONTEXT MENU 
+BEGIN
+    POPUP "Context"
+    BEGIN
+        POPUP "Verbosity"
+        BEGIN
+            MENUITEM "Show All",                    IDC_CHILDFRAME_VERBOSELEVEL_LEVEL0, CHECKED
+            MENUITEM "Show Most",                   IDC_CHILDFRAME_VERBOSELEVEL_LEVEL3
+            MENUITEM "Show Medium",                 IDC_CHILDFRAME_VERBOSELEVEL_LEVEL2
+            MENUITEM "Show Least",                  IDC_CHILDFRAME_VERBOSELEVEL_LEVEL1
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "&Logging",                    ID_OPTIONS_LOGGING, CHECKED
+        MENUITEM "&Monitoring",                 ID_CHANNEL_MONITOR, CHECKED
+        MENUITEM "&Timestamps",                 ID_OPTIONS_TIMESTAMPS, CHECKED
+        MENUITEM SEPARATOR
+        MENUITEM "View L&og",                   IDC_CHILDFRAME_VIEWLOGFILE
+        MENUITEM "&Copy Buffer",                IDC_CHILDFRAME_COPYBUFFER
+        MENUITEM "Clear &Buffer",               IDC_CHILDFRAME_CLEARBUFFER
+        MENUITEM SEPARATOR
+        MENUITEM "&Properties",                 ID_CHANNEL_PROPERTIES
+    END
+END
+
+IDR_SERVER_CONTEXT MENU 
+BEGIN
+    POPUP "Context"
+    BEGIN
+        MENUITEM "&Logging",                    ID_OPTIONS_LOGGING, CHECKED
+        MENUITEM "Monitoring",                  ID_SERVER_MONITOR
+        MENUITEM "&Timestamps",                 ID_OPTIONS_TIMESTAMPS, CHECKED
+        MENUITEM SEPARATOR
+        MENUITEM "View L&og",                   IDC_CHILDFRAME_VIEWLOGFILE
+        MENUITEM "&Copy Buffer",                IDC_CHILDFRAME_COPYBUFFER
+        MENUITEM "Clear &Buffer",               IDC_CHILDFRAME_CLEARBUFFER
+    END
+END
+
+IDR_USERLIST_CONTEXT MENU 
+BEGIN
+    POPUP "Context"
+    BEGIN
+        MENUITEM "Query",                       ID_USERLIST_QUERY
+        MENUITEM "&Whois",                      4011
+        POPUP "C&lipboard"
+        BEGIN
+            MENUITEM "Copy &Username",              ID_USERLIST_CB_COPYUSERNAME
+            MENUITEM "Copy &Hostmask",              ID_USERLIST_CB_COPYHOSTMASK
+        END
+        POPUP "Operator"
+        BEGIN
+            MENUITEM "&Admin",                      ID_USERLIST_ADMIN
+            MENUITEM "De Ad&min",                   ID_USERLIST_DEADMIN
+            MENUITEM "&Op",                         ID_USERLIST_OP
+            MENUITEM "&De Op",                      ID_USERLIST_DEOP
+            MENUITEM "&Half Op",                    ID_USERLIST_HALFOP
+            MENUITEM "De Ha&lf Op",                 ID_USERLIST_DEHALFOP
+            MENUITEM "&Voice",                      ID_USERLIST_VOICE
+            MENUITEM "D&e Voice",                   ID_USERLIST_DEVOICE
+            MENUITEM "&Kick",                       ID_USERLIST_KICK
+            MENUITEM "&Ban",                        ID_USERLIST_BAN
+            MENUITEM "K&ick + Ban",                 ID_USERLIST_KICKANDBAN
+        END
+        POPUP "CTCP"
+        BEGIN
+            MENUITEM "Version",                     ID_USERLIST_CTCP_VERSION
+            MENUITEM "Client",                      ID_USERLIST_CTCP_CLIENT
+            MENUITEM "User Info",                   ID_USERLIST_CTCP_USER
+            MENUITEM "Time",                        ID_USERLIST_CTCP_TIME
+            MENUITEM "Ping",                        ID_USERLIST_CTCP_PING
+        END
+        MENUITEM "DCC &Chat",                   ID_USERLIST_DCCCHAT
+        MENUITEM "&DCC Send",                   ID_USERLIST_DCCSENDFILE
+        MENUITEM "Slap",                        ID_USERLIST_SLAP
+    END
+    POPUP "NoItemContext"
+    BEGIN
+        MENUITEM "Show Buddy Groups",           ID_USERLIST_SHOWBUDDYGROUPS
+    END
+END
+
+IDR_QUERY_CONTEXT MENU 
+BEGIN
+    POPUP "Context"
+    BEGIN
+        MENUITEM "&Logging",                    ID_OPTIONS_LOGGING, CHECKED
+        MENUITEM "&Timestamps",                 ID_OPTIONS_TIMESTAMPS, CHECKED
+        MENUITEM SEPARATOR
+        MENUITEM "DCC &Chat",                   ID_USERLIST_DCCCHAT
+        MENUITEM "&DCC Send",                   ID_USERLIST_DCCSENDFILE
+        MENUITEM SEPARATOR
+        MENUITEM "View L&og",                   IDC_CHILDFRAME_VIEWLOGFILE
+        MENUITEM "Copy B&uffer",                IDC_CHILDFRAME_COPYBUFFER
+        MENUITEM "Clear &Buffer",               IDC_CHILDFRAME_CLEARBUFFER
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\HydraIRC.ico"
+IDI_CHANNEL             ICON                    "res\\ico00010.ico"
+IDI_SERVER              ICON                    "res\\ico00011.ico"
+IDI_OUTPUT              ICON                    "res\\ico00001.ico"
+IDI_NOTICE              ICON                    "res\\ico00002.ico"
+IDI_USERLIST            ICON                    "res\\ico00003.ico"
+IDI_CHANNELMONITOR      ICON                    "res\\ico00004.ico"
+IDI_TRANSFERS           ICON                    "res\\ico00005.ico"
+IDI_QUERY               ICON                    "res\\ico00013.ico"
+IDI_MYWARNING           ICON                    "res\\ico00006.ico"
+IDI_NOTE                ICON                    "res\\ico00007.ico"
+IDI_MYINFORMATION       ICON                    "res\\ico00008.ico"
+IDI_SERVERMONITOR       ICON                    "res\\ico00014.ico"
+IDI_EVENTLOG            ICON                    "res\\ico00009.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 256, 194
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About"
+FONT 8, "MS Shell Dlg", 0, 0, 0x0
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,102,173,50,14
+    CTEXT           "",IDC_ABOUT_VERSIONINFO,12,42,231,119
+    ICON            IDR_MAINFRAME,IDC_STATIC,117,14,21,20
+    GROUPBOX        "",IDC_STATIC,6,7,243,161
+END
+
+IDD_CONNECT DIALOGEX 0, 0, 248, 262
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Connect"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_SERVERURI,54,166,183,12,ES_AUTOHSCROLL
+    RTEXT           "Password",IDC_CONNECT_PASSWORDLABEL,11,185,37,10,SS_CENTERIMAGE
+    EDITTEXT        IDC_CONNECT_PASSWORD,54,185,183,13,ES_PASSWORD | ES_AUTOHSCROLL
+    GROUPBOX        "Select &User Identity",IDC_CONNECT_IDENTITYFRAME,5,209,238,30,0,WS_EX_TRANSPARENT
+    COMBOBOX        IDC_CONNECT_IDENTITY,11,221,168,75,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Edit Identity",IDC_CONNECT_EDITIDENTITY,185,221,52,12
+    DEFPUSHBUTTON   "&OK",IDOK,129,245,50,13
+    PUSHBUTTON      "&Cancel",IDCANCEL,191,245,52,13
+    GROUPBOX        "Select &Server",IDC_CONNECT_SERVERFRAME,5,2,238,201,0,WS_EX_TRANSPARENT
+    CONTROL         "",IDC_SERVERTREE,"SysTreeView32",TVS_HASBUTTONS | TVS_HASLINES | TVS_LINESATROOT | TVS_SHOWSELALWAYS | WS_BORDER | WS_TABSTOP,11,12,226,134,WS_EX_CLIENTEDGE
+    RTEXT           "URI",IDC_CONNECT_URILABEL,11,167,37,8,SS_CENTERIMAGE
+    PUSHBUTTON      "Add Network",IDC_CONNECT_ADDNETWORK,11,150,50,12
+    PUSHBUTTON      "Add Server",IDC_CONNECT_ADDSERVER,65,150,50,12
+    LTEXT           "Right click items for more options",IDC_CONNECT_NOTELABEL,119,150,118,12,SS_CENTERIMAGE
+END
+
+IDD_PREFS DIALOGEX 0, 0, 428, 258
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Preferences"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,294,240,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,371,240,50,14
+    CONTROL         "",IDC_PREFSTREE,"SysTreeView32",TVS_HASBUTTONS | TVS_HASLINES | TVS_LINESATROOT | TVS_SHOWSELALWAYS | TVS_NOSCROLL | WS_BORDER | WS_HSCROLL | WS_TABSTOP,7,16,110,238
+    LTEXT           "Placeholder",IDC_PREFS_PLACEHOLDER,123,16,298,214
+    CTEXT           "Configure",IDC_STATIC_CONFIGURE,7,0,110,16,SS_CENTERIMAGE
+    CONTROL         "Option",IDC_STATIC_OPTION,"Static",SS_LEFTNOWORDWRAP | SS_CENTERIMAGE | WS_GROUP,123,0,149,16
+    RTEXT           "Information",IDC_STATIC_INFO,272,0,149,16,SS_CENTERIMAGE
+END
+
+IDD_PREFS_IDENTITIES DIALOGEX 0, 0, 250, 170
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "New",IDC_IDENTITY_NEW,1,136,60,16
+    PUSHBUTTON      "Delete",IDC_IDENTITY_DELETE,64,136,60,16
+    PUSHBUTTON      "Edit",IDC_IDENTITY_EDIT,127,136,60,16
+    CTEXT           "Create, edit or delete your IRC identity profiles",IDC_STATIC_CONFIGURE,0,0,250,10
+    LISTBOX         IDC_IDENTITIES_LIST,0,12,249,118,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_IDENTITY_DEFAULT,125,157,124,13,ES_AUTOHSCROLL | WS_DISABLED
+    PUSHBUTTON      "Set as Default",IDC_IDENTITY_SETDEFAULT,189,136,60,16
+    LTEXT           "Default Identity",IDC_IDENTITY_NOTE,58,157,60,13,SS_CENTERIMAGE,WS_EX_RIGHT
+END
+
+IDD_PREFS_HIGHLIGHT DIALOGEX 0, 0, 250, 170
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    PUSHBUTTON      "New",IDC_HIGHLIGHT_NEW,1,136,60,16
+    PUSHBUTTON      "Delete",IDC_HIGHLIGHT_DELETE,95,136,60,16
+    PUSHBUTTON      "Edit",IDC_HIGHLIGHT_EDIT,189,136,60,16
+    CTEXT           "Highlighting preferences",IDC_STATIC_CONFIGURE,0,0,250,10
+    LISTBOX         IDC_HIGHLIGHT_LIST,0,12,249,118,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_PREFS_TEMPLATE DIALOGEX 0, 0, 289, 214
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+END
+
+IDD_PREFS_NOTIMPLEMENTED DIALOGEX 0, 0, 250, 170
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CTEXT           "\n\n\n\n\nComing soon!\n\nIn the mean time please look in Advanced/All Settings or\nEdit the HydraIRC.xml and Profile_Default.xml files which\nare found in the HydraIRC installation directory.",IDC_STATIC_INFO,0,0,250,150
+END
+
+IDD_USERIDENTITY DIALOGEX 0, 0, 309, 244
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "User Identity"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_UI_DESCRIPTION,98,7,204,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_UI_REALNAME,98,24,204,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_UI_USERNAME,98,42,204,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_UI_NICK,98,60,75,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "Add",IDC_UI_ADD,176,60,30,13
+    PUSHBUTTON      "Delete",IDC_UI_DELETE,208,60,30,13
+    PUSHBUTTON      "Up",IDC_UI_UP,240,60,30,13
+    PUSHBUTTON      "Down",IDC_UI_DOWN,272,60,30,13
+    LISTBOX         IDC_UI_NICKLIST,98,78,204,103,LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_UI_IDENTDUSERNAME,98,186,204,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_UI_IDENTDOS,98,203,204,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "OK",ID_UI_OK,196,223,50,14,WS_DISABLED
+    PUSHBUTTON      "Cancel",IDCANCEL,252,223,50,14
+    RTEXT           "Identity Description",IDC_STATIC,7,7,83,13,SS_CENTERIMAGE
+    RTEXT           "Real Name",IDC_STATIC,7,24,83,13,SS_CENTERIMAGE
+    RTEXT           "Username",IDC_STATIC,7,42,83,13,SS_CENTERIMAGE
+    RTEXT           "Nick",IDC_STATIC,7,60,83,13,SS_CENTERIMAGE
+    LTEXT           "Type a name in the ""Nick"" box above and click Add.  Nicks are used in order of appearance. Add as many nicks as you like.\r\nIf all nicks are in use then the nick is prefixed with a number which is then incremented until a nick is accepted.",IDC_STATIC,7,78,83,103
+    RTEXT           "Identd Username",IDC_STATIC,7,186,83,13,SS_CENTERIMAGE
+    RTEXT           "Identd OS",IDC_STATIC,7,203,83,13,SS_CENTERIMAGE
+END
+
+IDD_PREFS_NOTIFICATIONS DIALOGEX 0, 0, 250, 170
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    RTEXT           "&Group",IDC_STATIC,0,0,36,13,SS_CENTERIMAGE
+    CONTROL         "",IDC_NOTIFICATIONS_EVENTS,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_ALIGNLEFT | LVS_NOSORTHEADER | WS_BORDER | WS_TABSTOP,0,18,249,115,WS_EX_CLIENTEDGE
+    CTEXT           "Double click to edit, right click to test",IDC_STATIC_INFO,0,133,249,17,SS_CENTERIMAGE
+    PUSHBUTTON      "&New",IDC_NOTIFICATIONS_NEW,0,154,60,16
+    PUSHBUTTON      "&Delete",IDC_NOTIFICATIONS_DELETE,97,154,60,16
+    PUSHBUTTON      "&Edit",IDC_NOTIFICATIONS_EDIT,190,154,60,16
+    COMBOBOX        IDC_NOTIFICATIONS_GROUP,42,0,208,150,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+END
+
+IDD_PREFS_BUDDYGROUPS DIALOGEX 0, 0, 289, 214
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    COMBOBOX        IDC_BUDDYGROUPS_GROUP,6,10,178,150,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "Add",IDC_BUDDYGROUPS_ADD,187,10,30,13
+    PUSHBUTTON      "Delete",IDC_BUDDYGROUPS_DELETE,220,10,30,13
+    PUSHBUTTON      "&Edit",IDC_BUDDYGROUPS_EDIT,253,10,30,13
+    RTEXT           "&Nick",IDC_STATIC,6,43,20,13,SS_CENTERIMAGE
+    EDITTEXT        IDC_BUDDYGROUPS_NICK,30,43,187,12,ES_AUTOHSCROLL
+    PUSHBUTTON      "&Add",IDC_BUDDYGROUPS_NICKADD,220,43,30,13
+    PUSHBUTTON      "&Delete",IDC_BUDDYGROUPS_NICKDELETE,253,43,30,13
+    RTEXT           "&Host",IDC_STATIC,6,59,20,13,SS_CENTERIMAGE
+    EDITTEXT        IDC_BUDDYGROUPS_HOST,30,59,253,12,ES_AUTOHSCROLL | WS_DISABLED
+    CONTROL         "",IDC_BUDDYGROUPS_BUDDYLIST,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_EDITLABELS | LVS_ALIGNLEFT | LVS_NOSORTHEADER | WS_BORDER | WS_TABSTOP,6,79,277,129
+    GROUPBOX        "Group",IDC_BUDDYGROUPS_GROUPSTATIC,0,0,289,31
+    GROUPBOX        "Members",IDC_BUDDYGROUPS_MEMBERSSTATIC,0,33,289,181
+END
+
+IDD_PREFS_MISC DIALOGEX 0, 0, 298, 214
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LISTBOX         IDC_MISC_PROPERTYLIST,0,0,297,198,LBS_OWNERDRAWVARIABLE | LBS_HASSTRINGS | LBS_NOINTEGRALHEIGHT | NOT WS_BORDER | WS_VSCROLL | WS_TABSTOP,WS_EX_STATICEDGE
+END
+
+IDD_CHANNELPROPERTIES DIALOGEX 0, 0, 240, 162
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Channel Properties"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_CHANNELPROPERTIES_TOPIC,14,33,211,44,ES_MULTILINE | ES_AUTOVSCROLL
+    CONTROL         "Key",IDC_CHANNELPROPERTIES_KEY,"Button",BS_AUTOCHECKBOX | BS_LEFTTEXT | WS_TABSTOP,14,84,39,12
+    EDITTEXT        IDC_CHANNELPROPERTIES_KEYSTRING,60,84,165,13,ES_MULTILINE | ES_AUTOHSCROLL
+    CONTROL         "Limit",IDC_CHANNELPROPERTIES_LIMIT,"Button",BS_AUTOCHECKBOX | BS_LEFTTEXT | WS_TABSTOP,14,102,39,12
+    EDITTEXT        IDC_CHANNELPROPERTIES_LIMITSTRING,60,102,60,13,ES_MULTILINE | ES_NUMBER
+    CONTROL         "Invite",IDC_CHANNELPROPERTIES_INVITE,"Button",BS_AUTOCHECKBOX | BS_LEFTTEXT | WS_TABSTOP,14,121,39,12
+    DEFPUSHBUTTON   "&OK",IDOK,119,142,50,14
+    PUSHBUTTON      "&Cancel",IDCANCEL,175,142,50,14
+    GROUPBOX        "Adjustable channel settings",IDC_CHANNELPROPERTIES_SETTINGSFRAME,7,7,226,113,0,WS_EX_TRANSPARENT
+    LTEXT           "Topic",IDC_STATIC,14,19,18,8
+END
+
+IDD_EDITNOTIFICATION DIALOGEX 0, 0, 250, 202
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Edit Notification"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "&Select Event Type",IDC_STATIC,12,4,60,13,SS_CENTERIMAGE
+    COMBOBOX        IDC_EN_EVENT,78,4,108,91,CBS_DROPDOWNLIST | CBS_SORT | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "E&nabled",IDC_EN_ENABLED,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,193,4,50,16
+    GROUPBOX        "Audible Notification",IDC_EN_AUDIBLERECTANGLE,7,20,236,61,0,WS_EX_TRANSPARENT
+    CONTROL         "&Play Sound",IDC_EN_HASSOUND,"Button",BS_AUTOCHECKBOX | BS_LEFTTEXT | WS_TABSTOP,12,29,60,16
+    CONTROL         "S&ystem Sound",IDC_EN_SYSTEMSOUND,"Button",BS_AUTORADIOBUTTON | BS_LEFTTEXT,12,45,60,16
+    COMBOBOX        IDC_EN_SELECTSYSTEMSOUND,78,47,108,59,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Play &file",IDC_EN_SOUNDFILE,"Button",BS_AUTORADIOBUTTON | BS_LEFTTEXT,12,65,60,12
+    EDITTEXT        IDC_EN_FILENAME,78,63,108,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "&Browse",IDC_EN_BROWSE,193,63,44,14
+    GROUPBOX        "Visual Notification",IDC_EN_VISUALRECTANGLE,7,87,236,90,0,WS_EX_TRANSPARENT
+    CONTROL         "Flash &Taskbar",IDC_EN_FLASHTASKBAR,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,96,60,13
+    LTEXT           "&String/RegExp",IDC_STATIC,12,112,60,13,SS_CENTERIMAGE
+    EDITTEXT        IDC_EN_MATCHSTRING,78,112,108,13,ES_AUTOHSCROLL
+    LTEXT           "FG/BG colors",IDC_STATIC,12,131,60,13,SS_CENTERIMAGE
+    EDITTEXT        IDC_EN_FOREGROUNDCOLOR,78,131,60,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EN_BACKGROUNDCOLOR,161,131,60,13,ES_AUTOHSCROLL
+    CONTROL         "Highlight whole line",IDC_EN_HIGHLIGHTWHOLELINE,"Button",BS_AUTOCHECKBOX | BS_LEFT | WS_TABSTOP,12,147,101,13
+    CONTROL         "Case Sensitive",IDC_EN_HIGHLIGHTCASESENSITIVE,"Button",BS_AUTOCHECKBOX | BS_LEFT | WS_TABSTOP,120,147,117,13
+    DEFPUSHBUTTON   "&OK",ID_EN_OK,136,180,50,14
+    PUSHBUTTON      "&Cancel",IDCANCEL,193,180,50,14
+    PUSHBUTTON      "...",IDC_EN_PICKFGCOLOR,141,131,14,13
+    PUSHBUTTON      "...",IDC_EN_PICKBGCOLOR,223,131,14,13
+    CONTROL         "Log in the event log",IDC_EN_LOGINEVENTLOG,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,12,163,101,10
+END
+
+IDD_EDITBUDDYGROUP DIALOGEX 0, 0, 196, 57
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Buddy Group"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    COMBOBOX        IDC_EBG_NETWORK,43,20,146,65,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "&OK",ID_EBG_OK,82,36,50,14
+    PUSHBUTTON      "&Cancel",IDCANCEL,139,36,50,14
+    RTEXT           "N&etwork",IDC_STATIC,7,20,30,13,SS_CENTERIMAGE
+    EDITTEXT        IDC_EBG_NAME,43,7,146,12,ES_AUTOHSCROLL
+    RTEXT           "&Name",IDC_STATIC,7,7,30,13,SS_CENTERIMAGE
+END
+
+IDD_PREFS_FILTERS DIALOGEX 0, 0, 250, 170
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    COMBOBOX        IDC_FILTERS_OBJECT,60,0,120,104,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LISTBOX         IDC_FILTERS_UNUSED,0,18,94,132,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "&Add >",IDC_FILTERS_ADD,100,18,50,13
+    PUSHBUTTON      "< &Delete",IDC_FILTERS_DELETE,100,37,50,13
+    LISTBOX         IDC_FILTERS_USED,156,18,94,132,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_TABSTOP
+    CONTROL         "Include",IDC_FILTERS_INCLUDE,"Button",BS_AUTORADIOBUTTON | BS_CENTER,100,56,50,10
+    CONTROL         "Exclude",IDC_FILTERS_EXCLUDE,"Button",BS_AUTORADIOBUTTON | BS_CENTER,100,72,41,10
+    RTEXT           "Select Object:",IDC_STATIC,0,0,52,12,SS_CENTERIMAGE
+    CTEXT           "Unused List",IDC_FILTERS_UNUSEDTEXT,0,150,94,19
+    CTEXT           "Used List",IDC_FILTERS_USEDTEXT,156,150,94,19
+END
+
+IDD_EDITSERVER DIALOGEX 0, 0, 250, 110
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Add/Edit Server"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "&Description",IDC_STATIC,7,7,59,13,SS_CENTERIMAGE
+    EDITTEXT        IDC_ESRV_DESCRIPTION,72,7,171,13,ES_AUTOHSCROLL
+    LTEXT           "&Address / Port",IDC_STATIC,7,23,59,13,SS_CENTERIMAGE
+    EDITTEXT        IDC_ESRV_ADDRESS,72,23,114,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_ESRV_PORT,193,23,50,13,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "&Network",IDC_STATIC,7,39,59,13,SS_CENTERIMAGE
+    COMBOBOX        IDC_ESRV_NETWORK,72,40,114,108,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "&Priority",IDC_STATIC,7,55,59,13,SS_CENTERIMAGE
+    COMBOBOX        IDC_ESRV_PRIORITY,72,56,71,70,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Pa&ssword / Verify",IDC_STATIC,7,71,59,13,SS_CENTERIMAGE
+    EDITTEXT        IDC_ESRV_PASSWORD,72,71,84,13,ES_PASSWORD | ES_AUTOHSCROLL
+    EDITTEXT        IDC_ESRV_PASSWORD2,159,71,84,13,ES_PASSWORD | ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "&OK",ID_ESRV_OK,136,89,50,13
+    PUSHBUTTON      "&Cancel",IDCANCEL,193,89,50,13
+END
+
+IDD_PREFS_LOGGING DIALOGEX 0, 0, 390, 260
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "Enable Logging (Toggling this stops/starts logging for ALL open windows)",IDC_LOGGING_ENABLE,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,0,390,13
+    LTEXT           "Log Root Folder",IDC_STATIC,0,13,104,13,SS_CENTERIMAGE
+    CONTROL         "Create Folder For Network",IDC_LOGGING_CREATENETWORKFOLDER,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,104,13,286,13
+    EDITTEXT        IDC_LOGGING_LOGROOTFOLDER,0,26,390,13,ES_AUTOHSCROLL
+    CONTROL         "Log Server Windows",IDC_LOGGING_LOGSERVER,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,45,104,12
+    CONTROL         "Strip Codes",IDC_LOGGING_SERVERSTRIPCODES,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,104,44,286,13
+    EDITTEXT        IDC_LOGGING_SERVERLOGFORMAT,0,57,390,13,ES_AUTOHSCROLL
+    CONTROL         "Log Channel Windows",IDC_LOGGING_LOGCHANNEL,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,76,104,13
+    CONTROL         "Strip Codes",IDC_LOGGING_CHANNELSTRIPCODES,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,104,76,286,13
+    EDITTEXT        IDC_LOGGING_CHANNELLOGFORMAT,0,89,390,13,ES_AUTOHSCROLL
+    CONTROL         "Log Query Windows",IDC_LOGGING_LOGQUERY,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,108,104,13
+    CONTROL         "Strip Codes",IDC_LOGGING_QUERYSTRIPCODES,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,104,108,286,13
+    EDITTEXT        IDC_LOGGING_QUERYLOGFORMAT,0,121,390,13,ES_AUTOHSCROLL
+    CONTROL         "Log DCC Chat Windows",IDC_LOGGING_LOGDCCCHAT,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,1,140,90,13
+    CONTROL         "Strip Codes",IDC_LOGGING_DCCCHATSTRIPCODES,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,104,140,286,13
+    EDITTEXT        IDC_LOGGING_DCCCHATLOGFORMAT,0,153,390,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_LOGGING_LOGVIEWER,0,182,339,13,ES_AUTOHSCROLL
+    LTEXT           "Log file viewer",IDC_STATIC,0,169,96,13,SS_CENTERIMAGE
+    PUSHBUTTON      "Browse",IDC_LOGGING_LOGVIEWERBROWSE,347,182,42,13
+END
+
+IDD_PREFS_MESSAGES DIALOGEX 0, 0, 250, 170
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "Forward Messages - Display private messages to the active window",IDC_MESSAGES_FORWARDMESSAGES,
+                    "Button",BS_AUTOCHECKBOX | BS_MULTILINE | WS_TABSTOP,0,0,249,13
+    CONTROL         "Forward Notices - Display notice messages to the active window",IDC_MESSAGES_FORWARDNOTICES,
+                    "Button",BS_AUTOCHECKBOX | BS_MULTILINE | WS_TABSTOP,0,13,249,13
+    CONTROL         "Channel Member Notices Only - Show notices in channel only if the person sending the notice is present in the channel",IDC_MESSAGES_CHANNELMEMBERNOTICESONLY,
+                    "Button",BS_AUTOCHECKBOX | BS_MULTILINE | WS_TABSTOP,13,26,236,20
+    CONTROL         "Cross Network Notice Forwarding - Show notice messages in the active window if the message comes from a user on another network",IDC_MESSAGES_CROSSNETWORKNOTICEFORWARDING,
+                    "Button",BS_AUTOCHECKBOX | BS_MULTILINE | WS_TABSTOP,13,46,236,20
+    CONTROL         "Create Query Windows Automatically",IDC_MESSAGES_CREATEQUERYWINDOWSAUTOMATICALLY,
+                    "Button",BS_AUTOCHECKBOX | BS_MULTILINE | WS_TABSTOP,0,66,249,13
+    CONTROL         "Hide query windows when they're created",IDC_MESSAGES_CREATEQUERYWINDOWSHIDDEN,
+                    "Button",BS_AUTOCHECKBOX | BS_MULTILINE | WS_TABSTOP,13,79,236,13
+    CONTROL         "Restrict private messages to query windows",IDC_MESSAGES_RESTRICTMESSAGES,
+                    "Button",BS_AUTOCHECKBOX | BS_MULTILINE | WS_TABSTOP,13,92,236,13
+    CONTROL         "Restrict notice messages to query windows",IDC_MESSAGES_RESTRICTNOTICES,
+                    "Button",BS_AUTOCHECKBOX | BS_MULTILINE | WS_TABSTOP,13,105,236,13
+    EDITTEXT        IDC_MESSAGES_QUERYNOTIFYREACTIVATEDELAY,13,118,30,12,ES_RIGHT | ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "Seconds between private message notification sounds",IDC_STATIC,49,118,200,13,SS_CENTERIMAGE
+    CONTROL         "Remove Privmsg Items",IDC_MESSAGES_REMOVEPRIVMSGITEMS,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,137,92,13
+    EDITTEXT        IDC_MESSAGES_MAXPRIVMSGLOGITEMS,96,137,28,13,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "Max Items",IDC_STATIC,128,137,34,13,SS_CENTERIMAGE
+    EDITTEXT        IDC_MESSAGES_MAXPRIVMSGLOGAGEMINS,166,137,30,13,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "Max Item Age",IDC_STATIC,202,137,47,13,SS_CENTERIMAGE
+    CONTROL         "Remove Notice Items",IDC_MESSAGES_REMOVENOTICEITEMS,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,0,157,92,13
+    EDITTEXT        IDC_MESSAGES_MAXNOTICELOGITEMS,96,157,28,13,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "Max Items",IDC_STATIC,128,157,34,13,SS_CENTERIMAGE
+    EDITTEXT        IDC_MESSAGES_MAXNOTICELOGAGEMINS,166,157,30,13,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "Max Item Age",IDC_STATIC,202,157,47,13,SS_CENTERIMAGE
+END
+
+IDD_PREFS_COMMANDPROFILES DIALOGEX 0, 0, 250, 170
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    EDITTEXT        IDC_COMMANDPROFILES_NAME,0,0,90,13,ES_AUTOHSCROLL
+    PUSHBUTTON      "Add",IDC_COMMANDPROFILES_ADD,96,0,35,13
+    PUSHBUTTON      "Rename",IDC_COMMANDPROFILES_RENAME,135,0,35,13
+    PUSHBUTTON      "Delete",IDC_COMMANDPROFILES_DELETE,175,0,35,13
+    PUSHBUTTON      "Copy",IDC_COMMANDPROFILES_COPY,214,0,35,13
+    LTEXT           "Profiles",IDC_STATIC,0,19,90,13,SS_CENTERIMAGE
+    LTEXT           "Commands",IDC_STATIC,96,19,153,13,SS_CENTERIMAGE
+    LISTBOX         IDC_COMMANDPROFILES_PROFILES,0,32,90,137,LBS_SORT | LBS_NOINTEGRALHEIGHT | WS_VSCROLL | WS_HSCROLL | WS_TABSTOP
+    EDITTEXT        IDC_COMMANDPROFILES_COMMANDS,96,32,153,137,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_WANTRETURN | WS_DISABLED | WS_VSCROLL | WS_HSCROLL
+END
+
+IDD_FAVORITES DIALOGEX 0, 0, 218, 188
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Organize Favorites"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CONTROL         "",IDC_FAVORITES_TREE,"SysTreeView32",TVS_HASBUTTONS | TVS_HASLINES | TVS_LINESATROOT | TVS_EDITLABELS | TVS_SHOWSELALWAYS | WS_BORDER | WS_TABSTOP,5,5,208,133
+    PUSHBUTTON      "&Delete",IDC_FAVORITES_DELETE,66,169,55,14
+    PUSHBUTTON      "&New Folder",IDC_FAVORITES_NEWFOLDER,5,169,55,14
+    LTEXT           "You can edit items by clicking on them and then clicking them again (just like you rename files in Windows Explorer)",IDC_FAVORITES_NOTE,5,144,208,19
+    DEFPUSHBUTTON   "C&lose",IDOK,163,169,50,14
+END
+
+IDD_FAVORITESADD DIALOGEX 0, 0, 274, 190
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Add To Favorites"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "HydraIRC will add this item to your favorites list",IDC_STATIC,5,5,207,13,SS_CENTERIMAGE
+    LTEXT           "&Name",IDC_STATIC,5,24,25,13,SS_CENTERIMAGE
+    EDITTEXT        IDC_FAVORITESADD_NAME,34,24,122,13,ES_AUTOHSCROLL
+    CONTROL         "",IDC_FAVORITESADD_TREE,"SysTreeView32",TVS_HASBUTTONS | TVS_HASLINES | TVS_LINESATROOT | TVS_EDITLABELS | TVS_DISABLEDRAGDROP | TVS_SHOWSELALWAYS | WS_BORDER | WS_TABSTOP,5,43,264,142
+    DEFPUSHBUTTON   "&OK",IDOK,219,5,50,13
+    PUSHBUTTON      "&Cancel",IDCANCEL,219,24,50,13
+    PUSHBUTTON      "&New Folder",IDC_FAVORITESADD_NEWFOLDER,162,24,50,13
+END
+
+IDD_ADDNETWORK DIALOGEX 0, 0, 234, 55
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Add/Edit Network"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Network Name",IDC_STATIC,5,5,60,12,SS_CENTERIMAGE
+    EDITTEXT        IDC_ANET_NAME,74,5,155,12,ES_AUTOHSCROLL
+    LTEXT           "Preferred Identity",IDC_STATIC,5,20,60,12,SS_CENTERIMAGE
+    COMBOBOX        IDC_ANET_IDENTITYLIST,74,20,155,30,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",ID_ANET_OK,125,36,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,179,36,50,14
+END
+
+IDD_CHANNELLIST DIALOGEX 0, 0, 346, 250
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Channel List"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "Select",ID_CHANNELLIST_SELECTGROUP,5,5,336,56,0,WS_EX_TRANSPARENT
+    LTEXT           "Show",IDC_STATIC,12,12,25,12,SS_CENTERIMAGE
+    CONTROL         "All Channels",ID_CHANNELLIST_SHOWALL,"Button",BS_AUTORADIOBUTTON,43,12,78,12
+    CONTROL         "Favorites (for this network)",ID_CHANNELLIST_SHOWFAVORITES,
+                    "Button",BS_AUTORADIOBUTTON | WS_DISABLED,127,12,104,12
+    LTEXT           "Search",IDC_STATIC,12,28,25,12,SS_CENTERIMAGE
+    COMBOBOX        ID_CHANNELLIST_SEARCHSELECT,43,28,78,60,CBS_DROPDOWNLIST | WS_DISABLED | WS_VSCROLL | WS_TABSTOP
+    EDITTEXT        ID_CHANNELLIST_SEARCHTEXT,127,28,158,12,ES_AUTOHSCROLL | WS_DISABLED
+    LTEXT           "Users",IDC_STATIC,12,44,25,12,SS_CENTERIMAGE
+    EDITTEXT        ID_CHANNELLIST_USERSMIN,43,44,40,12,ES_AUTOHSCROLL | WS_DISABLED
+    LTEXT           "Min",IDC_STATIC,87,44,34,12,SS_CENTERIMAGE
+    EDITTEXT        ID_CHANNELLIST_USERSMAX,127,44,40,12,ES_AUTOHSCROLL | WS_DISABLED
+    LTEXT           "Max (Leave blank for no min/max)",IDC_STATIC,171,44,114,12,SS_CENTERIMAGE
+    CONTROL         "",ID_CHANNELLIST_LIST,"SysListView32",LVS_REPORT | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | WS_BORDER | WS_TABSTOP,5,65,336,160
+    PUSHBUTTON      "Populate List",ID_CHANNELLIST_POPULATE,5,231,100,14
+    CONTROL         "",ID_CHANNELLIST_PROGRESS,"msctls_progress32",WS_BORDER,111,231,118,14
+    DEFPUSHBUTTON   "Join",ID_CHANNELLIST_JOIN,236,231,50,14
+    PUSHBUTTON      "Close",IDCANCEL,291,231,50,14
+END
+
+IDD_PREFS_SELECTCHILD DIALOGEX 0, 0, 250, 170
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    CTEXT           "\n\n\n\n\nPlease select a child item from the tree on the left",IDC_STATIC_INFO,0,0,250,150
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_PREFS, DIALOG
+    BEGIN
+        RIGHTMARGIN, 421
+        VERTGUIDE, 117
+        VERTGUIDE, 123
+        BOTTOMMARGIN, 254
+        HORZGUIDE, 16
+        HORZGUIDE, 240
+    END
+
+    IDD_PREFS_BUDDYGROUPS, DIALOG
+    BEGIN
+        VERTGUIDE, 217
+        VERTGUIDE, 250
+        VERTGUIDE, 283
+        HORZGUIDE, 208
+    END
+
+    IDD_ADDNETWORK, DIALOG
+    BEGIN
+        LEFTMARGIN, 5
+        RIGHTMARGIN, 229
+        VERTGUIDE, 74
+        TOPMARGIN, 5
+        BOTTOMMARGIN, 50
+        HORZGUIDE, 20
+    END
+
+    IDD_CHANNELLIST, DIALOG
+    BEGIN
+        LEFTMARGIN, 5
+        RIGHTMARGIN, 341
+        TOPMARGIN, 5
+        BOTTOMMARGIN, 245
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_TOOLBAR             BITMAP                  "res\\toolbar.bmp"
+IDB_SERVERLIST          BITMAP                  "res\\serverlist.bmp"
+IDB_USERLIST            BITMAP                  "res\\userlist.bmp"
+IDB_TRANSFER            BITMAP                  "res\\transfer.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDR_MAINFRAME           "HydraIRC"
+    ID_CHANNEL_PROPERTIES   "Show channel properties"
+    ID_CHANNEL_SHOWSERVER   "Show the Server window that belongs to this channel"
+    ID_CHANNEL_USERLIST     "Show or hide the active channel's user list\nToggle Channel User List"
+    ID_EDIT_CLEARBUFFER     "Clear Buffer\nErase"
+    ID_EDIT_COPYBUFFER      "Copy the whole buffer to the clipboard\nCopy Buffer"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_CHANNEL_MONITOR      "Start or stop channel monitoring\nStart Stop Monitoring"
+    IDR_TASKBAR             "HydraIRC"
+    ID_EDIT_REPEATFIND      "Reapeat find\nRepeat find"
+    IDC_CHILDFRAME_CLEARBUFFER "Clear the buffer"
+    IDC_CHILDFRAME_COPYBUFFER "Copy the whole buffer to the clipboard"
+END
+
+STRINGTABLE 
+BEGIN
+    IDC_CHILDFRAME_VIEWLOGFILE "View the log file using the log file viewer"
+    ID_OPTIONS_LOGGING      "Toggle File Logging\nToggle File Logging"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_CONNECT         "Connect\nConnect"
+    ID_FILE_DISCONNECT      "Disconnect\nDisconnect"
+    ID_RECENTSERVERS_NONE   "<comment/ip address here>"
+    ID_VIEW_CHANNELMONITOR  "Toggle the channel monitor window\nToggle channel monitor window"
+    ID_VIEW_GLOBALUSERLIST  "Toggle the global user list\nToggle global user list"
+    ID_VIEW_IRCSERVERLIST   "Show or hide the IRC server list\nToggle Server List"
+    ID_VIEW_NOTICEQUEUE     "Show or hide the notice queue\nToggle Notice Queue"
+    ID_VIEW_OUTPUT          "Toggle the output window\nToggle output window"
+    ID_VIEW_PRIVMSGQUEUE    "Show or hide the private message queue\nToggle PrivMsg Queue"
+    ID_VIEW_TRANSFERS       "Show or hide the transfers\nToggle Transfers"
+    ID_WINDOW_MINIMIZEACTIVEWINDOW "Minimize the active window"
+    ID_WINDOW_MINIMIZEALLWINDOWS 
+                            "Minimize all child windows\nHide all child windows"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_OPTIONS_TIMESTAMPS   "Toggle timestamps\nToggle timestamps"
+    ID_OPTIONS_AUDIOMUTE    "Toggle Audio Mute\nToggle Audio Mute"
+    ID_OPTIONS_PREFS        "Change the options!"
+    ID_HELP_RECENTCHANGES   "Views CHANGES.TXT"
+    ID_HELP_ONLINEDOCUMENTATION 
+                            "Read and contribute to HydraIRC's documentation"
+    ID_CONTEXT_CYCLE        "Part and Rejoin the channel"
+    ID_OPTIONS_TOGGLEUSERLIST 
+                            "Toggle User List\nToggle User List for this window"
+    ID_OPTIONS_TOGGLEINFO   "Toggle Info\nToggle Info View for this window"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_HELP_HYDRAIRCONTHEWEB "HydraIRC home page\nHydraIRC home page"
+    ID_VIEW_SERVERMONITOR   "Toggle the server monitor window\nToggle server monitor window"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application\nExit"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_WINDOW_NEW           "Open another window for the active document\nNew Window"
+    ID_WINDOW_ARRANGE       "Arrange icons at the bottom of the window\nArrange Icons"
+    ID_WINDOW_CASCADE       "Arrange windows so they overlap\nCascade Windows"
+    ID_WINDOW_TILE_HORZ     "Arrange windows as non-overlapping tiles\nTile Windows"
+    ID_WINDOW_TILE_VERT     "Arrange windows as non-overlapping tiles\nTile Windows"
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "Find text in the buffer\nFind in buffer"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_REPEAT          "Repeat Find\nRepeat Find"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle ToolBar"
+    ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle StatusBar"
+END
+
+STRINGTABLE 
+BEGIN
+    ATL_IDS_SCSIZE          "Change the window size"
+    ATL_IDS_SCMOVE          "Change the window position"
+    ATL_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    ATL_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    ATL_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    ATL_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    ATL_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE 
+BEGIN
+    ATL_IDS_SCRESTORE       "Restore the window to normal size"
+    ATL_IDS_SCTASKLIST      "Activate Task List"
+    ATL_IDS_MDICHILD        "Activate this window"
+END
+
+STRINGTABLE 
+BEGIN
+    ATL_IDS_IDLEMESSAGE     "Ready"
+END
+
+STRINGTABLE 
+BEGIN
+    ATL_IDS_MRU_FILE        "Open this document"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_NEW             "New Server Window\nNew Server"
+    ID_FILE_CLOSE           "Close Window\nClose Window"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_HELP_DOCUMENTATION   "Documentation"
+    ID_HELP_REPORTABUG      "Report bugs here!"
+    ID_HELP_FORUMS          "Request help, features and have your say"
+    ID_VIEW_EVENTLOG        "Show or hide the event log\nToggle Event log"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_OPTIONS_TOGGLEHEADER "Toggle Header\nToggle Header for this window"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.K.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENG)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_UK
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_DCCCHAT_CONTEXT MENU 
+BEGIN
+    POPUP "Context"
+    BEGIN
+        MENUITEM "&Logging",                    ID_OPTIONS_LOGGING, CHECKED
+        MENUITEM "&Timestamps",                 ID_OPTIONS_TIMESTAMPS, CHECKED
+        MENUITEM "View L&og",                   IDC_CHILDFRAME_VIEWLOGFILE
+        MENUITEM "&Copy Buffer",                IDC_CHILDFRAME_COPYBUFFER
+        MENUITEM "Clear &Buffer",               IDC_CHILDFRAME_CLEARBUFFER
+    END
+END
+
+#endif    // English (U.K.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "res\\HydraIRC.exe.manifest"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
