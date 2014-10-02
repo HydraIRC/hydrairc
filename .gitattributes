@@ -1,0 +1,12 @@
+*.md text
+*.c text
+*.cpp text
+*.i rext
+*.h text
+*.cc text
+*.S text
+*.s text
+*.exe -text
+*.xml text
+*.bat eol=crlf
+*.txt text
