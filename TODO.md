@@ -187,7 +187,7 @@ tweak connect/disconnect/new server icons
 Weird issue with irc.ufnet.org/betas, channel text was ignored,
 probably a dodgy ircd, need socket logging information to fix this. (zero_cool)
 
-<tium> when dcc receiving a file containing "umlauts", the filename is cropped. ie "abcd¸efg12345.ext" turns into "efg12345.ext"
+<tium> when dcc receiving a file containing "umlauts", the filename is cropped. ie "abcd√ºefg12345.ext" turns into "efg12345.ext"
 
 when richedit is replaced, allow child windows to have a split view, so that the top of
 the window can be used to scroll back in the buffer and the bottom of the window acts
@@ -203,7 +203,7 @@ show recent queries on server item context menu
 
 add a check to see if /exec is already execing the current command profile to prevent endless loops
 
-the command profiles dont accept special chars (Ê¯Â¯ fx.) (Anders)
+the command profiles dont accept special chars (√¶√∏√•√∏ fx.) (Anders)
 
 set the irc:// control to display "irc://" if the server window that it relates to has *never* been connected...
 
@@ -316,10 +316,10 @@ e.g. View/GUI Layouts/Default|Bersirc|Klient|mIRC|Professional|Basic|etc
 
 [09:52] <eaze\> hey, first of all I just want to say that this seems to be a great client.. just want
 to report a bug.. 1) I can't join channels that have a ' character in the name
-[09:53] <eaze\> 2) I can't use special characters like ∆, ÿ and ≈ in for example my profile (all of
+[09:53] <eaze\> 2) I can't use special characters like √Ü, √ò and √Ö in for example my profile (all of
 those characters are in the norwegian alphabet)
-[20:08] <Hydra> I can "/join #sdfsdfÿÿ∆ÿ∆ÿÿtest" just fine
---> might be referring to the saving of a "/join ÿÿ∆ÿ∆ÿÿ" in a command profile to the xml file
+[20:08] <Hydra> I can "/join #sdfsdf√ò√ò√Ü√ò√Ü√ò√òtest" just fine
+--> might be referring to the saving of a "/join √ò√ò√Ü√ò√Ü√ò√ò" in a command profile to the xml file
 
 [21:19] <Hydra> i probably need to restore the app before closing it so i can save the window
 positions correctly
@@ -891,7 +891,7 @@ that of a network based group called "fserves" with a user of "mybot" so that wh
 you join a channel on that network the user "mybot" appears in "fserves" and not
 "bots")
 
-Display this in RUSSIAN_CHARSET correctly: "œ?ÔÓ‚ÂÍÂ ÔÓ˜Ú??ÍÓ„‰?Ì‡ ÙÚ?Á‡ÈÚ?Ô˚Ú‡Â¯¸Òˇ"
+Display this in RUSSIAN_CHARSET correctly: "√è√∞?√Ø√∞√Æ√¢√•√∞√™√• √Ø√Æ√∑√≤??√™√Æ√£√§?√≠√† √¥√≤?√ß√†√©√≤?√Ø√ª√≤√†√•√∏√º√±√ø"
 
 Inter-process communicaton
 ==========================
@@ -1400,7 +1400,7 @@ BUG: atlregexp class is broken, need to find a replacement.
 
   Where %s is replaced with the configured highlight stringregexp part.
 
-  "´" and "ª" characters cause ATLRegExp to crash, so some code was commented out
+  "¬´" and "¬ª" characters cause ATLRegExp to crash, so some code was commented out
   to avoid the crash, but this breaks the regexp routine in some weird ways, still
   it seems to work ok for some regexps but not for others.
 
@@ -1610,7 +1610,7 @@ BUG:
   This is 3rd party code however.
 
 BUG:
-  PARSE: "<dad3v1l> 13(05file servers online13) trigger: 05w00t mp3's!13. snagged: 0549.81gb in 986 files13. min cps: 0529.3kb/s13. record cps: 05153.0kb/s by g-nome13. online: 050/513. sends: 050/113. queues: 050/513. accessed: 052730 times13. note: 05-=-=-=- !mp3's - enjoy! -=-=-=-13. 13´~05{13polaris se05}13~ª"
+  PARSE: "<dad3v1l> 13(05file servers online13) trigger: 05w00t mp3's!13. snagged: 0549.81gb in 986 files13. min cps: 0529.3kb/s13. record cps: 05153.0kb/s by g-nome13. online: 050/513. sends: 050/113. queues: 050/513. accessed: 052730 times13. note: 05-=-=-=- !mp3's - enjoy! -=-=-=-13. 13¬´~05{13polaris se05}13~¬ª"
   with regexp: "^{(.)*?!\a?}{hydra}{!\a(.)*?}$"
 
   causes crash in atlrx.h, commented out some code to avoid crash, unknown
@@ -1620,7 +1620,7 @@ UNFIXABLE:
   typing in "DCC CHAT" into a channel window causes a disconnect when using kerio personal firewall 5.0.2's irc packet inspector
 
 UNFIXABLE:
- "[2003-02-10 09:39:48] *** dewzer quit (test ˆver)"
+ "[2003-02-10 09:39:48] *** dewzer quit (test √∂ver)"
                                                  ^ this caused line spacing to be borked...
      "[2003-02-10 09:47:58] <Switch_> in chat window, i notice that sometimes the line spacing is wider after some time. Anyone notice that?"
 --> Had a look at the line spacing issue, doing GetParaFormat() returns
