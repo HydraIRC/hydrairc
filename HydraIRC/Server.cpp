@@ -104,7 +104,7 @@ char *g_QuitMessages[] =
   //"\002HydraIRC\002 -> http://www.hydrairc.com <- IRC for those that like to be different",
   "Want to be different? Try \002HydraIRC\002 -> http://www.hydrairc.com <-",
   "\002HydraIRC\002 -> http://www.hydrairc.com <- The alternative IRC client",
-  "\002HydraIRC\002 -> http://www.hydrairc.com <- Like it?  Visit #hydrairc on EFNet",
+  "\002HydraIRC\002 -> http://www.hydrairc.com <- Like it?  Visit #hydrairc on Freenode",
   "\002HydraIRC\002 -> http://www.hydrairc.com <- Would you like to know more?",
   "\002HydraIRC\002 -> http://www.hydrairc.com <- Organize your IRC",
   "\002HydraIRC\002 -> http://www.hydrairc.com <- Now with extra fish!",
