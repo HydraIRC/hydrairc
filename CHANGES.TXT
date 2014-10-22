@@ -540,7 +540,7 @@ Key:
     
     1) change current server to irc.efnet.net, port 6667 and join #test
     
-    /server irc://irc.efnet.net:6667/#test
+    /server irc://irc.freenode.net:6667/#test
     
     2) new server window to myserver.mydomain.com port 7000, server password is mypassword
 
@@ -548,7 +548,7 @@ Key:
 
     3) change server to irc.efnet.net and open a query window to "hydra"    
     
-    /server irc://irc.efnet.net/hydra,isnick
+    /server irc://irc.freenode.net/hydra,isnick
     
     todo: you can't specify a server password *and* uri params yet why? because the irc
     uri specification sucks balls and needs updating, we only support [,<password>] because
@@ -1233,7 +1233,7 @@ Key:
 07/October/2003 - PM (0.3.091) - Experimental - for #HydraIRC users only.
   Hydra
   * Tweaked the ATLRegExp stuff so that a workaround breaks less regexp's
-    ("®" and "¯" caused an unmodified ATLRegExp class to crash) 
+    ("Â®" and "Â¯" caused an unmodified ATLRegExp class to crash) 
     NOTE: this change might cause instability depending on the content
     of some user's channel output.
 
@@ -1951,14 +1951,14 @@ Key:
     offending line:
     if (pBits[u >> 3] & 1 << (u & 0x7))
     
-    u >> 3 was a really big number when *sz == "«"
+    u >> 3 was a really big number when *sz == "Â«"
 
     i commented out the section around that line and made the if() always evaluate to FALSE
     
     like this:
     
-    // FIXME: hydra - if *sz == "«" this crashes!!
-    // "input string "> «"
+    // FIXME: hydra - if *sz == "Â«" this crashes!!
+    // "input string "> Â«"
     // regexp: "^{(.)*?!\a?}{hydra}{!\a(.)*?}$"
 
 		// if (pBits[u >> 3] & 1 << (u & 0x7))
@@ -4389,7 +4389,7 @@ Key:
 
     In addition to this, I just had a quick look at wordpad, which is a
     rich-edit 3 program.  And even that can't display this:
-    "Ïð?ïðîâåðêå ïî÷ò??êîãä?íà ôò?çàéò?ïûòàåøüñÿ" correctly.
+    "ÃÃ°?Ã¯Ã°Ã®Ã¢Ã¥Ã°ÃªÃ¥ Ã¯Ã®Ã·Ã²??ÃªÃ®Ã£Ã¤?Ã­Ã  Ã´Ã²?Ã§Ã Ã©Ã²?Ã¯Ã»Ã²Ã Ã¥Ã¸Ã¼Ã±Ã¿" correctly.
     It doesn't let you select or change the charset/script!
 
     There are also a few other RichEdit based text editors "out there"
@@ -5408,7 +5408,7 @@ Key:
     changes their nick.
   - A few code optimisations.
   - Fixed a debug assert for this character --------------v (and all high-ascii chars)
-    ":BosjeR!~Freggel@D5E0BCC9.kabel.telenet.be QUIT :\o/ ¬o STICK 'EM UP"
+    ":BosjeR!~Freggel@D5E0BCC9.kabel.telenet.be QUIT :\o/ Â¬o STICK 'EM UP"
   - Added support for servers with a '-' character (Thanks Zann)
   - Moved a few global variables into the prefs class, so that we can work on
     a copy of the items when editing the prefs, and then simply switch the pointers
