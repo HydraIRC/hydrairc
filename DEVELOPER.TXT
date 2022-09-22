@@ -41,7 +41,7 @@ your own.
 
 VISUAL STUDIO 2008 NOTES: 
 
-Visual Studio 2008 and forward NO LONGER REQUIRE #define vsnprintf _vsnprintf. You must comment this out of libxml2's win32config.h for the included (2002-11-26) version listed below for the build to succeed.
+Visual Studio 2008 and forward NO LONGER REQUIRE #define vsnprintf _vsnprintf. You must comment this out of libxml2's win32config.h for the included (2.4.24) version listed below for the build to succeed.
 
 The ATL Server package has become almost impossible to find as a regular download, but it can now be obtained at https://github.com/gabegundy/atlserver
 
