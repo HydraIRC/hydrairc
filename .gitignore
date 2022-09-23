@@ -14,8 +14,12 @@ HydraIRC/Plugins/Uptime/Debug/*
 HydraIRC/Plugins/WinAMP/Debug/*
 HydraIRC/Libs/HydraIRCPlugin/Debug/*
 HydraIRC/Plugins/Default/Debug/*
+# Ignore release build artifacts
+HydraIRC/libs/HydraIRCPlugin/release/*
 # Ignore compiled plugins
 HydraIRC/Plugins/WinAMP.dll
 HydraIRC/Plugins/Alias.dll
 HydraIRC/Plugins/Default.dll
 HydraIRC/Plugins/Uptime.dll
+# Ignore release build artifacts and object files
+HydraIRC/Release/*
