@@ -15,6 +15,9 @@ occuring in the regular expression matcher)
 If you want to start helping out, check out the TODO.TXT and try and fix some bugs,
 then start with some of the simpler things until you're used to the codebase.
 
+9/23/22 - gdwnldsKSC: At this point in 2022 I am rebaselining on Visual Studio 2008 to bring the libraries up to almost within a decade in preparation to bringing to newer VS versions and runtimes. Testing is only being performed on Windows 7, 8.1 10, and 11 but will probably still work just fine on Windows XP as it is now. 
+
+
 SVN Access
 ==========
 
@@ -36,6 +39,39 @@ WTL 8 - http://sourceforge.net/project/showfiles.php?group_id=109071
 HydraIRC is written and developed using Visual Studio .NET 2003 and this is the
 only supported build environment.  If you're using something else then you're on
 your own.
+
+-----------------------------------
+
+VISUAL STUDIO 2008 NOTES: 
+
+Visual Studio 2008 and forward NO LONGER REQUIRE #define vsnprintf _vsnprintf. You must comment this out of libxml2's win32config.h for the included (2.4.24 - upgrade notes to 2.5.1 listed below) version listed below for the build to succeed. 
+
+The ATL Server package has become almost impossible to find as a regular download, but it can now be obtained at https://github.com/gabegundy/atlserver
+
+You will need this in addition to the below mentioned WTL 8.0 files (Add them to your global includes for ease of use) in order to compile on VS 2008 or newer. Add the WTL 8 and ATL Server include directories to global include paths. 
+
+With the above #define removal and using the 2002-11-26 version of libxml2 Hydra builds cleanly on VS 2008 Professional with only warnings about deprecated/unsafe APIs in LibXML2 (which should be resolved by updating to a newer version, which is a work in progress). All other parts of the system build cleanly without warnings - except one.
+
+Line #532 in Plugin_WinAMP/Plugin.cpp throws a C4067 warning in VS 2008 - "unexpected tokens following preprocessor directive - expected a newline" - this is due to the '.' included in the #ifdef - #ifdef HYDRAIRC_0.3.163 throws the warning, but #ifdef HYDRAIRC_03163 does not. This code could be safely removed, as we are not targeting on building the plugin with downlevel versions anymore. 
+
+
+-----------------------------------
+
+LIBXML BUILD NOTES (Upgrade libxml to 2.5.1): A Custom VCProj file was included in the distro folder in the original hydraIRC bundle of libxml - the one included in the updated repository is straight from the libxml project.
+
+You need to take the now included .vcproj in the distribution folder and place it into \HydraIRC\libs\libxml2\win32\dsp after extracting the contents of the libxml2-LIBXML_2_5_1 folder inside libxml2-LIBXML_2_5_1.zip to \HydraIRC\libs\libxml2\
+
+Afterwards, we need to generate xmlversion.h for compilation to succeed and correct version numbers to be built into the application. Open a command prompt and navigate to \HydraIRC\libs\libxml2\win32 and execute:
+
+cscript configure.js iconv:no
+
+Above notied modificaton of commenting out #define vsnprintf _vsnprintf is still required for VS2008+.
+
+libXML2 2.5.1 will now build successfuly, and the entire HydraIRC project will now build and run. 
+
+Orignial HydraIRC-libxml2-20021126.zip is kept for reference in distribution folder, but should not be needed anymore.
+
+-----------------------------------
 
 If you are using Visual Studio .NET 2003/2002/2005 you will also need to do the following:
 

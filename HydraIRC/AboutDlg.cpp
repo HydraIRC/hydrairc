@@ -44,14 +44,16 @@ LRESULT CAboutDlg::OnInitDialog(UINT /*uMsg*/, WPARAM /*wParam*/, LPARAM /*lPara
                             "\n"
                             "Written by Dominic Clifton\n"
                             "(c) Copyright 2002-2006\n"
-                            "\n"
                             "Most icons created by srobot (many thanks!)\n"
                             "Nice images created by digismack\n"
                             "\n"
                             "Special Thanks to Zann, Imajes, 'duckman, hdaalz, fryguy, \n"
 							"digismack and the regular #HydraIRC idlers for continued support\n"
-                            "\n"
-                            "HydraIRC is Open-Source but NOT GPLd, see license for details!");
+                            "gdwnldsKSC on github providing updates and fixes to newer\n"
+							"OS support and Visual Studio versions in 2022!\n"
+							"\n"
+                            "HydraIRC is GPLv3! See orignial author's repositiory! \n"
+							"https://github.com/HydraIRC/hydrairc \n");
   m_AboutInfo.Detach();
 
 	return TRUE;
