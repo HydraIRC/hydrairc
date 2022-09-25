@@ -66,4 +66,4 @@
 #endif
 */
 
-#define AUTHORSTRING "Dominic Clifton aka Hydra\n Upgrades and newer OS and VS support by gdwnldsKSC"
+#define AUTHORSTRING "Dominic Clifton aka Hydra"
