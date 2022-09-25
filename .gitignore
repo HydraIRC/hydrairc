@@ -27,7 +27,6 @@ HydraIRC/Plugins/WinAMP/Release/*
 HydraIRC/Release/*
 HydraIRC/libs/HydraIRCPlugin/release/*
 Distribution/Release/HydraIRC_Log.txt
-Distribution/Debug Files/Release/HydraIRC.map
-Distribution/Debug Files/Release/Plugins/*
-Distribution/Debug Files/Debug/HydraIRC.map
-Distribution/Debug Files/Debug/Plugins/*
+Distribution/Debug Files/Release/*
+Distributon/Debug Files/Debug/*
+
