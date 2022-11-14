@@ -14,10 +14,20 @@ Key:
   . personal note
   (name) - the name of the person running HydraIRC who first reported
   the problem or requested the feature
+
+13/November/2022 - PM (No version change) - Experimental
+  gdwnldsKSC
+  * Fix WinAmp plugin compiler warning by removing unused legacy code and defines.
+  
+13/November/2022 - PM (0.3.168) - Experimental
+  gdwnldsKSC
+  * Update DEVELOPER.TXT with instructions relevant to WTL 9.1 and libxml2 current upstream 
+    master version (22 Oct 2022 version)
+  * Building with current LibXML2 and WTL9.1 now - WTL9.1 provides up to VS2015 compatibility.
   
 23/September/2022 - AM (0.3.167) - Experimental
   gdwnldsKSC
-  * Updated DEVELOPER.TXT with instructonis for building under Visual Studio 2008
+  * Updated DEVELOPER.TXT with instructions for building under Visual Studio 2008
   * Updated libXML2 from 2.4.24 to 2.5.1 and included updated build instructions to configure and build libXML2 in VS2008
   - Added notes in DEVELOPER.TXT on current locations to acquire necessary libraries and requirements to build.
   * Updated version number. 

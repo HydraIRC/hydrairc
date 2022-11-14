@@ -3,27 +3,17 @@
   HydraIRC
   Copyright (C) 2002-2006 Dominic Clifton aka Hydra
 
-  HydraIRC limited-use source license
-
-  1) You can:
-  1.1) Use the source to create improvements and bug-fixes to send to the
-       author to be incorporated in the main program.
-  1.2) Use it for review/educational purposes.
-
-  2) You can NOT:
-  2.1) Use the source to create derivative works. (That is, you can't release
-       your own version of HydraIRC with your changes in it)
-  2.2) Compile your own version and sell it.
-  2.3) Distribute unmodified, modified source or compiled versions of HydraIRC
-       without first obtaining permission from the author. (I want one place
-       for people to come to get HydraIRC from)
-  2.4) Use any of the code or other part of HydraIRC in anything other than 
-       HydraIRC.
-       
-  3) All code submitted to the project:
-  3.1) Must not be covered by any license that conflicts with this license 
-       (e.g. GPL code)
-  3.2) Will become the property of the author.
+  This program is free software: you can redistribute it and/or modify  
+  it under the terms of the GNU General Public License as published by  
+  the Free Software Foundation, version 3.
+ 
+  This program is distributed in the hope that it will be useful, but 
+  WITHOUT ANY WARRANTY; without even the implied warranty of 
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
+  General Public License for more details.
+ 
+  You should have received a copy of the GNU General Public License 
+  along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 */
 
@@ -529,28 +519,6 @@ void CPlugin::OnActivate( void )
     sys_Printf(BIC_ERROR,"%s: Failed to get imagelist!\n",Plugin.m_Name);
   */
 
-#ifdef HYDRAIRC_0.3.163
-/*
-  In HydraIRC <= 0.3.163 HydraIRC_GetToolbar returned the HWND of the toolbar itself
-  but attachking a ReBar and Using GetBandInfo no-longer worked (probably due to WTL 8 changes)
-  so in 0.3.164 it has been changed to returning the actual child window the holds the buttons.
-*/
-  g_hToolBarWnd = HydraIRC_GetToolbar();
-  if (!g_hToolBarWnd) {
-    sys_Printf(BIC_ERROR,"%s: Failed to get toolbar window!\n",Plugin.m_Name);
-    return;
-  }
-  
-  g_Rebar.Attach(g_hToolBarWnd);
-
-	//REBARBANDINFO rbbi = { sizeof(REBARBANDINFO), RBBIM_CHILD | RBBIM_CHILDSIZE | RBBIM_IDEALSIZE | RBBIM_STYLE };
-  REBARBANDINFO rbbi = { sizeof(REBARBANDINFO), RBBIM_CHILD };
-  if (g_Rebar.GetBandInfo(1,&rbbi) == 0) {
-    sys_Printf(BIC_ERROR,"%s: Failed to get toolbar band info!\n",Plugin.m_Name);
-    return;
-  }
-  g_Toolbar.Attach(rbbi.hwndChild);
-#else
   HWND toolbarChild = HydraIRC_GetToolbar();
   if (!toolbarChild) {
     sys_Printf(BIC_ERROR,"%s: Failed to get toolbar band info!\n",Plugin.m_Name);
@@ -558,7 +526,6 @@ void CPlugin::OnActivate( void )
   }
 
   g_Toolbar.Attach(toolbarChild);
-#endif
 
   //g_ToolbarBitmap.LoadBitmap(IDB_TOOLBAR);
 
