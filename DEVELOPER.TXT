@@ -17,24 +17,14 @@ then start with some of the simpler things until you're used to the codebase.
 
 9/23/22 - gdwnldsKSC: At this point in 2022 I am rebaselining on Visual Studio 2008 to bring the libraries up to almost within a decade in preparation to bringing to newer VS versions and runtimes. Testing is only being performed on Windows 7, 8.1 10, and 11 but will probably still work just fine on Windows XP as it is now. 
 
-
-SVN Access
-==========
-
-DO NOT COMMIT CHANGES TO THE SVN TREE.
-
-Currently there is registered developer read and write access, but this write
-access will be removed in the near future.
-
-To get your changes included, see "Submitting Patches" below.
-
 Compiling
 =========
 
-Make sure you have a copy of the SVN tree, as well as the following files:
+Make sure you have a copy of the git repository, as well as the following files:
 
-HydraIRC-libxml2-20021126.zip
-WTL 8 - http://sourceforge.net/project/showfiles.php?group_id=109071
+libxml2-master.zip
+WTL 9.1 - https://sourceforge.net/projects/wtl/files/WTL%209.1/WTL%209.1.5321%20Final/
+ATL Server includes/package - https://github.com/gabegundy/atlserver
 
 HydraIRC is written and developed using Visual Studio .NET 2003 and this is the
 only supported build environment.  If you're using something else then you're on
@@ -44,111 +34,54 @@ your own.
 
 VISUAL STUDIO 2008 NOTES: 
 
-Visual Studio 2008 and forward NO LONGER REQUIRE #define vsnprintf _vsnprintf. You must comment this out of libxml2's win32config.h for the included (2.4.24 - upgrade notes to 2.5.1 listed below) version listed below for the build to succeed. 
-
 The ATL Server package has become almost impossible to find as a regular download, but it can now be obtained at https://github.com/gabegundy/atlserver
 
-You will need this in addition to the below mentioned WTL 8.0 files (Add them to your global includes for ease of use) in order to compile on VS 2008 or newer. Add the WTL 8 and ATL Server include directories to global include paths. 
-
-With the above #define removal and using the 2002-11-26 version of libxml2 Hydra builds cleanly on VS 2008 Professional with only warnings about deprecated/unsafe APIs in LibXML2 (which should be resolved by updating to a newer version, which is a work in progress). All other parts of the system build cleanly without warnings - except one.
+You will need this in addition to the below mentioned WTL 8.0 files (Add them to your global includes for ease of use) in order to compile on VS 2008 or newer. Add the WTL 9.1 and ATL Server include directories to global include paths. 
 
 Line #532 in Plugin_WinAMP/Plugin.cpp throws a C4067 warning in VS 2008 - "unexpected tokens following preprocessor directive - expected a newline" - this is due to the '.' included in the #ifdef - #ifdef HYDRAIRC_0.3.163 throws the warning, but #ifdef HYDRAIRC_03163 does not. This code could be safely removed, as we are not targeting on building the plugin with downlevel versions anymore. 
 
+-----------------------------------
+
+LIBXML BUILD NOTES (Version is : Current 22 Oct 2022 master): A Custom VCProj file was 
+included in the distro folder in the original hydraIRC bundle of libxml - the one 
+included now has been modified to handle the newer libXML versions.
+
+You need to take the now included .vcproj and in the distribution folder 
+and place it into \HydraIRC\libs\libxml2\win32\ after extracting the contents of the 
+libxml2-master folder inside libxml2-master.zip to \HydraIRC\libs\libxml2\
+
+Afterwards, we need to generate xmlversion.h for compilation to succeed and correct version 
+numbers to be built into the application. Open a command prompt and navigate to 
+\HydraIRC\libs\libxml2\win32 and execute:
+
+cscript configure.js iconv:no xptr_locs:yes ftp:no
+
+libXML2 will now build successfuly, and the entire HydraIRC project will now build and run. 
+
 
 -----------------------------------
 
-LIBXML BUILD NOTES (Upgrade libxml to 2.5.1): A Custom VCProj file was included in the distro folder in the original hydraIRC bundle of libxml - the one included in the updated repository is straight from the libxml project.
 
-You need to take the now included .vcproj in the distribution folder and place it into \HydraIRC\libs\libxml2\win32\dsp after extracting the contents of the libxml2-LIBXML_2_5_1 folder inside libxml2-LIBXML_2_5_1.zip to \HydraIRC\libs\libxml2\
-
-Afterwards, we need to generate xmlversion.h for compilation to succeed and correct version numbers to be built into the application. Open a command prompt and navigate to \HydraIRC\libs\libxml2\win32 and execute:
-
-cscript configure.js iconv:no
-
-Above notied modificaton of commenting out #define vsnprintf _vsnprintf is still required for VS2008+.
-
-libXML2 2.5.1 will now build successfuly, and the entire HydraIRC project will now build and run. 
-
-Orignial HydraIRC-libxml2-20021126.zip is kept for reference in distribution folder, but should not be needed anymore.
-
------------------------------------
-
-If you are using Visual Studio .NET 2003/2002/2005 you will also need to do the following:
-
- - Unzip HydraIRC-libxml2-20021126.zip to HydraIRC/libs/libxml2
- - extract it anywhere you like. e.g. "D:\My Documents\Source\Libs\wtl\8.0"
- - Install the WTL application wizard (from the wtl folder)
-  - If you are using VS.NET 2005 then run AppWiz\setup80.js
-  - If you are using VS.NET 2003 then run AppWiz\setup71.js
-  - If you are using VS.NET 2002 then run AppWiz\setup70.js
- - Start up VC.net and adjust your VC project include directories
- - so that the directory you unzipped wtl75_4196.zip to appears first.
- - From the VS 2005 menus, select: tools/options, then expand projects & solutions/VC++ Directories
-   then select "Include Files" from the "Show directories for" dropdown
- - From the VS 2003/2002 menus, select: tools/options/projects/VC++ Directories/Show directories for "Include Files" 
- - Add the wtl 8 "include" folder to the top of list
-   e.g. "D:\My Documents\Source\Libs\wtl\8.0\include"   
- - next add the folder "HydraIRC\include\altered_wtl_includes\8.0" to the top of the list (before the new wtl entry)
- - next add the folder "HydraIRC\include\altered_ms_includes" to the top of the list (before the new altered_wtl_includes entry)
+Build Procedure:
+	- Unzip contents of libxml2-master inside of libxml2-master.zip to HydraIRC/libs/libxml2
+	- Copy Distribution\libxml2.vcproj to HydraIRC\libs\libxml2\win32
+	- From \HydraIRC\libs\libxml2\win32 on cmd prompt run 
+	 - cscript configure.js iconv:no xptr_locs:yes ftp:no
+	- Extract WTL9.1 to C:\WTL91 (path used in development, you can move and change this in 
+	  project files after setting up).
+	- Run cscript setup.js from inside c:\WTL91\AppWiz
+	 - Unlike the older versions, this one automatically detects installed VC++ so no 
+	   version specific files
+	- Unzip ATLServer to C:\ATLServer (can be adjusted like WTL91 above)
+	- Select appropriate profile and platform (Release/Debug, Win32/x64) and build!
 
 
-If you are using Visual Studio .NET 2002 you will also need to do the following:
-[note, this section was not written by Hydra and has not been verified or updated for 0.3.138 or higher]
-[If you have any problems with the VS.NET 2002 instructions please ask johnp for help in #hydrairc]
-
- - Open up HydraIRC/HydraIRC.vcproj with a text editor and change the 4th line of the file
-   from Version="7.10" to Version="7.0"
- - Open up HydraIRC/libs/libxml2/win32/dsp/libxml2.vcproj and change the version to Version="7.0" again.
- - Open up HydraIRC/HydraIRCPlugin/HydraIRCPlugin.vcproj and do the same yet again.
- - Start Visual Studio and open HydraIRC.vcproj
- - Add the libxml2.vcproj file as an existing project to the HydraIRC solution and build it.
- - Add the HydraIRCPlugin.vcproj file as an existing project to the HydraIRC solution and build it.
- - In the solution explorer, right-click on the HydraIRC project and click 'Project Dependencies...'
- - Make sure that HydraIRC depends on libxml2 and HydraIRCPlugin and that HydraIRCPlugin depends on libxml2
- - Click the Project Build Order tab and make sure the build order is:
- 	libxml2
- 	HydraIRCPlugin
- 	HydraIRC
- - All done.  You can now happily build the solution from scratch.
- 
 Submitting Patches
 ==================
 
-I will only accept source code updates in the form of patches. 
+Pull requests via github: https://github.com/HydraIRC/hydrairc
 
-You can use TortoiseSVN or a win32 port of the unix "diff" tool (it's also part
-of cygwin).
-
-I *ONLY* accept patches created by TortoiseSVN or patches in the "UNIFIED DIFF" 
-format (the -u option of diff)
-
-To create a patch with TortoiseSVN right-click on a file or folder somewhere
-in your SVN checkout and select "TortoiseSVN / Create patch ..." from the
-context menu.  Make sure you select ALL the files that have been modified that make
-your patch work.
-
-When creating patches using diff, use a command similar to this:
-
-"diff -bua oldfile newfile >../patches/mypatch.diff"
-or 
-
-"diff -buar olddirectory newdirectory >../patches/mypatch.diff"
-
-add -N if you've added new source code files.   
-
-Please make sure the patch applies before sending it.
-(i.e. Get a fresh copy of the CVS tree and apply your patch to it)
-
-Here's how you might apply the patch..
-
-"patch -p 1 < ../patches/mypatch.diff"
-
-once you've created a diff, e-mail it to "diffs AT hydrairc DOT com" 
-
-Please tell me your IRC nick when submitting patches in the e-mail and also
-let me know what the patch does too!
-
-You can also dcc it to me on EFNet too. 
+Development branch of gdwnldsKSC: https://github.com/gdwnldsKSC/hydrairc
 
 Working on the source
 =====================
