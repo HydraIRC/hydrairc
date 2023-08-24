@@ -6,7 +6,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HydraIRC", "HydraIRC\HydraI
 		{EE874E3B-5E71-444D-9EF1-44F32D53A1BA} = {EE874E3B-5E71-444D-9EF1-44F32D53A1BA}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libxml2", "HydraIRC\libs\libxml2\win32\dsp\libxml2.vcproj", "{08BC321F-3476-43F9-9989-FD9B1DA2A079}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libxml2", "HydraIRC\libs\libxml2\win32\libxml2.vcproj", "{08BC321F-3476-43F9-9989-FD9B1DA2A079}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Plugin_Default", "HydraIRC\Plugins\Default\Default.vcproj", "{5B0ADEA5-5DFC-4C65-A218-76B2BEF80E7E}"
 	ProjectSection(ProjectDependencies) = postProject
