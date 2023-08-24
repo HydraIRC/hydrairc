@@ -41,3 +41,8 @@ Distribution/Release/HydraIRC_Log.txt
 Distribution/Debug Files/Release/*
 Distribution/Debug Files/Debug/*
 Distribution/Release/Profile_Default.xml
+Distribution/Release/HydraIRC.exe
+Distribution/Release/plugins/*.dll
+Distribution/Release/CHANGES.TXT
+Distribution/Release/TODO.TXT
+Distribution/Release/Docs.htm
