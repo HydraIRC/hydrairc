@@ -15,6 +15,15 @@ Key:
   (name) - the name of the person running HydraIRC who first reported
   the problem or requested the feature
   
+9/October/2023 - PM (0.3.169)
+  gdwnldsKSC
+  + Resolved IRC Protocol issue from github issue https://github.com/HydraIRC/hydrairc/issues/17
+  
+24/August/2023 - AM (0.3.168) 
+  gdwnldsKSC
+  * Updated libXML2 from 2.5.1 to current libXML2 master as of 22/October/2022
+  * Upgraded WTL8 to WTL9.1
+   
 23/September/2022 - AM (0.3.167) - Experimental
   gdwnldsKSC
   * Updated DEVELOPER.TXT with instructonis for building under Visual Studio 2008

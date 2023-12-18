@@ -1985,6 +1985,9 @@ void IRCServer::Parse( char *processstr )
         {
           username = a;
           topictime = b;
+		  if (topictime[0] == ':') {
+              topictime++;
+          }
           time_t l = (time_t)atol(topictime); // FIXME - no check for null string
           t = localtime(&l);
         }
@@ -2023,23 +2026,31 @@ void IRCServer::Parse( char *processstr )
 		  {
 			  char *channelname;
 			  channelname = strtok(rest, " ");
-			  //username = UseEmptyString(strtok(NULL, " "));
+			  char *timeStr = UseEmptyString(strtok(NULL, ""));
+			  if (!timeStr) {
+				    sys_Printf(BIC_ERROR, "ERROR: Failed to parse creation time for channel %s\n", channelname);
+				    break;
+			  }
+				// ircd protocol fix for servers not putting space after
+			   if (timeStr[0] == ':') {
+			       timeStr++;
+			   }
 
-			  time_t l = (time_t)atol(UseEmptyString(strtok(NULL, ""))); // FIXME - no check for null string
+			  time_t l = (time_t)atol(timeStr);
 			  tm *t = localtime(&l);
-
 			  m_Variables[VID_CHANNEL] = channelname;
 			  m_Variables[VID_PARAM1] = channelname;
-        m_Variables[VID_PARAM2] = t ? stripcrlf(asctime(t)) : "unknown";
+              m_Variables[VID_PARAM2] = t ? stripcrlf(asctime(t)) : "unknown";
 
-        IRCChannel *pChannel = FindChannel(channelname);
-        if (pChannel)
-        {
-          pChannel->OutputFormatter(BIC_TOPIC,num);
-        }
-        else
-          sys_Printf(BIC_ERROR,"ERROR: Received channel information for a channel that we've not joined (%s)\n",channelname);
-      }
+              IRCChannel *pChannel = FindChannel(channelname);
+
+			  if (pChannel)
+              {
+                  pChannel->OutputFormatter(BIC_TOPIC,num);
+              }
+              else
+                  sys_Printf(BIC_ERROR,"ERROR: Received channel information for a channel that we've not joined (%s)\n",channelname);
+           }
       break;
 
     case RPL_NAMREPLY:
@@ -2116,6 +2127,10 @@ void IRCServer::Parse( char *processstr )
         char *channelmode;
         channelname = strtok(rest, " ");
         channelmode = UseEmptyString(strtok(NULL,""));
+
+		if (channelmode && channelmode[0] == ':') {
+			channelmode++;
+        }
 
         m_Variables[VID_CHANNEL] = channelname;
         m_Variables[VID_CHANNELMODE] = channelmode;
@@ -2687,6 +2702,12 @@ void IRCServer::Parse( char *processstr )
       m_Variables[VID_PARAM1] = to;
       m_Variables[VID_PARAM2] = tmpnick;
       m_Variables[VID_PARAM3] = UseEmptyString(rest);
+
+	  char *colonPos = strchr(rest, ':');
+      if (colonPos) {
+          memmove(colonPos, colonPos + 1, strlen(colonPos));
+      }
+
       if (ischannelstartchar(to[0]))
       {
         IRCChannel *pChannel = FindChannel(to);
