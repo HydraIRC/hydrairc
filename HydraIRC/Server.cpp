@@ -1,29 +1,20 @@
 /*
 
   HydraIRC
-  Copyright (C) 2002-2006 Dominic Clifton aka Hydra
+  Copyright (C) 2002-2026 Dominic Clifton aka Hydra
 
-  HydraIRC limited-use source license
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
 
-  1) You can:
-  1.1) Use the source to create improvements and bug-fixes to send to the
-       author to be incorporated in the main program.
-  1.2) Use it for review/educational purposes.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
 
-  2) You can NOT:
-  2.1) Use the source to create derivative works. (That is, you can't release
-       your own version of HydraIRC with your changes in it)
-  2.2) Compile your own version and sell it.
-  2.3) Distribute unmodified, modified source or compiled versions of HydraIRC
-       without first obtaining permission from the author. (I want one place
-       for people to come to get HydraIRC from)
-  2.4) Use any of the code or other part of HydraIRC in anything other than 
-       HydraIRC.
-       
-  3) All code submitted to the project:
-  3.1) Must not be covered by any license that conflicts with this license 
-       (e.g. GPL code)
-  3.2) Will become the property of the author.
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 
@@ -1985,6 +1976,9 @@ void IRCServer::Parse( char *processstr )
         {
           username = a;
           topictime = b;
+		  if (topictime[0] == ':') {
+			  topictime++;
+		  }
           time_t l = (time_t)atol(topictime); // FIXME - no check for null string
           t = localtime(&l);
         }
@@ -2023,23 +2017,32 @@ void IRCServer::Parse( char *processstr )
 		  {
 			  char *channelname;
 			  channelname = strtok(rest, " ");
-			  //username = UseEmptyString(strtok(NULL, " "));
+			  char *timeStr = UseEmptyString(strtok(NULL, ""));
+			  if (!timeStr) {
+				  sys_Printf(BIC_ERROR, "ERROR: Failed to parse creation time for channel %s\n", channelname);
+				  break;
+			  }
+			  // ircd protocol fix for servers not putting space after
+			  if (timeStr[0] == ':') {
+				  timeStr++;
+			  }
 
-			  time_t l = (time_t)atol(UseEmptyString(strtok(NULL, ""))); // FIXME - no check for null string
+			  time_t l = (time_t)atol(timeStr);
 			  tm *t = localtime(&l);
 
 			  m_Variables[VID_CHANNEL] = channelname;
 			  m_Variables[VID_PARAM1] = channelname;
-        m_Variables[VID_PARAM2] = t ? stripcrlf(asctime(t)) : "unknown";
+			  m_Variables[VID_PARAM2] = t ? stripcrlf(asctime(t)) : "unknown";
 
-        IRCChannel *pChannel = FindChannel(channelname);
-        if (pChannel)
-        {
-          pChannel->OutputFormatter(BIC_TOPIC,num);
-        }
-        else
-          sys_Printf(BIC_ERROR,"ERROR: Received channel information for a channel that we've not joined (%s)\n",channelname);
-      }
+			  IRCChannel *pChannel = FindChannel(channelname);
+
+			  if (pChannel)
+			  {
+				  pChannel->OutputFormatter(BIC_TOPIC, num);
+			  }
+			  else
+				  sys_Printf(BIC_ERROR, "ERROR: Received channel information for a channel that we've not joined (%s)\n", channelname);
+		  }
       break;
 
     case RPL_NAMREPLY:
@@ -2116,6 +2119,10 @@ void IRCServer::Parse( char *processstr )
         char *channelmode;
         channelname = strtok(rest, " ");
         channelmode = UseEmptyString(strtok(NULL,""));
+
+		if (channelmode && channelmode[0] == ':') {
+			channelmode++;
+		}
 
         m_Variables[VID_CHANNEL] = channelname;
         m_Variables[VID_CHANNELMODE] = channelmode;
@@ -2687,6 +2694,12 @@ void IRCServer::Parse( char *processstr )
       m_Variables[VID_PARAM1] = to;
       m_Variables[VID_PARAM2] = tmpnick;
       m_Variables[VID_PARAM3] = UseEmptyString(rest);
+
+	  char *colonPos = strchr(rest, ':');
+	  if (colonPos) {
+		  memmove(colonPos, colonPos + 1, strlen(colonPos));
+	  }
+
       if (ischannelstartchar(to[0]))
       {
         IRCChannel *pChannel = FindChannel(to);
