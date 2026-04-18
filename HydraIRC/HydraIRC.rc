@@ -90,8 +90,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 0,3,169,0
- PRODUCTVERSION 0,3,169,0
+ FILEVERSION 0,3,169,1
+ PRODUCTVERSION 0,3,169,1
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -109,12 +109,12 @@ BEGIN
             VALUE "Comments", "http://www.HydraIRC.com"
             VALUE "CompanyName", "Hydra Productions"
             VALUE "FileDescription", "HydraIRC"
-            VALUE "FileVersion", "0.3.169.0"
+            VALUE "FileVersion", "0.3.169.1"
             VALUE "InternalName", "HydraIRC"
             VALUE "LegalCopyright", "Dominic Clifton - Copyright 2002-2026"
             VALUE "OriginalFilename", "HydraIRC.exe"
             VALUE "ProductName", "HydraIRC"
-            VALUE "ProductVersion", "0.3.169.0"
+            VALUE "ProductVersion", "0.3.169.1"
         END
     END
     BLOCK "VarFileInfo"
